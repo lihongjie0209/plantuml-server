@@ -1,4 +1,4 @@
-# PlantUML Server + MCP Server Deployment Script for Windows
+# PlantUML Server v1.0.0 部署脚本 (Windows PowerShell)
 # This script provides easy deployment options for different environments
 
 param(
@@ -10,6 +10,10 @@ param(
     [ValidateSet("dev", "prod")]
     [string]$Environment = "dev"
 )
+
+# 版本信息
+$VERSION = "1.0.0"
+$PROJECT_NAME = "PlantUML Server"
 
 # Colors for output
 $Red = [System.ConsoleColor]::Red

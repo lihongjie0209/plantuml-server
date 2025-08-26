@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# PlantUML Server + MCP Server Deployment Script
+# PlantUML Server v1.0.0 Deployment Script
 # This script provides easy deployment options for different environments
 
 set -e
@@ -11,6 +11,10 @@ GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
 BLUE='\033[0;34m'
 NC='\033[0m' # No Color
+
+# Version information
+VERSION="1.0.0"
+PROJECT_NAME="PlantUML Server"
 
 # Function to print colored output
 print_status() {
@@ -27,6 +31,14 @@ print_warning() {
 
 print_error() {
     echo -e "${RED}[ERROR]${NC} $1"
+}
+
+# Print banner
+print_banner() {
+    echo ""
+    echo -e "${BLUE}🚀 $PROJECT_NAME v$VERSION${NC}"
+    echo -e "${BLUE}====================================${NC}"
+    echo ""
 }
 
 # Function to check if Docker is running
