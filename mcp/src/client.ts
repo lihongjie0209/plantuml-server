@@ -18,7 +18,7 @@ export class PlantUMLClient {
     try {
       const request: PlantUMLRequest = { code, format };
       
-      const response: AxiosResponse<PlantUMLResponse> = await axios.post(
+      const response: AxiosResponse<any> = await axios.post(
         `${this.baseUrl}/api/plantuml/generate`,
         request,
         {
@@ -29,7 +29,14 @@ export class PlantUMLClient {
         }
       );
 
-      return response.data;
+      // 处理远程服务器的响应格式（base64Data字段）和本地格式（data字段）
+      const responseData = response.data;
+      return {
+        success: responseData.success || true,
+        message: responseData.message || 'Diagram generated successfully',
+        data: responseData.base64Data || responseData.data, // 支持两种字段名
+        format: responseData.format || format,
+      };
     } catch (error) {
       if (axios.isAxiosError(error)) {
         const errorMessage = error.response?.data?.message || error.message;

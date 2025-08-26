@@ -1,6 +1,6 @@
 {
   "name": "@plantuml-mcp/plantuml-mcp",
-  "version": "0.2.0",
+  "version": "0.3.2",
   "description": "MCP server for PlantUML diagram generation",
   "main": "dist/index.js",
   "type": "module",

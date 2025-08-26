@@ -11,14 +11,14 @@ import {
 import { PlantUMLClient } from './client.js';
 import {
   GenerateDiagramArgsSchema,
-  ValidateCodeArgsSchema,
   GetFormatsArgsSchema,
   GenerateDiagramZodSchema,
-  ValidateCodeZodSchema,
   SUPPORTED_FORMATS,
 } from './types.js';
 import Ajv2020 from 'ajv/dist/2020.js';
 import addFormats from 'ajv-formats';
+import { promises as fs } from 'fs';
+import { dirname } from 'path';
 
 // 初始化 AJV 验证器
 const ajv = new Ajv2020({ allErrors: true, strict: false });
@@ -41,23 +41,38 @@ function parseArgs<T>(args: unknown, schema: any): T {
   return args as T;
 }
 
-// 工具定义对象 - 集中管理所有工具的描述和 schema
+// 保存文件的辅助函数
+async function saveFileIfRequested(data: string, savePath?: string, format?: string): Promise<string | undefined> {
+  if (!savePath) return undefined;
+  
+  try {
+    // 确保目录存在
+    const dir = dirname(savePath);
+    await fs.mkdir(dir, { recursive: true });
+    
+    // 将 Base64 数据转换为二进制
+    const buffer = Buffer.from(data, 'base64');
+    await fs.writeFile(savePath, buffer);
+    
+    const stats = await fs.stat(savePath);
+    return `File saved successfully to ${savePath} (${stats.size} bytes)`;
+  } catch (error) {
+    throw new Error(`Failed to save file: ${error instanceof Error ? error.message : String(error)}`);
+  }
+}
+
 // 工具定义对象 - 集中管理所有工具的描述和 schema
 const tools = {
   "plantuml-generate": {
-    description: "Generate PlantUML diagrams and return Base64 encoded images. REQUIRED PARAMETER: 'code' (string) - PlantUML code with @startuml/@enduml tags. OPTIONAL: 'format' (png|svg|pdf|eps, default: png). WORKFLOW: 1) Use plantuml-health first, 2) Optionally validate with plantuml-validate, 3) Generate diagram.",
+    description: "Generate PlantUML diagrams from code. Returns Base64 encoded image data, or saves to file if save_path/savePath is provided (Base64 data omitted when saving to reduce bandwidth).\n\nParameters:\n- code (required): PlantUML source code including @startuml/@enduml tags\n- format (optional): Output format - png|svg|pdf|eps (default: png)\n- save_path or savePath (optional): Local file path to save diagram (supports both naming conventions)\n\nExample: {\"code\": \"@startuml\\nAlice -> Bob: Hello\\n@enduml\", \"format\": \"png\", \"savePath\": \"./diagram.png\"}",
     inputSchema: GenerateDiagramArgsSchema
   },
-  "plantuml-validate": {
-    description: "Validate PlantUML code syntax before generating diagrams. REQUIRED PARAMETER: 'code' (string) - PlantUML code to validate. RECOMMENDED: Always validate complex diagrams before generation to catch syntax errors early.",
-    inputSchema: ValidateCodeArgsSchema
-  },
   "plantuml-formats": {
-    description: "Get list of supported output formats from the PlantUML server. NO PARAMETERS REQUIRED. Use this to check available formats before generating diagrams.",
+    description: "Get list of supported diagram output formats from the PlantUML server.\n\nParameters: None required\n\nReturns: Array of supported formats with recommendations for each format.",
     inputSchema: GetFormatsArgsSchema
   },
   "plantuml-health": {
-    description: "Check PlantUML server health and connectivity. NO PARAMETERS REQUIRED. IMPORTANT: Call this first to ensure the server is accessible before using other tools.",
+    description: "Check PlantUML server health and connectivity status.\n\nParameters: None required\n\nReturns: Server status, health information, and connection details. Call this first to verify server accessibility.",
     inputSchema: { type: "object", properties: {}, additionalProperties: false }
   }
 } as const;
@@ -98,14 +113,13 @@ Examples:
   PLANTUML_SERVER_URL=http://remote-server:9090 plantuml-mcp-server
 
 MCP Tools Available:
-  • generate_plantuml_diagram - Generate diagrams with AJV validation
-  • validate_plantuml_code - Validate syntax with detailed error reporting  
-  • get_supported_formats - Query available output formats
-  • plantuml_health_check - Monitor server health status
+  • plantuml-generate - Generate diagrams with optional file saving
+  • plantuml-formats - Query available output formats
+  • plantuml-health - Monitor server health status
       `);
       process.exit(0);
     } else if (arg === '--version' || arg === '-v') {
-      console.log('PlantUML MCP Server v0.2.0');
+      console.log('PlantUML MCP Server v0.3.2');
       process.exit(0);
     } else if (arg.startsWith('-')) {
       console.error(`Error: Unknown option ${arg}`);
@@ -125,8 +139,8 @@ class PlantUMLMCPServer {
     this.server = new Server(
       {
         name: 'plantuml-mcp-server',
-        version: '0.2.0',
-        description: 'PlantUML diagram generation server for AI agents. WORKFLOW: Start with plantuml-health to verify connectivity, then use other tools as needed.',
+        version: '0.3.2',
+        description: 'PlantUML diagram generation server for AI agents with file saving support.',
         capabilities: { 
           tools: {}
         }
@@ -137,7 +151,7 @@ class PlantUMLMCPServer {
     this.setupToolHandlers();
     
     // 输出启动信息到 stderr（不干扰 MCP 协议通信）
-    console.error(`🚀 PlantUML MCP Server v0.2.0 starting...`);
+    console.error(`🚀 PlantUML MCP Server v0.3.2 starting...`);
     console.error(`📡 PlantUML Server URL: ${serverUrl}`);
   }
 
@@ -158,47 +172,60 @@ class PlantUMLMCPServer {
       try {
         switch (name) {
           case 'plantuml-generate': {
-            const { code, format } = parseArgs<{ code: string; format?: string }>(
+            const { code, format, save_path, savePath } = parseArgs<{ code: string; format?: string; save_path?: string; savePath?: string }>(
               args, 
               tools['plantuml-generate'].inputSchema
             );
             
-            console.error(`🎨 Generating diagram (format: ${format || 'png'})`);
+            // 支持两种命名约定：save_path 和 savePath
+            const finalSavePath = save_path || savePath;
+            
+            console.error(`🎨 Generating diagram (format: ${format || 'png'}${finalSavePath ? `, saving to: ${finalSavePath}` : ''})`);
             const result = await this.client.generateDiagram(code, format as any);
             
             if (result.success) {
-              return ok({
+              let saveMessage: string | undefined;
+              let shouldReturnData = !finalSavePath; // 如果有保存路径，默认不返回 Base64 数据
+              
+              // 如果提供了保存路径，则保存文件
+              if (finalSavePath && result.data) {
+                try {
+                  saveMessage = await saveFileIfRequested(result.data, finalSavePath, format);
+                  console.error(`💾 File saved successfully, not returning Base64 data to save bandwidth`);
+                } catch (error) {
+                  console.error(`⚠️ Failed to save file: ${error instanceof Error ? error.message : String(error)}`);
+                  // 保存失败时返回 Base64 数据作为备用
+                  saveMessage = `Warning: Failed to save file - ${error instanceof Error ? error.message : String(error)}`;
+                  shouldReturnData = true;
+                }
+              }
+              
+              const responseData: any = {
                 success: true,
                 format: result.format,
-                data: result.data,
                 message: `Diagram generated successfully in ${result.format} format`,
                 size: result.data ? `${Math.round(result.data.length * 0.75)} bytes` : 'unknown'
-              });
+              };
+              
+              // 只在需要时包含 Base64 数据
+              if (shouldReturnData && result.data) {
+                responseData.data = result.data;
+              } else if (finalSavePath) {
+                responseData.note = "Base64 data not included because file was saved locally. Use save_path=null if you need both file saving and Base64 response.";
+              }
+              
+              if (saveMessage) {
+                responseData.file_save = saveMessage;
+              }
+              
+              return ok(responseData);
             } else {
               return ok({
                 success: false,
                 error: result.message,
-                suggestion: "Check your PlantUML syntax or use plantuml-validate to identify issues"
+                suggestion: "Check your PlantUML syntax. Common issues: missing @startuml/@enduml tags, invalid element names, or syntax errors."
               });
             }
-          }
-
-          case 'plantuml-validate': {
-            const { code } = parseArgs<{ code: string }>(
-              args, 
-              tools['plantuml-validate'].inputSchema
-            );
-            
-            console.error(`✅ Validating PlantUML code`);
-            const result = await this.client.validateCode(code);
-            
-            return ok({
-              valid: result.valid,
-              message: result.message,
-              recommendation: result.valid 
-                ? "Code is valid. You can proceed with diagram generation." 
-                : "Fix syntax errors before generating the diagram."
-            });
           }
 
           case 'plantuml-formats': {

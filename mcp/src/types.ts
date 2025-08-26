@@ -29,26 +29,21 @@ export const GenerateDiagramArgsSchema = {
     code: {
       type: "string",
       minLength: 1,
-      description: "PlantUML diagram code. Required. Example: '@startuml\\nAlice -> Bob: Hello\\n@enduml'"
+      description: "PlantUML source code (required). Must include @startuml and @enduml tags. Example: '@startuml\\nAlice -> Bob: Hello\\n@enduml'"
     },
     format: {
       type: "string",
       enum: ["png", "svg", "pdf", "eps"],
       default: "png",
-      description: "Output format for the diagram. Optional, defaults to 'png'. Use 'svg' for scalable graphics, 'pdf' for documents."
-    }
-  },
-  required: ["code"],
-  additionalProperties: false
-} as const;
-
-export const ValidateCodeArgsSchema = {
-  type: "object",
-  properties: {
-    code: {
+      description: "Output image format (optional). Defaults to 'png'. Options: png (web), svg (scalable), pdf (documents), eps (publications)"
+    },
+    save_path: {
       type: "string",
-      minLength: 1,
-      description: "PlantUML code to validate. Required. Should include @startuml/@enduml tags."
+      description: "Local file save path (optional). When provided, saves diagram to file and omits Base64 data from response to save bandwidth. Example: './diagrams/my-diagram.png'"
+    },
+    savePath: {
+      type: "string",
+      description: "Alias for save_path. Local file save path (optional). Supports both camelCase and snake_case naming conventions."
     }
   },
   required: ["code"],
@@ -65,12 +60,9 @@ export const GetFormatsArgsSchema = {
 export const GenerateDiagramZodSchema = z.object({
   code: z.string().min(1, 'PlantUML code cannot be empty'),
   format: z.enum(['png', 'svg', 'pdf', 'eps']).default('png'),
-});
-
-export const ValidateCodeZodSchema = z.object({
-  code: z.string().min(1, 'PlantUML code cannot be empty'),
+  save_path: z.string().optional(),
+  savePath: z.string().optional(), // 支持 camelCase 别名
 });
 
 export type GenerateDiagramArgs = z.infer<typeof GenerateDiagramZodSchema>;
-export type ValidateCodeArgs = z.infer<typeof ValidateCodeZodSchema>;
 export type GetFormatsArgs = Record<string, never>;

@@ -1,0 +1,24 @@
+!define CHARSET UTF-8
+
+' 中文字体配置
+skinparam defaultFontName "Microsoft YaHei, SimSun, Noto Sans CJK SC, Source Han Sans CN, WenQuanYi Micro Hei, DejaVu Sans"
+
+' 默认字体大小
+skinparam defaultFontSize 12
+
+' 图表样式优化
+skinparam backgroundColor white
+skinparam shadowing false
+skinparam classBackgroundColor LightBlue
+skinparam classBorderColor DarkBlue
+skinparam noteBackgroundColor LightYellow
+skinparam noteBorderColor DarkGray
+
+' 箭头样式
+skinparam arrowColor Black
+skinparam arrowThickness 2
+
+' 标题样式
+skinparam titleFontName "Microsoft YaHei, SimSun, Noto Sans CJK SC"
+skinparam titleFontSize 16
+skinparam titleFontStyle bold

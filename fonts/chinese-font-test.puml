@@ -1,0 +1,39 @@
+@startuml
+!include classpath:plantuml-config/default.puml
+
+title 中文字体测试 - PlantUML Server v1.0.0
+
+actor 用户 as User
+participant "Web服务器" as Server
+participant "数据库" as DB
+participant "缓存系统" as Cache
+
+User -> Server: 发送请求
+activate Server
+
+Server -> Cache: 检查缓存
+Cache --> Server: 缓存未命中
+
+Server -> DB: 查询数据
+activate DB
+DB --> Server: 返回数据
+deactivate DB
+
+Server -> Cache: 更新缓存
+Server --> User: 返回响应
+deactivate Server
+
+note right of User
+  这是一个测试
+  中文字体显示
+  的时序图
+end note
+
+note over Server
+  **服务器特性:**
+  • 高性能处理
+  • 支持中文
+  • 字体优化
+end note
+
+@enduml

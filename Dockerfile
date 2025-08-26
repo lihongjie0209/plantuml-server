@@ -24,12 +24,14 @@ RUN mvn clean package -DskipTests -B
 # 第二阶段：运行阶段
 FROM openjdk:11-jre-slim
 
-# 安装必要的字体和工具
+# 安装必要的工具、字体和 Graphviz
 RUN apt-get update && \
     apt-get install -y \
+    graphviz \
     fontconfig \
     fonts-dejavu-core \
     fonts-liberation \
+    fonts-noto-cjk \
     curl \
     && rm -rf /var/lib/apt/lists/*
 
@@ -39,11 +41,23 @@ RUN useradd -r -u 1001 -g root appuser
 # 设置工作目录
 WORKDIR /app
 
+# 创建字体目录和配置目录
+RUN mkdir -p /app/fonts /app/plantuml-config && \
+    chmod 755 /app/fonts /app/plantuml-config
+
 # 从构建阶段复制应用文件
 COPY --from=build --chown=1001:root /app/target/quarkus-app/ ./
 
+# 复制字体文件（如果fonts目录存在的话）
+COPY --chown=1001:root fonts /app/fonts
+
 # 修改文件权限
-RUN chmod -R g+w /app
+RUN chmod -R g+w /app && \
+    chown -R 1001:root /app/fonts /app/plantuml-config
+
+# 设置字体路径和配置环境变量
+ENV JAVA_FONTS=/app/fonts:/usr/share/fonts
+ENV PLANTUML_CONFIG_PATH=/app/plantuml-config
 
 # 切换到应用用户
 USER 1001

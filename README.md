@@ -1,4 +1,4 @@
-# PlantUML Server
+# PlantUML Server v1.0.0
 
 ![Build Status](https://github.com/lihongjie0209/plantuml-server/workflows/Build%20and%20Push%20to%20Docker%20Hub/badge.svg)
 ![Docker Image Size](https://img.shields.io/docker/image-size/lihongjie0209/plantuml-server/latest)
@@ -6,13 +6,18 @@
 ![Java](https://img.shields.io/badge/Java-11+-orange.svg)
 ![Quarkus](https://img.shields.io/badge/Quarkus-3.3.3-blue.svg)
 ![GitHub release](https://img.shields.io/github/v/release/lihongjie0209/plantuml-server)
+![MCP](https://img.shields.io/badge/MCP-v0.3.2-green.svg)
+![Node.js](https://img.shields.io/badge/Node.js-18+-brightgreen.svg)
 
-一个基于 Quarkus 的高性能 PlantUML Web 服务器，提供 PlantUML 代码转换为图片的 RESTful API。支持多种输出格式，具有现代化的 Web 界面和完整的 Docker 化部署方案。
+🚀 **Production-Ready PlantUML Solution** - 集成Web服务器和AI助手支持的完整解决方案
+
+一个基于 Quarkus 的高性能 PlantUML Web 服务器，提供 PlantUML 代码转换为图片的 RESTful API。包含 Model Context Protocol (MCP) 服务器，支持 AI 助手集成。支持多种输出格式，具有现代化的 Web 界面和完整的 Docker 化部署方案。
 
 > **🚀 [快速开始](QUICKSTART.md)** | **📦 [Docker Hub](https://hub.docker.com/r/lihongjie0209/plantuml-server)** | **🛠️ [开发文档](#-开发指南)**
 
 ## ✨ 特性亮点
 
+### 🌐 Web 服务器特性
 - 🚀 **高性能**: 基于 Quarkus 框架，启动时间 < 1秒
 - 🎨 **多格式支持**: PNG, SVG, PDF, EPS 等多种输出格式
 - 🌐 **现代化界面**: 响应式 Web 界面，支持实时预览
@@ -21,9 +26,18 @@
 - 🔒 **安全**: 非 root 用户运行，内置健康检查
 - 🌍 **跨平台**: 支持 Linux (amd64/arm64) 多架构部署
 
+### 🤖 AI 集成特性 (MCP Server v0.3.2)
+- 🔌 **MCP协议**: 完整的 Model Context Protocol 服务器实现
+- 🛠️ **3个优化工具**: 图表生成、格式查询、健康检查
+- 💾 **文件保存**: 自动创建目录并保存图表文件
+- 🌤️ **云就绪**: 支持远程 PlantUML 服务器
+- 📊 **带宽优化**: 文件保存模式自动排除 Base64 数据
+- 🔧 **双重兼容**: 支持 camelCase 和 snake_case 参数命名
+- 🎯 **AI友好**: 针对 AI 客户端优化的工具描述
+
 ## 🚀 快速开始
 
-### 🐳 使用 Docker (推荐)
+### 🐳 Web 服务器 - 使用 Docker (推荐)
 
 ```bash
 # 拉取并运行
@@ -31,6 +45,25 @@ docker run -p 9090:9090 lihongjie0209/plantuml-server:latest
 
 # 访问应用
 open http://localhost:9090
+```
+
+### 🤖 MCP 服务器 - AI 集成
+
+```bash
+# 克隆仓库
+git clone https://github.com/lihongjie0209/plantuml-server.git
+cd plantuml-server/mcp
+
+# 安装依赖并构建
+npm install
+npm run build
+
+# 启动 MCP 服务器
+node dist/index.js
+
+# 或使用全局安装
+npm link
+plantuml-mcp-server --help
 ```
 
 ### 💻 本地开发
