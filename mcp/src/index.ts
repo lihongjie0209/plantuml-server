@@ -16,23 +16,76 @@ import {
   SUPPORTED_FORMATS,
 } from './types.js';
 
+// 解析命令行参数
+function parseArgs() {
+  const args = process.argv.slice(2);
+  let serverUrl = process.env.PLANTUML_SERVER_URL || 'http://localhost:9090';
+  
+  // 解析命令行参数
+  for (let i = 0; i < args.length; i++) {
+    const arg = args[i];
+    if (arg === '--server-url' || arg === '-s') {
+      if (i + 1 < args.length) {
+        serverUrl = args[i + 1];
+        i++; // 跳过下一个参数
+      } else {
+        console.error('Error: --server-url requires a URL argument');
+        process.exit(1);
+      }
+    } else if (arg === '--help' || arg === '-h') {
+      console.log(`
+PlantUML MCP Server v0.1.0
+
+Usage: plantuml-mcp-server [options]
+
+Options:
+  -s, --server-url <url>    PlantUML server URL (default: http://localhost:9090)
+  -h, --help               Show this help message
+  -v, --version            Show version information
+
+Environment Variables:
+  PLANTUML_SERVER_URL      PlantUML server URL (overridden by --server-url)
+
+Examples:
+  plantuml-mcp-server
+  plantuml-mcp-server --server-url http://plantuml.example.com:8080
+  PLANTUML_SERVER_URL=http://remote-server:9090 plantuml-mcp-server
+      `);
+      process.exit(0);
+    } else if (arg === '--version' || arg === '-v') {
+      console.log('PlantUML MCP Server v0.1.0');
+      process.exit(0);
+    } else if (arg.startsWith('-')) {
+      console.error(`Error: Unknown option ${arg}`);
+      console.error('Use --help for usage information');
+      process.exit(1);
+    }
+  }
+  
+  return { serverUrl };
+}
+
 class PlantUMLMCPServer {
   private server: Server;
   private client: PlantUMLClient;
 
-  constructor() {
+  constructor(serverUrl: string) {
     this.server = new Server(
       {
         name: 'plantuml-mcp-server',
-        version: '1.0.0',
+        version: '0.1.0',
         capabilities: {
           tools: {},
         },
       }
     );
 
-    this.client = new PlantUMLClient(process.env.PLANTUML_SERVER_URL);
+    this.client = new PlantUMLClient(serverUrl);
     this.setupToolHandlers();
+    
+    // 输出启动信息到 stderr（不干扰 MCP 协议通信）
+    console.error(`🚀 PlantUML MCP Server v0.1.0 starting...`);
+    console.error(`📡 PlantUML Server URL: ${serverUrl}`);
   }
 
   private setupToolHandlers(): void {
@@ -214,8 +267,18 @@ class PlantUMLMCPServer {
 }
 
 // 启动服务器
-const server = new PlantUMLMCPServer();
-server.run().catch((error) => {
-  console.error('Failed to start MCP server:', error);
-  process.exit(1);
-});
+async function main() {
+  try {
+    const { serverUrl } = parseArgs();
+    const server = new PlantUMLMCPServer(serverUrl);
+    await server.run();
+  } catch (error) {
+    console.error('❌ Failed to start PlantUML MCP Server:', error);
+    process.exit(1);
+  }
+}
+
+// 只有在直接运行时才启动服务器（不是被import时）
+if (process.argv[1] && process.argv[1].endsWith('index.js')) {
+  main();
+}
