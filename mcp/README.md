@@ -17,23 +17,31 @@
 - Node.js 18+
 - PlantUML 服务器运行在 `http://localhost:9090`
 
-### 安装依赖
+### 本地安装
 
 ```bash
 cd mcp
 npm install
+npm run build
 ```
 
-### 构建项目
+### 全局安装（NPM）
 
 ```bash
-npm run build
+npm install -g @plantuml-mcp/plantuml-mcp
 ```
 
 ### 启动服务器
 
 ```bash
+# 本地开发
 npm start
+
+# 全局安装后
+plantuml-mcp-server
+
+# 指定 PlantUML 服务器地址
+PLANTUML_SERVER_URL=http://your-server:9090 plantuml-mcp-server
 ```
 
 ### 开发模式

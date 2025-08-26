@@ -4,8 +4,18 @@ on:
   push:
     branches: [ main, master ]
     tags: [ 'v*' ]
+    paths-ignore:
+      - 'mcp/**'
+      - 'mcp/.*'
+      - '**.md'
+      - 'docs/**'
   pull_request:
     branches: [ main, master ]
+    paths-ignore:
+      - 'mcp/**'
+      - 'mcp/.*'
+      - '**.md'
+      - 'docs/**'
 
 env:
   IMAGE_NAME: plantuml-server

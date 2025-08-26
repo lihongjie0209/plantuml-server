@@ -1,9 +1,12 @@
 {
-  "name": "plantuml-mcp-server",
+  "name": "@plantuml-mcp/plantuml-mcp",
   "version": "1.0.0",
   "description": "MCP server for PlantUML diagram generation",
   "main": "dist/index.js",
   "type": "module",
+  "bin": {
+    "plantuml-mcp-server": "./dist/index.js"
+  },
   "scripts": {
     "build": "tsc",
     "start": "node dist/index.js",

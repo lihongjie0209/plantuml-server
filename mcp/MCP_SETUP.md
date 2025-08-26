@@ -1,24 +1,29 @@
-# PlantUML MCP Server
+# PlantUML MCP Server Setup
 
 A Model Context Protocol (MCP) server that provides PlantUML diagram generation capabilities to AI agents.
 
 ## Quick Start
 
-1. **Install dependencies:**
-   ```bash
-   cd mcp
-   npm install
-   ```
+### Method 1: NPM Installation (Recommended)
 
-2. **Build the project:**
-   ```bash
-   npm run build
-   ```
+```bash
+# Install globally
+npm install -g @plantuml-mcp/plantuml-mcp
 
-3. **Start the MCP server:**
-   ```bash
-   npm start
-   ```
+# Start the MCP server
+plantuml-mcp-server
+```
+
+### Method 2: Local Development
+
+```bash
+# Clone and setup
+cd mcp
+npm install && npm run build
+
+# Start the MCP server
+npm start
+```
 
 ## Configuration
 
@@ -29,6 +34,21 @@ A Model Context Protocol (MCP) server that provides PlantUML diagram generation 
 ### MCP Client Setup
 
 Add to your MCP client configuration:
+
+```json
+{
+  "mcpServers": {
+    "plantuml": {
+      "command": "plantuml-mcp-server",
+      "env": {
+        "PLANTUML_SERVER_URL": "http://localhost:9090"
+      }
+    }
+  }
+}
+```
+
+Or for local development:
 
 ```json
 {
