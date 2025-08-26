@@ -18,6 +18,22 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
       
+    - name: Set up JDK 17
+      uses: actions/setup-java@v4
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+        
+    - name: Cache Maven dependencies
+      uses: actions/cache@v4
+      with:
+        path: |
+          ~/.m2/repository
+          !~/.m2/repository/org/apache/maven
+        key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+        restore-keys: |
+          ${{ runner.os }}-maven-
+      
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v3
       
@@ -49,8 +65,12 @@ jobs:
         push: ${{ github.event_name != 'pull_request' }}
         tags: ${{ steps.meta.outputs.tags }}
         labels: ${{ steps.meta.outputs.labels }}
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
+        cache-from: |
+          type=gha
+          type=registry,ref=lihongjie0209/${{ env.IMAGE_NAME }}:buildcache
+        cache-to: |
+          type=gha,mode=max
+          type=registry,ref=lihongjie0209/${{ env.IMAGE_NAME }}:buildcache,mode=max
         platforms: linux/amd64,linux/arm64
         
     - name: Update Docker Hub description
