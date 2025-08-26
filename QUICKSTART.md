@@ -9,10 +9,70 @@
 - **MCP 服务器** (Node.js/TypeScript) - 为 AI 代理提供标准化接口
 
 ```
-AI 代理 (Claude/Cline) ← MCP 协议 → MCP 服务器 ← HTTP API → PlantUML 服务器 → 图表输出
+AI 代理 (Claude/Cline) ← MCP 协议 → MCP 服务器 ← HTTP API → PlantUML ## 📚 下一步
+
+现在您已经有了一个工作的 PlantUML + MCP 环境！接下来可以：
+
+- 🔍 探索 [完整 API 文档](README.md#-api-文档)
+- 🤖 了解 [MCP 工具详情](mcp/README.md)
+- 🐳 查看 [Docker 标签策略](docs/docker-tagging-strategy.md)
+- 🏗️ 学习 [项目架构](README.md#-项目架构)
+- 🎯 查看 [使用场景](README.md#-使用场景)
+
+## 🛠️ 部署脚本完整参考
+
+### Linux/macOS (`deploy.sh`)
+```bash
+./deploy.sh start [dev|prod]    # 启动服务
+./deploy.sh stop [dev|prod]     # 停止服务  
+./deploy.sh restart [dev|prod]  # 重启服务
+./deploy.sh build [dev|prod]    # 构建镜像
+./deploy.sh logs [dev|prod]     # 查看日志
+./deploy.sh status [dev|prod]   # 服务状态
+./deploy.sh clean [dev|prod]    # 清理环境
+./deploy.sh help               # 帮助信息
 ```
 
-## ⚡ 方法一：Docker Compose (推荐，最简单)
+### Windows PowerShell (`deploy.ps1`)
+```powershell
+.\deploy.ps1 start [dev|prod]   # 启动服务
+.\deploy.ps1 stop [dev|prod]    # 停止服务
+.\deploy.ps1 restart [dev|prod] # 重启服务
+.\deploy.ps1 build [dev|prod]   # 构建镜像
+.\deploy.ps1 logs [dev|prod]    # 查看日志
+.\deploy.ps1 status [dev|prod]  # 服务状态
+.\deploy.ps1 clean [dev|prod]   # 清理环境
+.\deploy.ps1 help              # 帮助信息
+```
+
+### 环境说明
+- **dev**: 开发环境，支持热重载，详细日志输出
+- **prod**: 生产环境，优化资源配置，限制内存和 CPU 使用
+
+### 示例用法
+```bash
+# 快速启动开发环境
+./deploy.sh start dev
+
+# 查看实时日志
+./deploy.sh logs dev
+
+# 停止并清理
+./deploy.sh clean dev
+
+# 生产环境部署
+./deploy.sh start prod
+```
+
+## 🆘 需要帮助？
+
+- 🐛 创建 [GitHub Issue](https://github.com/lihongjie0209/plantuml-server/issues)
+- 📖 查看 [完整文档](README.md)
+- 🔧 参考 [故障排除指南](#-故障排除)
+
+---
+
+🎯 **恭喜！** 您现在拥有了一个功能完整的 AI 驱动的 UML 图表生成环境！## ⚡ 方法一：Docker Compose (推荐，最简单)
 
 ### 1. 克隆并启动
 
@@ -21,13 +81,27 @@ AI 代理 (Claude/Cline) ← MCP 协议 → MCP 服务器 ← HTTP API → Plant
 git clone https://github.com/lihongjie0209/plantuml-server.git
 cd plantuml-server
 
-# 一键启动完整环境
-docker-compose up -d
+# 🚀 使用部署脚本 (跨平台)
+# Linux/macOS
+./deploy.sh start dev      # 开发环境
+./deploy.sh start prod     # 生产环境
+
+# Windows
+.\deploy.ps1 start dev     # 开发环境  
+.\deploy.ps1 start prod    # 生产环境
+
+# 或者直接使用 Docker Compose
+docker-compose up -d       # 基础启动
 ```
 
 ### 2. 验证服务状态
 
 ```bash
+# 使用部署脚本检查状态
+./deploy.sh status         # Linux/macOS
+.\deploy.ps1 status        # Windows
+
+# 或手动检查
 # 检查 PlantUML 服务器 (应返回 healthy)
 curl http://localhost:9090/api/plantuml/health
 
@@ -210,19 +284,41 @@ echo '{"jsonrpc":"2.0","id":1,"method":"tools/list","params":{}}' | \
 
 #### 4. Docker 问题
 ```bash
-# 查看容器日志
+# 🔧 使用部署脚本管理
+./deploy.sh logs           # 查看所有服务日志 (Linux/macOS)
+./deploy.sh restart        # 重启服务
+./deploy.sh clean          # 清理并重置
+
+.\deploy.ps1 logs          # 查看所有服务日志 (Windows)
+.\deploy.ps1 restart       # 重启服务  
+.\deploy.ps1 clean         # 清理并重置
+
+# 或手动管理
 docker-compose logs plantuml-server
 docker-compose logs mcp-server
-
-# 重启服务
 docker-compose down && docker-compose up -d
+
+# 生产环境
+docker-compose -f docker-compose.yml -f docker-compose.prod.yml logs
 ```
 
-### 调试模式
+### 🔧 调试和维护
 
 ```bash
-# 启用 MCP 详细日志
-DEBUG=* npm start
+# 🚀 部署脚本命令
+./deploy.sh help           # 查看所有可用命令 (Linux/macOS)
+.\deploy.ps1 help          # 查看所有可用命令 (Windows)
+
+# 实时日志监控
+./deploy.sh logs           # 持续监控所有服务日志
+.\deploy.ps1 logs          # Windows 版本
+
+# 构建自定义镜像
+./deploy.sh build dev      # 构建开发版本
+./deploy.sh build prod     # 构建生产版本
+
+# 启用 MCP 详细日志 (手动启动)
+DEBUG=* node mcp/dist/index.js --server-url http://localhost:9090
 
 # 查看实时日志
 docker-compose logs -f
