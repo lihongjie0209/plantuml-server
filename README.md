@@ -5,8 +5,11 @@
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
 ![Java](https://img.shields.io/badge/Java-11+-orange.svg)
 ![Quarkus](https://img.shields.io/badge/Quarkus-3.3.3-blue.svg)
+![GitHub release](https://img.shields.io/github/v/release/lihongjie0209/plantuml-server)
 
 一个基于 Quarkus 的高性能 PlantUML Web 服务器，提供 PlantUML 代码转换为图片的 RESTful API。支持多种输出格式，具有现代化的 Web 界面和完整的 Docker 化部署方案。
+
+> **🚀 [快速开始](QUICKSTART.md)** | **📦 [Docker Hub](https://hub.docker.com/r/lihongjie0209/plantuml-server)** | **🛠️ [开发文档](#-开发指南)**
 
 ## ✨ 特性亮点
 
