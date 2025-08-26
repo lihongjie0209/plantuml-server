@@ -222,6 +222,48 @@ quarkus.http.limits.max-body-size=50M
 - **构建**: Maven
 - **容器**: Docker & Docker Compose
 - **CI/CD**: GitHub Actions
+- **MCP 服务器**: TypeScript + Node.js
+
+## 🤖 MCP 服务器 (Model Context Protocol)
+
+项目包含一个完整的 MCP 服务器，允许 AI 代理通过标准化接口使用 PlantUML 功能：
+
+```bash
+# 快速设置 MCP 服务器
+cd mcp
+npm install && npm run build
+
+# 启动 MCP 服务器
+npm start
+
+# 测试连接
+npm test
+```
+
+### MCP 功能特性
+
+- 🎨 **图表生成**: 支持 PNG、SVG、PDF、EPS 格式
+- ✅ **代码验证**: 验证 PlantUML 语法正确性
+- 🔍 **健康检查**: 监控服务器状态
+- 📋 **格式查询**: 获取支持的输出格式列表
+
+### 客户端配置示例
+
+```json
+{
+  "mcpServers": {
+    "plantuml": {
+      "command": "node",
+      "args": ["./mcp/dist/index.js"],
+      "env": {
+        "PLANTUML_SERVER_URL": "http://localhost:9090"
+      }
+    }
+  }
+}
+```
+
+详细文档：[MCP 服务器文档](mcp/README.md)
 
 ## 📊 性能指标
 
