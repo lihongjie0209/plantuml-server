@@ -1,0 +1,52 @@
+version: '3.8'
+
+services:
+  # PlantUML 服务器 (MCP 服务器的依赖)
+  plantuml-server:
+    image: lihongjie0209/plantuml-server:latest
+    container_name: plantuml-server-for-mcp
+    ports:
+      - "9090:9090"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9090/api/plantuml/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    networks:
+      - mcp-network
+
+  # MCP 服务器
+  mcp-server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: plantuml-mcp-server
+    depends_on:
+      plantuml-server:
+        condition: service_healthy
+    environment:
+      - NODE_ENV=production
+      - PLANTUML_SERVER_URL=http://plantuml-server:9090
+    volumes:
+      # 如果需要持久化配置或日志
+      - ./logs:/app/logs
+    networks:
+      - mcp-network
+    # MCP 服务器通常通过 stdio 通信，不需要暴露端口
+    # ports:
+    #   - "3000:3000"
+    healthcheck:
+      test: ["CMD", "pgrep", "-f", "node.*dist/index.js"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+
+networks:
+  mcp-network:
+    driver: bridge
+
+volumes:
+  mcp-logs:
+    driver: local

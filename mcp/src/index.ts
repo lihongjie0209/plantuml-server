@@ -15,9 +15,49 @@ import {
   GetFormatsArgsSchema,
   SUPPORTED_FORMATS,
 } from './types.js';
+import Ajv2020 from 'ajv/dist/2020.js';
+import addFormats from 'ajv-formats';
+
+// 初始化 AJV 验证器
+const ajv = new Ajv2020({ allErrors: true, strict: false });
+addFormats(ajv);
+
+// 统一的响应格式化函数
+function ok(data: any) {
+  return { content: [{ type: "text", text: JSON.stringify(data, null, 2) }] };
+}
+
+// 统一的参数解析和验证函数
+function parseArgs<T>(args: unknown, schema: any): T {
+  const validate = ajv.compile(schema);
+  if (!validate(args)) {
+    throw new McpError(ErrorCode.InvalidParams, ajv.errorsText(validate.errors));
+  }
+  return args as T;
+}
+
+// 工具定义对象 - 集中管理所有工具的描述和 schema
+const tools = {
+  "plantuml-generate": {
+    description: "Generate PlantUML diagrams and return Base64 encoded images. WORKFLOW: 1) Use plantuml-health first to verify server connectivity, 2) Optionally call plantuml-validate to check syntax, 3) Generate diagram with preferred format.",
+    inputSchema: GenerateDiagramArgsSchema
+  },
+  "plantuml-validate": {
+    description: "Validate PlantUML code syntax before generating diagrams. RECOMMENDED: Always validate complex diagrams before generation to catch syntax errors early.",
+    inputSchema: ValidateCodeArgsSchema
+  },
+  "plantuml-formats": {
+    description: "Get list of supported output formats from the PlantUML server. Use this to check available formats before generating diagrams.",
+    inputSchema: GetFormatsArgsSchema
+  },
+  "plantuml-health": {
+    description: "Check PlantUML server health and connectivity. IMPORTANT: Call this first to ensure the server is accessible before using other tools.",
+    inputSchema: { type: "object", properties: {} }
+  }
+} as const;
 
 // 解析命令行参数
-function parseArgs() {
+function parseCommandLineArgs() {
   const args = process.argv.slice(2);
   let serverUrl = process.env.PLANTUML_SERVER_URL || 'http://localhost:9090';
   
@@ -74,9 +114,10 @@ class PlantUMLMCPServer {
       {
         name: 'plantuml-mcp-server',
         version: '0.1.0',
-        capabilities: {
-          tools: {},
-        },
+        description: 'PlantUML diagram generation server for AI agents. WORKFLOW: Start with plantuml-health to verify connectivity, then use other tools as needed.',
+        capabilities: { 
+          tools: {}
+        }
       }
     );
 
@@ -88,178 +129,120 @@ class PlantUMLMCPServer {
     console.error(`📡 PlantUML Server URL: ${serverUrl}`);
   }
 
-  private setupToolHandlers(): void {
-    // 列出可用工具
-    this.server.setRequestHandler(ListToolsRequestSchema, async () => {
-      return {
-        tools: [
-          {
-            name: 'generate_plantuml_diagram',
-            description: 'Generate a PlantUML diagram and return it as Base64 encoded image',
-            inputSchema: {
-              type: 'object',
-              properties: {
-                code: {
-                  type: 'string',
-                  description: 'PlantUML diagram code (e.g., "@startuml\\nAlice -> Bob: Hello\\n@enduml")',
-                },
-                format: {
-                  type: 'string',
-                  enum: [...SUPPORTED_FORMATS],
-                  default: 'png',
-                  description: 'Output format for the diagram',
-                },
-              },
-              required: ['code'],
-            },
-          },
-          {
-            name: 'validate_plantuml_code',
-            description: 'Validate PlantUML code syntax without generating the full diagram',
-            inputSchema: {
-              type: 'object',
-              properties: {
-                code: {
-                  type: 'string',
-                  description: 'PlantUML code to validate',
-                },
-              },
-              required: ['code'],
-            },
-          },
-          {
-            name: 'get_supported_formats',
-            description: 'Get list of supported output formats for PlantUML diagrams',
-            inputSchema: {
-              type: 'object',
-              properties: {},
-            },
-          },
-          {
-            name: 'plantuml_health_check',
-            description: 'Check if the PlantUML server is healthy and accessible',
-            inputSchema: {
-              type: 'object',
-              properties: {},
-            },
-          },
-        ],
-      };
-    });
+  private setupToolHandlers() {
+    // 设置工具列表处理器
+    this.server.setRequestHandler(ListToolsRequestSchema, async () => ({
+      tools: Object.entries(tools).map(([name, tool]) => ({
+        name,
+        description: tool.description,
+        inputSchema: tool.inputSchema as any
+      }))
+    }));
 
-    // 处理工具调用
+    // 设置工具调用处理器
     this.server.setRequestHandler(CallToolRequestSchema, async (request) => {
       const { name, arguments: args } = request.params;
-
+      
       try {
         switch (name) {
-          case 'generate_plantuml_diagram':
-            return await this.handleGenerateDiagram(args);
-          
-          case 'validate_plantuml_code':
-            return await this.handleValidateCode(args);
-          
-          case 'get_supported_formats':
-            return await this.handleGetFormats(args);
-          
-          case 'plantuml_health_check':
-            return await this.handleHealthCheck();
-          
-          default:
-            throw new McpError(
-              ErrorCode.MethodNotFound,
-              `Unknown tool: ${name}`
+          case 'plantuml-generate': {
+            const { code, format } = parseArgs<{ code: string; format?: string }>(
+              args, 
+              tools['plantuml-generate'].inputSchema
             );
+            
+            console.error(`🎨 Generating diagram (format: ${format || 'png'})`);
+            const result = await this.client.generateDiagram(code, format as any);
+            
+            if (result.success) {
+              return ok({
+                success: true,
+                format: result.format,
+                data: result.data,
+                message: `Diagram generated successfully in ${result.format} format`,
+                size: result.data ? `${Math.round(result.data.length * 0.75)} bytes` : 'unknown'
+              });
+            } else {
+              return ok({
+                success: false,
+                error: result.message,
+                suggestion: "Check your PlantUML syntax or use plantuml-validate to identify issues"
+              });
+            }
+          }
+
+          case 'plantuml-validate': {
+            const { code } = parseArgs<{ code: string }>(
+              args, 
+              tools['plantuml-validate'].inputSchema
+            );
+            
+            console.error(`✅ Validating PlantUML code`);
+            const result = await this.client.validateCode(code);
+            
+            return ok({
+              valid: result.valid,
+              message: result.message,
+              recommendation: result.valid 
+                ? "Code is valid. You can proceed with diagram generation." 
+                : "Fix syntax errors before generating the diagram."
+            });
+          }
+
+          case 'plantuml-formats': {
+            console.error(`📋 Fetching supported formats`);
+            const formats = await this.client.getSupportedFormats();
+            
+            return ok({
+              formats,
+              default: 'png',
+              recommendations: {
+                'png': 'Best for web display and sharing',
+                'svg': 'Best for scalable graphics and printing',
+                'pdf': 'Best for documents and reports',
+                'eps': 'Best for publications and LaTeX'
+              }
+            });
+          }
+
+          case 'plantuml-health': {
+            console.error(`🔍 Checking server health`);
+            const health = await this.client.healthCheck();
+            
+            return ok({
+              healthy: health.healthy,
+              message: health.message,
+              server_url: this.client.getBaseUrl(),
+              status: health.healthy ? 'Server is ready for diagram generation' : 'Server is unavailable'
+            });
+          }
+
+          default:
+            throw new McpError(ErrorCode.MethodNotFound, `Unknown tool: ${name}`);
         }
-      } catch (error) {
+      } catch (error: any) {
+        console.error(`❌ Error in ${name}:`, error.message);
+        
         if (error instanceof McpError) {
           throw error;
         }
         
         throw new McpError(
-          ErrorCode.InternalError,
-          `Tool execution failed: ${error}`
+          ErrorCode.InternalError, 
+          `Tool ${name} failed: ${error?.message ?? String(error)}`
         );
       }
     });
   }
 
-  private async handleGenerateDiagram(args: unknown) {
-    const parsed = GenerateDiagramArgsSchema.parse(args);
-    const result = await this.client.generateDiagram(parsed.code, parsed.format);
-    
-    if (!result.success) {
-      return {
-        content: [
-          {
-            type: 'text',
-            text: `Failed to generate diagram: ${result.message}`,
-          },
-        ],
-      };
-    }
-
-    return {
-      content: [
-        {
-          type: 'text',
-          text: `Successfully generated ${parsed.format.toUpperCase()} diagram. Base64 data: ${result.data?.substring(0, 100)}...`,
-        },
-        {
-          type: 'text',
-          text: `Full Base64 Data:\n${result.data}`,
-        },
-      ],
-    };
-  }
-
-  private async handleValidateCode(args: unknown) {
-    const parsed = ValidateCodeArgsSchema.parse(args);
-    const result = await this.client.validateCode(parsed.code);
-    
-    return {
-      content: [
-        {
-          type: 'text',
-          text: `Code validation ${result.valid ? 'passed' : 'failed'}: ${result.message}`,
-        },
-      ],
-    };
-  }
-
-  private async handleGetFormats(args: unknown) {
-    GetFormatsArgsSchema.parse(args); // 验证参数
-    const formats = await this.client.getSupportedFormats();
-    
-    return {
-      content: [
-        {
-          type: 'text',
-          text: `Supported formats: ${formats.join(', ')}`,
-        },
-      ],
-    };
-  }
-
-  private async handleHealthCheck() {
-    const result = await this.client.healthCheck();
-    
-    return {
-      content: [
-        {
-          type: 'text',
-          text: `Server health: ${result.healthy ? 'Healthy' : 'Unhealthy'} - ${result.message}`,
-        },
-      ],
-    };
-  }
-
-  async run(): Promise<void> {
+  async run() {
     const transport = new StdioServerTransport();
     await this.server.connect(transport);
+    console.error(`✅ PlantUML MCP Server connected and ready`);
     
     // 优雅关闭处理
     process.on('SIGINT', async () => {
+      console.error(`🛑 Shutting down PlantUML MCP Server...`);
       await this.server.close();
       process.exit(0);
     });
@@ -269,7 +252,7 @@ class PlantUMLMCPServer {
 // 启动服务器
 async function main() {
   try {
-    const { serverUrl } = parseArgs();
+    const { serverUrl } = parseCommandLineArgs();
     const server = new PlantUMLMCPServer(serverUrl);
     await server.run();
   } catch (error) {
