@@ -74,7 +74,7 @@ function parseCommandLineArgs() {
       }
     } else if (arg === '--help' || arg === '-h') {
       console.log(`
-PlantUML MCP Server v0.1.0
+PlantUML MCP Server v0.2.0
 
 Usage: plantuml-mcp-server [options]
 
@@ -90,10 +90,16 @@ Examples:
   plantuml-mcp-server
   plantuml-mcp-server --server-url http://plantuml.example.com:8080
   PLANTUML_SERVER_URL=http://remote-server:9090 plantuml-mcp-server
+
+MCP Tools Available:
+  • generate_plantuml_diagram - Generate diagrams with AJV validation
+  • validate_plantuml_code - Validate syntax with detailed error reporting  
+  • get_supported_formats - Query available output formats
+  • plantuml_health_check - Monitor server health status
       `);
       process.exit(0);
     } else if (arg === '--version' || arg === '-v') {
-      console.log('PlantUML MCP Server v0.1.0');
+      console.log('PlantUML MCP Server v0.2.0');
       process.exit(0);
     } else if (arg.startsWith('-')) {
       console.error(`Error: Unknown option ${arg}`);
@@ -113,7 +119,7 @@ class PlantUMLMCPServer {
     this.server = new Server(
       {
         name: 'plantuml-mcp-server',
-        version: '0.1.0',
+        version: '0.2.0',
         description: 'PlantUML diagram generation server for AI agents. WORKFLOW: Start with plantuml-health to verify connectivity, then use other tools as needed.',
         capabilities: { 
           tools: {}
@@ -125,7 +131,7 @@ class PlantUMLMCPServer {
     this.setupToolHandlers();
     
     // 输出启动信息到 stderr（不干扰 MCP 协议通信）
-    console.error(`🚀 PlantUML MCP Server v0.1.0 starting...`);
+    console.error(`🚀 PlantUML MCP Server v0.2.0 starting...`);
     console.error(`📡 PlantUML Server URL: ${serverUrl}`);
   }
 
