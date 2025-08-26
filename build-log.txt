@@ -1,0 +1,1156 @@
+build-and-push	Set up job	﻿2025-08-26T14:26:24.6527883Z Current runner version: '2.328.0'
+build-and-push	Set up job	2025-08-26T14:26:24.6553242Z ##[group]Runner Image Provisioner
+build-and-push	Set up job	2025-08-26T14:26:24.6554198Z Hosted Compute Agent
+build-and-push	Set up job	2025-08-26T14:26:24.6554741Z Version: 20250825.382
+build-and-push	Set up job	2025-08-26T14:26:24.6555361Z Commit: 7109f2abf901479dac39397456e363ac0cca0730
+build-and-push	Set up job	2025-08-26T14:26:24.6556124Z Build Date: 2025-08-25T22:55:50Z
+build-and-push	Set up job	2025-08-26T14:26:24.6556695Z ##[endgroup]
+build-and-push	Set up job	2025-08-26T14:26:24.6557253Z ##[group]Operating System
+build-and-push	Set up job	2025-08-26T14:26:24.6557861Z Ubuntu
+build-and-push	Set up job	2025-08-26T14:26:24.6558296Z 24.04.2
+build-and-push	Set up job	2025-08-26T14:26:24.6558812Z LTS
+build-and-push	Set up job	2025-08-26T14:26:24.6559327Z ##[endgroup]
+build-and-push	Set up job	2025-08-26T14:26:24.6559794Z ##[group]Runner Image
+build-and-push	Set up job	2025-08-26T14:26:24.6560545Z Image: ubuntu-24.04
+build-and-push	Set up job	2025-08-26T14:26:24.6561136Z Version: 20250818.1.0
+build-and-push	Set up job	2025-08-26T14:26:24.6562106Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20250818.1/images/ubuntu/Ubuntu2404-Readme.md
+build-and-push	Set up job	2025-08-26T14:26:24.6563479Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20250818.1
+build-and-push	Set up job	2025-08-26T14:26:24.6564731Z ##[endgroup]
+build-and-push	Set up job	2025-08-26T14:26:24.6565845Z ##[group]GITHUB_TOKEN Permissions
+build-and-push	Set up job	2025-08-26T14:26:24.6567713Z Contents: read
+build-and-push	Set up job	2025-08-26T14:26:24.6568247Z Metadata: read
+build-and-push	Set up job	2025-08-26T14:26:24.6569184Z Packages: read
+build-and-push	Set up job	2025-08-26T14:26:24.6569700Z ##[endgroup]
+build-and-push	Set up job	2025-08-26T14:26:24.6572055Z Secret source: Actions
+build-and-push	Set up job	2025-08-26T14:26:24.6572895Z Prepare workflow directory
+build-and-push	Set up job	2025-08-26T14:26:24.6957099Z Prepare all required actions
+build-and-push	Set up job	2025-08-26T14:26:24.6997415Z Getting action download info
+build-and-push	Set up job	2025-08-26T14:26:25.3143689Z Download action repository 'actions/checkout@v4' (SHA:08eba0b27e820071cde6df949e0beb9ba4906955)
+build-and-push	Set up job	2025-08-26T14:26:25.3923357Z Download action repository 'actions/setup-java@v4' (SHA:c5195efecf7bdfc987ee8bae7a71cb8b11521c00)
+build-and-push	Set up job	2025-08-26T14:26:26.2369654Z Download action repository 'actions/cache@v4' (SHA:0400d5f644dc74513175e3cd8d07132dd4860809)
+build-and-push	Set up job	2025-08-26T14:26:26.3339731Z Download action repository 'docker/setup-buildx-action@v3' (SHA:e468171a9de216ec08956ac3ada2f0791b6bd435)
+build-and-push	Set up job	2025-08-26T14:26:27.0900602Z Download action repository 'docker/login-action@v3' (SHA:184bdaa0721073962dff0199f1fb9940f07167d1)
+build-and-push	Set up job	2025-08-26T14:26:28.2648650Z Download action repository 'docker/metadata-action@v5' (SHA:c1e51972afc2121e065aed6d45c65596fe445f3f)
+build-and-push	Set up job	2025-08-26T14:26:30.5665189Z Download action repository 'docker/build-push-action@v5' (SHA:ca052bb54ab0790a636c9b5f226502c73d547a25)
+build-and-push	Set up job	2025-08-26T14:26:31.3978237Z Download action repository 'peter-evans/dockerhub-description@v4' (SHA:432a30c9e07499fd01da9f8a49f0faf9e0ca5b77)
+build-and-push	Set up job	2025-08-26T14:26:32.1907348Z Complete job name: build-and-push
+build-and-push	Checkout code	﻿2025-08-26T14:26:32.2562065Z ##[group]Run actions/checkout@v4
+build-and-push	Checkout code	2025-08-26T14:26:32.2562698Z with:
+build-and-push	Checkout code	2025-08-26T14:26:32.2563056Z   repository: ***/plantuml-server
+build-and-push	Checkout code	2025-08-26T14:26:32.2563439Z   token: ***
+build-and-push	Checkout code	2025-08-26T14:26:32.2563632Z   ssh-strict: true
+build-and-push	Checkout code	2025-08-26T14:26:32.2563816Z   ssh-user: git
+build-and-push	Checkout code	2025-08-26T14:26:32.2564014Z   persist-credentials: true
+build-and-push	Checkout code	2025-08-26T14:26:32.2564248Z   clean: true
+build-and-push	Checkout code	2025-08-26T14:26:32.2564447Z   sparse-checkout-cone-mode: true
+build-and-push	Checkout code	2025-08-26T14:26:32.2564717Z   fetch-depth: 1
+build-and-push	Checkout code	2025-08-26T14:26:32.2564922Z   fetch-tags: false
+build-and-push	Checkout code	2025-08-26T14:26:32.2565104Z   show-progress: true
+build-and-push	Checkout code	2025-08-26T14:26:32.2565303Z   lfs: false
+build-and-push	Checkout code	2025-08-26T14:26:32.2565473Z   submodules: false
+build-and-push	Checkout code	2025-08-26T14:26:32.2565661Z   set-safe-directory: true
+build-and-push	Checkout code	2025-08-26T14:26:32.2566053Z env:
+build-and-push	Checkout code	2025-08-26T14:26:32.2566244Z   IMAGE_NAME: plantuml-server
+build-and-push	Checkout code	2025-08-26T14:26:32.2566462Z ##[endgroup]
+build-and-push	Checkout code	2025-08-26T14:26:32.3734332Z Syncing repository: ***/plantuml-server
+build-and-push	Checkout code	2025-08-26T14:26:32.3735816Z ##[group]Getting Git version info
+build-and-push	Checkout code	2025-08-26T14:26:32.3736240Z Working directory is '/home/runner/work/plantuml-server/plantuml-server'
+build-and-push	Checkout code	2025-08-26T14:26:32.3736883Z [command]/usr/bin/git version
+build-and-push	Checkout code	2025-08-26T14:26:32.3769537Z git version 2.51.0
+build-and-push	Checkout code	2025-08-26T14:26:32.3796634Z ##[endgroup]
+build-and-push	Checkout code	2025-08-26T14:26:32.3819779Z Temporarily overriding HOME='/home/runner/work/_temp/642ea85d-a8ec-4acb-a5b4-b90507a99037' before making global git config changes
+build-and-push	Checkout code	2025-08-26T14:26:32.3821310Z Adding repository directory to the temporary git global config as a safe directory
+build-and-push	Checkout code	2025-08-26T14:26:32.3826007Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/plantuml-server/plantuml-server
+build-and-push	Checkout code	2025-08-26T14:26:32.3863054Z Deleting the contents of '/home/runner/work/plantuml-server/plantuml-server'
+build-and-push	Checkout code	2025-08-26T14:26:32.3866776Z ##[group]Initializing the repository
+build-and-push	Checkout code	2025-08-26T14:26:32.3870971Z [command]/usr/bin/git init /home/runner/work/plantuml-server/plantuml-server
+build-and-push	Checkout code	2025-08-26T14:26:32.3934523Z hint: Using 'master' as the name for the initial branch. This default branch name
+build-and-push	Checkout code	2025-08-26T14:26:32.3935484Z hint: is subject to change. To configure the initial branch name to use in all
+build-and-push	Checkout code	2025-08-26T14:26:32.3936276Z hint: of your new repositories, which will suppress this warning, call:
+build-and-push	Checkout code	2025-08-26T14:26:32.3936872Z hint:
+build-and-push	Checkout code	2025-08-26T14:26:32.3937293Z hint: 	git config --global init.defaultBranch <name>
+build-and-push	Checkout code	2025-08-26T14:26:32.3937812Z hint:
+build-and-push	Checkout code	2025-08-26T14:26:32.3938281Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+build-and-push	Checkout code	2025-08-26T14:26:32.3938789Z hint: 'development'. The just-created branch can be renamed via this command:
+build-and-push	Checkout code	2025-08-26T14:26:32.3939160Z hint:
+build-and-push	Checkout code	2025-08-26T14:26:32.3939362Z hint: 	git branch -m <name>
+build-and-push	Checkout code	2025-08-26T14:26:32.3939575Z hint:
+build-and-push	Checkout code	2025-08-26T14:26:32.3939881Z hint: Disable this message with "git config set advice.defaultBranchName false"
+build-and-push	Checkout code	2025-08-26T14:26:32.3940714Z Initialized empty Git repository in /home/runner/work/plantuml-server/plantuml-server/.git/
+build-and-push	Checkout code	2025-08-26T14:26:32.3949494Z [command]/usr/bin/git remote add origin https://github.com/***/plantuml-server
+build-and-push	Checkout code	2025-08-26T14:26:32.3984443Z ##[endgroup]
+build-and-push	Checkout code	2025-08-26T14:26:32.3984952Z ##[group]Disabling automatic garbage collection
+build-and-push	Checkout code	2025-08-26T14:26:32.3989219Z [command]/usr/bin/git config --local gc.auto 0
+build-and-push	Checkout code	2025-08-26T14:26:32.4018607Z ##[endgroup]
+build-and-push	Checkout code	2025-08-26T14:26:32.4018986Z ##[group]Setting up auth
+build-and-push	Checkout code	2025-08-26T14:26:32.4026185Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+build-and-push	Checkout code	2025-08-26T14:26:32.4057517Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+build-and-push	Checkout code	2025-08-26T14:26:32.4339615Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+build-and-push	Checkout code	2025-08-26T14:26:32.4373634Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+build-and-push	Checkout code	2025-08-26T14:26:32.4608289Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+build-and-push	Checkout code	2025-08-26T14:26:32.4654645Z ##[endgroup]
+build-and-push	Checkout code	2025-08-26T14:26:32.4655478Z ##[group]Fetching the repository
+build-and-push	Checkout code	2025-08-26T14:26:32.4664700Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +a22d5ade329a395e671afe87d8ebb943066f6134:refs/remotes/origin/main
+build-and-push	Checkout code	2025-08-26T14:26:33.0219789Z From https://github.com/***/plantuml-server
+build-and-push	Checkout code	2025-08-26T14:26:33.0220720Z  * [new ref]         a22d5ade329a395e671afe87d8ebb943066f6134 -> origin/main
+build-and-push	Checkout code	2025-08-26T14:26:33.0253992Z ##[endgroup]
+build-and-push	Checkout code	2025-08-26T14:26:33.0254678Z ##[group]Determining the checkout info
+build-and-push	Checkout code	2025-08-26T14:26:33.0257171Z ##[endgroup]
+build-and-push	Checkout code	2025-08-26T14:26:33.0262984Z [command]/usr/bin/git sparse-checkout disable
+build-and-push	Checkout code	2025-08-26T14:26:33.0307246Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+build-and-push	Checkout code	2025-08-26T14:26:33.0338502Z ##[group]Checking out the ref
+build-and-push	Checkout code	2025-08-26T14:26:33.0343500Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+build-and-push	Checkout code	2025-08-26T14:26:33.0433761Z Switched to a new branch 'main'
+build-and-push	Checkout code	2025-08-26T14:26:33.0435268Z branch 'main' set up to track 'origin/main'.
+build-and-push	Checkout code	2025-08-26T14:26:33.0442295Z ##[endgroup]
+build-and-push	Checkout code	2025-08-26T14:26:33.0484152Z [command]/usr/bin/git log -1 --format=%H
+build-and-push	Checkout code	2025-08-26T14:26:33.0508712Z a22d5ade329a395e671afe87d8ebb943066f6134
+build-and-push	Set up JDK 17	﻿2025-08-26T14:26:33.0750317Z ##[group]Run actions/setup-java@v4
+build-and-push	Set up JDK 17	2025-08-26T14:26:33.0750858Z with:
+build-and-push	Set up JDK 17	2025-08-26T14:26:33.0751049Z   java-version: 17
+build-and-push	Set up JDK 17	2025-08-26T14:26:33.0751254Z   distribution: temurin
+build-and-push	Set up JDK 17	2025-08-26T14:26:33.0751462Z   java-package: jdk
+build-and-push	Set up JDK 17	2025-08-26T14:26:33.0751660Z   check-latest: false
+build-and-push	Set up JDK 17	2025-08-26T14:26:33.0751860Z   server-id: github
+build-and-push	Set up JDK 17	2025-08-26T14:26:33.0752053Z   server-username: GITHUB_ACTOR
+build-and-push	Set up JDK 17	2025-08-26T14:26:33.0752301Z   server-password: GITHUB_TOKEN
+build-and-push	Set up JDK 17	2025-08-26T14:26:33.0752532Z   overwrite-settings: true
+build-and-push	Set up JDK 17	2025-08-26T14:26:33.0752741Z   job-status: success
+build-and-push	Set up JDK 17	2025-08-26T14:26:33.0753102Z   token: ***
+build-and-push	Set up JDK 17	2025-08-26T14:26:33.0753299Z env:
+build-and-push	Set up JDK 17	2025-08-26T14:26:33.0753482Z   IMAGE_NAME: plantuml-server
+build-and-push	Set up JDK 17	2025-08-26T14:26:33.0753701Z ##[endgroup]
+build-and-push	Set up JDK 17	2025-08-26T14:26:33.2807467Z ##[group]Installed distributions
+build-and-push	Set up JDK 17	2025-08-26T14:26:33.2953337Z Resolved Java 17.0.16+8 from tool-cache
+build-and-push	Set up JDK 17	2025-08-26T14:26:33.2953979Z Setting Java 17.0.16+8 as the default
+build-and-push	Set up JDK 17	2025-08-26T14:26:33.2968121Z Creating toolchains.xml for JDK version 17 from temurin
+build-and-push	Set up JDK 17	2025-08-26T14:26:33.3058911Z Writing to /home/runner/.m2/toolchains.xml
+build-and-push	Set up JDK 17	2025-08-26T14:26:33.3059453Z 
+build-and-push	Set up JDK 17	2025-08-26T14:26:33.3059620Z Java configuration:
+build-and-push	Set up JDK 17	2025-08-26T14:26:33.3060166Z   Distribution: temurin
+build-and-push	Set up JDK 17	2025-08-26T14:26:33.3060572Z   Version: 17.0.16+8
+build-and-push	Set up JDK 17	2025-08-26T14:26:33.3061410Z   Path: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.16-8/x64
+build-and-push	Set up JDK 17	2025-08-26T14:26:33.3061934Z 
+build-and-push	Set up JDK 17	2025-08-26T14:26:33.3064255Z ##[endgroup]
+build-and-push	Set up JDK 17	2025-08-26T14:26:33.3082852Z Creating settings.xml with server-id: github
+build-and-push	Set up JDK 17	2025-08-26T14:26:33.3088856Z Writing to /home/runner/.m2/settings.xml
+build-and-push	Cache Maven dependencies	﻿2025-08-26T14:26:33.4091121Z ##[group]Run actions/cache@v4
+build-and-push	Cache Maven dependencies	2025-08-26T14:26:33.4091506Z with:
+build-and-push	Cache Maven dependencies	2025-08-26T14:26:33.4091764Z   path: ~/.m2/repository
+build-and-push	Cache Maven dependencies	!~/.m2/repository/org/apache/maven
+build-and-push	Cache Maven dependencies	
+build-and-push	Cache Maven dependencies	2025-08-26T14:26:33.4092262Z   key: Linux-maven-2decf91fa87565801f0b69e7e71a2795905d1c12c8f9e8bc37508770da013cfc
+build-and-push	Cache Maven dependencies	2025-08-26T14:26:33.4092728Z   restore-keys: Linux-maven-
+build-and-push	Cache Maven dependencies	
+build-and-push	Cache Maven dependencies	2025-08-26T14:26:33.4092979Z   enableCrossOsArchive: false
+build-and-push	Cache Maven dependencies	2025-08-26T14:26:33.4093200Z   fail-on-cache-miss: false
+build-and-push	Cache Maven dependencies	2025-08-26T14:26:33.4093431Z   lookup-only: false
+build-and-push	Cache Maven dependencies	2025-08-26T14:26:33.4093630Z   save-always: false
+build-and-push	Cache Maven dependencies	2025-08-26T14:26:33.4093809Z env:
+build-and-push	Cache Maven dependencies	2025-08-26T14:26:33.4093988Z   IMAGE_NAME: plantuml-server
+build-and-push	Cache Maven dependencies	2025-08-26T14:26:33.4094343Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.16-8/x64
+build-and-push	Cache Maven dependencies	2025-08-26T14:26:33.4094821Z   JAVA_HOME_17_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.16-8/x64
+build-and-push	Cache Maven dependencies	2025-08-26T14:26:33.4095180Z ##[endgroup]
+build-and-push	Cache Maven dependencies	2025-08-26T14:26:33.8947093Z Cache not found for input keys: Linux-maven-2decf91fa87565801f0b69e7e71a2795905d1c12c8f9e8bc37508770da013cfc, Linux-maven-
+build-and-push	Set up Docker Buildx	﻿2025-08-26T14:26:33.9058496Z ##[group]Run docker/setup-buildx-action@v3
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:33.9058825Z with:
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:33.9059012Z   driver: docker-container
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:33.9059236Z   install: false
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:33.9059421Z   use: true
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:33.9059595Z   keep-state: false
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:33.9059791Z   cache-binary: true
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:33.9060181Z   cleanup: true
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:33.9060379Z env:
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:33.9060575Z   IMAGE_NAME: plantuml-server
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:33.9060917Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.16-8/x64
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:33.9061366Z   JAVA_HOME_17_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.16-8/x64
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:33.9061713Z ##[endgroup]
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:34.2114716Z ##[group]Docker info
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:34.2144113Z [command]/usr/bin/docker version
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:34.2780974Z Client: Docker Engine - Community
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:34.2785250Z  Version:           28.0.4
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:34.2786070Z  API version:       1.48
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:34.2786579Z  Go version:        go1.23.7
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:34.2787011Z  Git commit:        b8034c0
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:34.2787406Z  Built:             Tue Mar 25 15:07:16 2025
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:34.2787855Z  OS/Arch:           linux/amd64
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:34.2788226Z  Context:           default
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:34.2788459Z 
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:34.2788644Z Server: Docker Engine - Community
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:34.2789034Z  Engine:
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:34.2789687Z   Version:          28.0.4
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:34.2790339Z   API version:      1.48 (minimum version 1.24)
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:34.2790864Z   Go version:       go1.23.7
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:34.2791389Z   Git commit:       6430e49
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:34.2791828Z   Built:            Tue Mar 25 15:07:16 2025
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:34.2792292Z   OS/Arch:          linux/amd64
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:34.2792666Z   Experimental:     false
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:34.2793013Z  containerd:
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:34.2793357Z   Version:          1.7.27
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:34.2793794Z   GitCommit:        05044ec0a9a75232cad458027ca83437aae3f4da
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:34.2794290Z  runc:
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:34.2794564Z   Version:          1.2.5
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:34.2794793Z   GitCommit:        v1.2.5-0-g59923ef
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:34.2795057Z  docker-init:
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:34.2795367Z   Version:          0.19.0
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:34.2795744Z   GitCommit:        de40ad0
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:34.2858062Z [command]/usr/bin/docker info
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:34.4943537Z Client: Docker Engine - Community
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:34.4944109Z  Version:    28.0.4
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:34.4944446Z  Context:    default
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:34.4944785Z  Debug Mode: false
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:34.4945109Z  Plugins:
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:34.4945432Z   buildx: Docker Buildx (Docker Inc.)
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:34.4945840Z     Version:  v0.26.1
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:34.4946284Z     Path:     /usr/libexec/docker/cli-plugins/docker-buildx
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:34.4946821Z   compose: Docker Compose (Docker Inc.)
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:34.4947236Z     Version:  v2.38.2
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:34.4947650Z     Path:     /usr/libexec/docker/cli-plugins/docker-compose
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:34.4947975Z 
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:34.4948051Z Server:
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:34.4948227Z  Containers: 0
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:34.4948404Z   Running: 0
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:34.4948582Z   Paused: 0
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:34.4948761Z   Stopped: 0
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:34.4948933Z  Images: 0
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:34.4949111Z  Server Version: 28.0.4
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:34.4949331Z  Storage Driver: overlay2
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:34.4949570Z   Backing Filesystem: extfs
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:34.4949797Z   Supports d_type: true
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:34.4950274Z   Using metacopy: false
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:34.4950619Z   Native Overlay Diff: false
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:34.4950843Z   userxattr: false
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:34.4951045Z  Logging Driver: json-file
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:34.4951253Z  Cgroup Driver: systemd
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:34.4951451Z  Cgroup Version: 2
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:34.4951637Z  Plugins:
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:34.4951801Z   Volume: local
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:34.4952023Z   Network: bridge host ipvlan macvlan null overlay
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:34.4952861Z   Log: awslogs fluentd gcplogs gelf journald json-file local splunk syslog
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:34.4953198Z  Swarm: inactive
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:34.4953405Z  Runtimes: io.containerd.runc.v2 runc
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:34.4953652Z  Default Runtime: runc
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:34.4953852Z  Init Binary: docker-init
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:34.4954141Z  containerd version: 05044ec0a9a75232cad458027ca83437aae3f4da
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:34.4954467Z  runc version: v1.2.5-0-g59923ef
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:34.4954695Z  init version: de40ad0
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:34.4955039Z  Security Options:
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:34.4955269Z   apparmor
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:34.4955434Z   seccomp
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:34.4955595Z    Profile: builtin
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:34.4955778Z   cgroupns
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:34.4955957Z  Kernel Version: 6.11.0-1018-azure
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:34.4956293Z  Operating System: Ubuntu 24.04.2 LTS
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:34.4956737Z  OSType: linux
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:34.4957085Z  Architecture: x86_64
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:34.4957427Z  CPUs: 4
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:34.4957728Z  Total Memory: 15.62GiB
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:34.4958128Z  Name: pkrvmqc4gcfdwos
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:34.4958544Z  ID: 1c1cbb44-b30d-44d5-842a-37462128d90e
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:34.4959032Z  Docker Root Dir: /var/lib/docker
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:34.4959477Z  Debug Mode: false
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:34.4959857Z  Username: githubactions
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:34.4960434Z  Experimental: false
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:34.4960795Z  Insecure Registries:
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:34.4961515Z   ::1/128
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:34.4961777Z   127.0.0.0/8
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:34.4962090Z  Live Restore Enabled: false
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:34.4962364Z 
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:34.4963488Z ##[endgroup]
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:34.5651397Z ##[group]Buildx version
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:34.5674980Z [command]/usr/bin/docker buildx version
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:34.6241661Z github.com/docker/buildx v0.26.1 1a8287f22cf5a38339a4c1bf432b803c5f8b2aae
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:34.6281055Z ##[endgroup]
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:34.6454815Z ##[group]Inspecting default docker context
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:34.6618008Z [
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:34.6618446Z   {
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:34.6618798Z     "Name": "default",
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:34.6619188Z     "Metadata": {},
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:34.6619549Z     "Endpoints": {
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:34.6619878Z       "docker": {
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:34.6620474Z         "Host": "unix:///var/run/docker.sock",
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:34.6620956Z         "SkipTLSVerify": false
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:34.6621353Z       }
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:34.6621652Z     },
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:34.6621999Z     "TLSMaterial": {},
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:34.6622346Z     "Storage": {
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:34.6622676Z       "MetadataPath": "<IN MEMORY>",
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:34.6623153Z       "TLSPath": "<IN MEMORY>"
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:34.6623563Z     }
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:34.6623851Z   }
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:34.6624133Z ]
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:34.6624873Z ##[endgroup]
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:34.6625480Z ##[group]Creating a new builder instance
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:34.7889208Z [command]/usr/bin/docker buildx create --name builder-afbf82c3-2bce-40e1-b893-6237bdef0cbf --driver docker-container --buildkitd-flags --allow-insecure-entitlement security.insecure --allow-insecure-entitlement network.host --use
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:34.8522429Z builder-afbf82c3-2bce-40e1-b893-6237bdef0cbf
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:34.8560768Z ##[endgroup]
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:34.8561227Z ##[group]Booting builder
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:34.8598616Z [command]/usr/bin/docker buildx inspect --bootstrap --builder builder-afbf82c3-2bce-40e1-b893-6237bdef0cbf
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:34.9139324Z #1 [internal] booting buildkit
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:35.0649348Z #1 pulling image moby/buildkit:buildx-stable-1
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:39.0904201Z #1 pulling image moby/buildkit:buildx-stable-1 4.2s done
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:39.2408075Z #1 creating container buildx_buildkit_builder-afbf82c3-2bce-40e1-b893-6237bdef0cbf0
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:39.3719918Z #1 creating container buildx_buildkit_builder-afbf82c3-2bce-40e1-b893-6237bdef0cbf0 0.3s done
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:39.3736630Z #1 DONE 4.5s
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:39.4085204Z Name:          builder-afbf82c3-2bce-40e1-b893-6237bdef0cbf
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:39.4085934Z Driver:        docker-container
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:39.4087142Z Last Activity: 2025-08-26 14:26:34 +0000 UTC
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:39.4087497Z 
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:39.4087810Z Nodes:
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:39.4089820Z Name:                  builder-afbf82c3-2bce-40e1-b893-6237bdef0cbf0
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:39.4091041Z Endpoint:              unix:///var/run/docker.sock
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:39.4091767Z Status:                running
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:39.4092657Z BuildKit daemon flags: --allow-insecure-entitlement security.insecure --allow-insecure-entitlement network.host
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:39.4093564Z BuildKit version:      v0.23.2
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:39.4094079Z Platforms:             linux/amd64, linux/amd64/v2, linux/amd64/v3, linux/386
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:39.4094610Z Labels:
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:39.4095003Z  org.mobyproject.buildkit.worker.executor:         oci
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:39.4095679Z  org.mobyproject.buildkit.worker.hostname:         0fa963426d48
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:39.4096335Z  org.mobyproject.buildkit.worker.network:          host
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:39.4096991Z  org.mobyproject.buildkit.worker.oci.process-mode: sandbox
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:39.4097674Z  org.mobyproject.buildkit.worker.selinux.enabled:  false
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:39.4098348Z  org.mobyproject.buildkit.worker.snapshotter:      overlayfs
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:39.4098884Z GC Policy rule#0:
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:39.4131514Z  All:            false
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:39.4132283Z  Filters:        type==source.local,type==exec.cachemount,type==source.git.checkout
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:39.4133350Z  Keep Duration:  48h0m0s
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:39.4133731Z  Max Used Space: 488.3MiB
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:39.4134094Z GC Policy rule#1:
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:39.4134410Z  All:            false
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:39.4134754Z  Keep Duration:  1440h0m0s
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:39.4135125Z  Reserved Space: 7.451GiB
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:39.4135475Z  Max Used Space: 54.02GiB
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:39.4135826Z  Min Free Space: 13.97GiB
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:39.4136162Z GC Policy rule#2:
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:39.4136456Z  All:            false
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:39.4136778Z  Reserved Space: 7.451GiB
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:39.4137138Z  Max Used Space: 54.02GiB
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:39.4137493Z  Min Free Space: 13.97GiB
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:39.4137886Z GC Policy rule#3:
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:39.4138199Z  All:            true
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:39.4138525Z  Reserved Space: 7.451GiB
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:39.4138877Z  Max Used Space: 54.02GiB
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:39.4139239Z  Min Free Space: 13.97GiB
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:39.4159718Z ##[endgroup]
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:39.5263724Z ##[group]Inspect builder
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:39.5264768Z {
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:39.5265176Z   "nodes": [
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:39.5265522Z     {
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:39.5265969Z       "name": "builder-afbf82c3-2bce-40e1-b893-6237bdef0cbf0",
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:39.5266594Z       "endpoint": "unix:///var/run/docker.sock",
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:39.5267144Z       "status": "running",
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:39.5268045Z       "buildkitd-flags": "--allow-insecure-entitlement security.insecure --allow-insecure-entitlement network.host",
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:39.5268997Z       "buildkit": "v0.23.2",
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:39.5269615Z       "platforms": "linux/amd64,linux/amd64/v2,linux/amd64/v3,linux/386",
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:39.5270442Z       "features": {
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:39.5270990Z         "Automatically load images to the Docker Engine image store": true,
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:39.5271644Z         "Cache export": true,
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:39.5272082Z         "Direct push": true,
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:39.5272519Z         "Docker exporter": true,
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:39.5272969Z         "Multi-platform build": true,
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:39.5273433Z         "OCI exporter": true
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:39.5273792Z       },
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:39.5274078Z       "labels": {
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:39.5274516Z         "org.mobyproject.buildkit.worker.executor": "oci",
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:39.5275115Z         "org.mobyproject.buildkit.worker.hostname": "0fa963426d48",
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:39.5275708Z         "org.mobyproject.buildkit.worker.network": "host",
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:39.5276320Z         "org.mobyproject.buildkit.worker.oci.process-mode": "sandbox",
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:39.5277339Z         "org.mobyproject.buildkit.worker.selinux.enabled": "false",
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:39.5278007Z         "org.mobyproject.buildkit.worker.snapshotter": "overlayfs"
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:39.5278527Z       },
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:39.5278807Z       "gcPolicy": [
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:39.5279092Z         {
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:39.5279333Z           "all": false,
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:39.5279625Z           "filter": [
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:39.5279955Z             "type==source.local",
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:39.5281189Z             "type==exec.cachemount",
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:39.5281604Z             "type==source.git.checkout"
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:39.5281994Z           ],
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:39.5282287Z           "keepDuration": "48h0m0s",
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:39.5282690Z           "maxUsedSpace": "488.3MiB"
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:39.5283063Z         },
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:39.5283320Z         {
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:39.5283594Z           "all": false,
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:39.5283936Z           "keepDuration": "1440h0m0s",
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:39.5284340Z           "reservedSpace": "7.451GiB",
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:39.5284767Z           "maxUsedSpace": "54.02GiB",
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:39.5285170Z           "minFreeSpace": "13.97GiB"
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:39.5285530Z         },
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:39.5285795Z         {
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:39.5286066Z           "all": false,
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:39.5286395Z           "reservedSpace": "7.451GiB",
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:39.5286807Z           "maxUsedSpace": "54.02GiB",
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:39.5287451Z           "minFreeSpace": "13.97GiB"
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:39.5287810Z         },
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:39.5288074Z         {
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:39.5288346Z           "all": true,
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:39.5288677Z           "reservedSpace": "7.451GiB",
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:39.5289086Z           "maxUsedSpace": "54.02GiB",
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:39.5289484Z           "minFreeSpace": "13.97GiB"
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:39.5289843Z         }
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:39.5290543Z       ]
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:39.5290810Z     }
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:39.5291051Z   ],
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:39.5291416Z   "name": "builder-afbf82c3-2bce-40e1-b893-6237bdef0cbf",
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:39.5291932Z   "driver": "docker-container",
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:39.5292329Z   "lastActivity": "2025-08-26T14:26:34.000Z"
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:39.5292727Z }
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:39.5293301Z ##[endgroup]
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:39.5293819Z ##[group]BuildKit version
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:39.5294272Z builder-afbf82c3-2bce-40e1-b893-6237bdef0cbf0: v0.23.2
+build-and-push	Set up Docker Buildx	2025-08-26T14:26:39.5294948Z ##[endgroup]
+build-and-push	Log in to Docker Hub	﻿2025-08-26T14:26:39.5415827Z ##[group]Run docker/login-action@v3
+build-and-push	Log in to Docker Hub	2025-08-26T14:26:39.5416117Z with:
+build-and-push	Log in to Docker Hub	2025-08-26T14:26:39.5416420Z   username: ***
+build-and-push	Log in to Docker Hub	2025-08-26T14:26:39.5416673Z   password: ***
+build-and-push	Log in to Docker Hub	2025-08-26T14:26:39.5416854Z   ecr: auto
+build-and-push	Log in to Docker Hub	2025-08-26T14:26:39.5417027Z   logout: true
+build-and-push	Log in to Docker Hub	2025-08-26T14:26:39.5417205Z env:
+build-and-push	Log in to Docker Hub	2025-08-26T14:26:39.5417399Z   IMAGE_NAME: plantuml-server
+build-and-push	Log in to Docker Hub	2025-08-26T14:26:39.5417749Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.16-8/x64
+build-and-push	Log in to Docker Hub	2025-08-26T14:26:39.5418237Z   JAVA_HOME_17_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.16-8/x64
+build-and-push	Log in to Docker Hub	2025-08-26T14:26:39.5418591Z ##[endgroup]
+build-and-push	Log in to Docker Hub	2025-08-26T14:26:39.8880820Z Logging into Docker Hub...
+build-and-push	Log in to Docker Hub	2025-08-26T14:26:40.7195519Z Login Succeeded!
+build-and-push	Extract metadata	﻿2025-08-26T14:26:40.7327502Z ##[group]Run docker/metadata-action@v5
+build-and-push	Extract metadata	2025-08-26T14:26:40.7327788Z with:
+build-and-push	Extract metadata	2025-08-26T14:26:40.7328008Z   images: ***/plantuml-server
+build-and-push	Extract metadata	2025-08-26T14:26:40.7328685Z   tags: type=ref,event=branch
+build-and-push	Extract metadata	type=ref,event=pr
+build-and-push	Extract metadata	type=semver,pattern={{version}}
+build-and-push	Extract metadata	type=semver,pattern={{major}}.{{minor}}
+build-and-push	Extract metadata	type=semver,pattern={{major}}
+build-and-push	Extract metadata	type=raw,value=latest,enable={{is_default_branch}}
+build-and-push	Extract metadata	
+build-and-push	Extract metadata	2025-08-26T14:26:40.7329384Z   context: workflow
+build-and-push	Extract metadata	2025-08-26T14:26:40.7329678Z   github-token: ***
+build-and-push	Extract metadata	2025-08-26T14:26:40.7329857Z env:
+build-and-push	Extract metadata	2025-08-26T14:26:40.7330351Z   IMAGE_NAME: plantuml-server
+build-and-push	Extract metadata	2025-08-26T14:26:40.7330866Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.16-8/x64
+build-and-push	Extract metadata	2025-08-26T14:26:40.7331321Z   JAVA_HOME_17_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.16-8/x64
+build-and-push	Extract metadata	2025-08-26T14:26:40.7331658Z ##[endgroup]
+build-and-push	Extract metadata	2025-08-26T14:26:41.4798129Z ##[group]Context info
+build-and-push	Extract metadata	2025-08-26T14:26:41.4798613Z eventName: push
+build-and-push	Extract metadata	2025-08-26T14:26:41.4798957Z sha: a22d5ade329a395e671afe87d8ebb943066f6134
+build-and-push	Extract metadata	2025-08-26T14:26:41.4799436Z ref: refs/heads/main
+build-and-push	Extract metadata	2025-08-26T14:26:41.4799920Z workflow: Build and Push to Docker Hub
+build-and-push	Extract metadata	2025-08-26T14:26:41.4800533Z action: meta
+build-and-push	Extract metadata	2025-08-26T14:26:41.4800967Z actor: ***
+build-and-push	Extract metadata	2025-08-26T14:26:41.4801251Z runNumber: 10
+build-and-push	Extract metadata	2025-08-26T14:26:41.4801538Z runId: 17241215813
+build-and-push	Extract metadata	2025-08-26T14:26:41.4803353Z commitDate: Tue Aug 26 2025 14:26:11 GMT+0000 (Coordinated Universal Time)
+build-and-push	Extract metadata	2025-08-26T14:26:41.4805415Z ##[endgroup]
+build-and-push	Extract metadata	2025-08-26T14:26:41.4812149Z ##[group]Processing images input
+build-and-push	Extract metadata	2025-08-26T14:26:41.4813103Z name=***/plantuml-server,enable=true
+build-and-push	Extract metadata	2025-08-26T14:26:41.4814213Z ##[endgroup]
+build-and-push	Extract metadata	2025-08-26T14:26:41.4834413Z ##[group]Processing tags input
+build-and-push	Extract metadata	2025-08-26T14:26:41.4835720Z type=semver,pattern={{version}},value=,match=,enable=true,priority=900
+build-and-push	Extract metadata	2025-08-26T14:26:41.4836743Z type=semver,pattern={{major}}.{{minor}},value=,match=,enable=true,priority=900
+build-and-push	Extract metadata	2025-08-26T14:26:41.4838013Z type=semver,pattern={{major}},value=,match=,enable=true,priority=900
+build-and-push	Extract metadata	2025-08-26T14:26:41.4839037Z type=ref,event=branch,enable=true,priority=600
+build-and-push	Extract metadata	2025-08-26T14:26:41.4839972Z type=ref,event=pr,prefix=pr-,enable=true,priority=600
+build-and-push	Extract metadata	2025-08-26T14:26:41.4841268Z type=raw,value=latest,enable={{is_default_branch}},priority=200
+build-and-push	Extract metadata	2025-08-26T14:26:41.4842364Z ##[endgroup]
+build-and-push	Extract metadata	2025-08-26T14:26:41.4843184Z ##[group]Processing flavor input
+build-and-push	Extract metadata	2025-08-26T14:26:41.4853659Z latest=auto
+build-and-push	Extract metadata	2025-08-26T14:26:41.4854015Z prefix=
+build-and-push	Extract metadata	2025-08-26T14:26:41.4854316Z prefixLatest=false
+build-and-push	Extract metadata	2025-08-26T14:26:41.4854648Z suffix=
+build-and-push	Extract metadata	2025-08-26T14:26:41.4854908Z suffixLatest=false
+build-and-push	Extract metadata	2025-08-26T14:26:41.4855488Z ##[endgroup]
+build-and-push	Extract metadata	2025-08-26T14:26:41.4919769Z ##[group]Docker image version
+build-and-push	Extract metadata	2025-08-26T14:26:41.4921122Z main
+build-and-push	Extract metadata	2025-08-26T14:26:41.4923660Z ##[endgroup]
+build-and-push	Extract metadata	2025-08-26T14:26:41.4925698Z ##[group]Docker tags
+build-and-push	Extract metadata	2025-08-26T14:26:41.4926626Z ***/plantuml-server:main
+build-and-push	Extract metadata	2025-08-26T14:26:41.4927110Z ***/plantuml-server:latest
+build-and-push	Extract metadata	2025-08-26T14:26:41.4927750Z ##[endgroup]
+build-and-push	Extract metadata	2025-08-26T14:26:41.5006995Z ##[group]Docker labels
+build-and-push	Extract metadata	2025-08-26T14:26:41.5007560Z org.opencontainers.image.created=2025-08-26T14:26:41.484Z
+build-and-push	Extract metadata	2025-08-26T14:26:41.5008820Z org.opencontainers.image.description=A high-performance PlantUML server built with Quarkus, providing RESTful APIs for diagram generation with Docker support
+build-and-push	Extract metadata	2025-08-26T14:26:41.5010229Z org.opencontainers.image.licenses=MIT
+build-and-push	Extract metadata	2025-08-26T14:26:41.5010923Z org.opencontainers.image.revision=a22d5ade329a395e671afe87d8ebb943066f6134
+build-and-push	Extract metadata	2025-08-26T14:26:41.5012274Z org.opencontainers.image.source=https://github.com/***/plantuml-server
+build-and-push	Extract metadata	2025-08-26T14:26:41.5013062Z org.opencontainers.image.title=plantuml-server
+build-and-push	Extract metadata	2025-08-26T14:26:41.5013911Z org.opencontainers.image.url=https://github.com/***/plantuml-server
+build-and-push	Extract metadata	2025-08-26T14:26:41.5014606Z org.opencontainers.image.version=main
+build-and-push	Extract metadata	2025-08-26T14:26:41.5015388Z ##[endgroup]
+build-and-push	Extract metadata	2025-08-26T14:26:41.5015972Z ##[group]Annotations
+build-and-push	Extract metadata	2025-08-26T14:26:41.5016486Z manifest:org.opencontainers.image.created=2025-08-26T14:26:41.484Z
+build-and-push	Extract metadata	2025-08-26T14:26:41.5017877Z manifest:org.opencontainers.image.description=A high-performance PlantUML server built with Quarkus, providing RESTful APIs for diagram generation with Docker support
+build-and-push	Extract metadata	2025-08-26T14:26:41.5019606Z manifest:org.opencontainers.image.licenses=MIT
+build-and-push	Extract metadata	2025-08-26T14:26:41.5020611Z manifest:org.opencontainers.image.revision=a22d5ade329a395e671afe87d8ebb943066f6134
+build-and-push	Extract metadata	2025-08-26T14:26:41.5021756Z manifest:org.opencontainers.image.source=https://github.com/***/plantuml-server
+build-and-push	Extract metadata	2025-08-26T14:26:41.5022633Z manifest:org.opencontainers.image.title=plantuml-server
+build-and-push	Extract metadata	2025-08-26T14:26:41.5023543Z manifest:org.opencontainers.image.url=https://github.com/***/plantuml-server
+build-and-push	Extract metadata	2025-08-26T14:26:41.5024349Z manifest:org.opencontainers.image.version=main
+build-and-push	Extract metadata	2025-08-26T14:26:41.5025133Z ##[endgroup]
+build-and-push	Extract metadata	2025-08-26T14:26:41.5025686Z ##[group]JSON output
+build-and-push	Extract metadata	2025-08-26T14:26:41.5026011Z {
+build-and-push	Extract metadata	2025-08-26T14:26:41.5026269Z   "tags": [
+build-and-push	Extract metadata	2025-08-26T14:26:41.5026672Z     "***/plantuml-server:main",
+build-and-push	Extract metadata	2025-08-26T14:26:41.5027091Z     "***/plantuml-server:latest"
+build-and-push	Extract metadata	2025-08-26T14:26:41.5027481Z   ],
+build-and-push	Extract metadata	2025-08-26T14:26:41.5027774Z   "labels": {
+build-and-push	Extract metadata	2025-08-26T14:26:41.5028240Z     "org.opencontainers.image.created": "2025-08-26T14:26:41.484Z",
+build-and-push	Extract metadata	2025-08-26T14:26:41.5029631Z     "org.opencontainers.image.description": "A high-performance PlantUML server built with Quarkus, providing RESTful APIs for diagram generation with Docker support",
+build-and-push	Extract metadata	2025-08-26T14:26:41.5031173Z     "org.opencontainers.image.licenses": "MIT",
+build-and-push	Extract metadata	2025-08-26T14:26:41.5031949Z     "org.opencontainers.image.revision": "a22d5ade329a395e671afe87d8ebb943066f6134",
+build-and-push	Extract metadata	2025-08-26T14:26:41.5033013Z     "org.opencontainers.image.source": "https://github.com/***/plantuml-server",
+build-and-push	Extract metadata	2025-08-26T14:26:41.5033838Z     "org.opencontainers.image.title": "plantuml-server",
+build-and-push	Extract metadata	2025-08-26T14:26:41.5034713Z     "org.opencontainers.image.url": "https://github.com/***/plantuml-server",
+build-and-push	Extract metadata	2025-08-26T14:26:41.5035482Z     "org.opencontainers.image.version": "main"
+build-and-push	Extract metadata	2025-08-26T14:26:41.5035960Z   },
+build-and-push	Extract metadata	2025-08-26T14:26:41.5036267Z   "annotations": [
+build-and-push	Extract metadata	2025-08-26T14:26:41.5036806Z     "manifest:org.opencontainers.image.created=2025-08-26T14:26:41.484Z",
+build-and-push	Extract metadata	2025-08-26T14:26:41.5038264Z     "manifest:org.opencontainers.image.description=A high-performance PlantUML server built with Quarkus, providing RESTful APIs for diagram generation with Docker support",
+build-and-push	Extract metadata	2025-08-26T14:26:41.5039690Z     "manifest:org.opencontainers.image.licenses=MIT",
+build-and-push	Extract metadata	2025-08-26T14:26:41.5040775Z     "manifest:org.opencontainers.image.revision=a22d5ade329a395e671afe87d8ebb943066f6134",
+build-and-push	Extract metadata	2025-08-26T14:26:41.5042298Z     "manifest:org.opencontainers.image.source=https://github.com/***/plantuml-server",
+build-and-push	Extract metadata	2025-08-26T14:26:41.5043221Z     "manifest:org.opencontainers.image.title=plantuml-server",
+build-and-push	Extract metadata	2025-08-26T14:26:41.5044176Z     "manifest:org.opencontainers.image.url=https://github.com/***/plantuml-server",
+build-and-push	Extract metadata	2025-08-26T14:26:41.5045009Z     "manifest:org.opencontainers.image.version=main"
+build-and-push	Extract metadata	2025-08-26T14:26:41.5045519Z   ]
+build-and-push	Extract metadata	2025-08-26T14:26:41.5045802Z }
+build-and-push	Extract metadata	2025-08-26T14:26:41.5046317Z ##[endgroup]
+build-and-push	Extract metadata	2025-08-26T14:26:41.5046757Z ##[group]Bake file definition (tags)
+build-and-push	Extract metadata	2025-08-26T14:26:41.5046998Z {
+build-and-push	Extract metadata	2025-08-26T14:26:41.5047156Z   "target": {
+build-and-push	Extract metadata	2025-08-26T14:26:41.5047370Z     "docker-metadata-action": {
+build-and-push	Extract metadata	2025-08-26T14:26:41.5047591Z       "tags": [
+build-and-push	Extract metadata	2025-08-26T14:26:41.5047842Z         "***/plantuml-server:main",
+build-and-push	Extract metadata	2025-08-26T14:26:41.5048126Z         "***/plantuml-server:latest"
+build-and-push	Extract metadata	2025-08-26T14:26:41.5048359Z       ],
+build-and-push	Extract metadata	2025-08-26T14:26:41.5048518Z       "args": {
+build-and-push	Extract metadata	2025-08-26T14:26:41.5048772Z         "DOCKER_META_IMAGES": "***/plantuml-server",
+build-and-push	Extract metadata	2025-08-26T14:26:41.5049060Z         "DOCKER_META_VERSION": "main"
+build-and-push	Extract metadata	2025-08-26T14:26:41.5049280Z       }
+build-and-push	Extract metadata	2025-08-26T14:26:41.5049435Z     }
+build-and-push	Extract metadata	2025-08-26T14:26:41.5049584Z   }
+build-and-push	Extract metadata	2025-08-26T14:26:41.5049729Z }
+build-and-push	Extract metadata	2025-08-26T14:26:41.5050163Z ##[endgroup]
+build-and-push	Extract metadata	2025-08-26T14:26:41.5050488Z ##[group]Bake file definition (labels)
+build-and-push	Extract metadata	2025-08-26T14:26:41.5050714Z {
+build-and-push	Extract metadata	2025-08-26T14:26:41.5050864Z   "target": {
+build-and-push	Extract metadata	2025-08-26T14:26:41.5051044Z     "docker-metadata-action": {
+build-and-push	Extract metadata	2025-08-26T14:26:41.5051262Z       "labels": {
+build-and-push	Extract metadata	2025-08-26T14:26:41.5051526Z         "org.opencontainers.image.created": "2025-08-26T14:26:41.484Z",
+build-and-push	Extract metadata	2025-08-26T14:26:41.5052255Z         "org.opencontainers.image.description": "A high-performance PlantUML server built with Quarkus, providing RESTful APIs for diagram generation with Docker support",
+build-and-push	Extract metadata	2025-08-26T14:26:41.5053190Z         "org.opencontainers.image.licenses": "MIT",
+build-and-push	Extract metadata	2025-08-26T14:26:41.5053611Z         "org.opencontainers.image.revision": "a22d5ade329a395e671afe87d8ebb943066f6134",
+build-and-push	Extract metadata	2025-08-26T14:26:41.5054193Z         "org.opencontainers.image.source": "https://github.com/***/plantuml-server",
+build-and-push	Extract metadata	2025-08-26T14:26:41.5054642Z         "org.opencontainers.image.title": "plantuml-server",
+build-and-push	Extract metadata	2025-08-26T14:26:41.5055089Z         "org.opencontainers.image.url": "https://github.com/***/plantuml-server",
+build-and-push	Extract metadata	2025-08-26T14:26:41.5055489Z         "org.opencontainers.image.version": "main"
+build-and-push	Extract metadata	2025-08-26T14:26:41.5055750Z       }
+build-and-push	Extract metadata	2025-08-26T14:26:41.5055901Z     }
+build-and-push	Extract metadata	2025-08-26T14:26:41.5056051Z   }
+build-and-push	Extract metadata	2025-08-26T14:26:41.5056194Z }
+build-and-push	Extract metadata	2025-08-26T14:26:41.5056472Z ##[endgroup]
+build-and-push	Extract metadata	2025-08-26T14:26:41.5056788Z ##[group]Bake file definition (annotations)
+build-and-push	Extract metadata	2025-08-26T14:26:41.5057028Z {
+build-and-push	Extract metadata	2025-08-26T14:26:41.5057179Z   "target": {
+build-and-push	Extract metadata	2025-08-26T14:26:41.5057366Z     "docker-metadata-action": {
+build-and-push	Extract metadata	2025-08-26T14:26:41.5057585Z       "annotations": [
+build-and-push	Extract metadata	2025-08-26T14:26:41.5057882Z         "manifest:org.opencontainers.image.created=2025-08-26T14:26:41.484Z",
+build-and-push	Extract metadata	2025-08-26T14:26:41.5058669Z         "manifest:org.opencontainers.image.description=A high-performance PlantUML server built with Quarkus, providing RESTful APIs for diagram generation with Docker support",
+build-and-push	Extract metadata	2025-08-26T14:26:41.5059380Z         "manifest:org.opencontainers.image.licenses=MIT",
+build-and-push	Extract metadata	2025-08-26T14:26:41.5059827Z         "manifest:org.opencontainers.image.revision=a22d5ade329a395e671afe87d8ebb943066f6134",
+build-and-push	Extract metadata	2025-08-26T14:26:41.5060544Z         "manifest:org.opencontainers.image.source=https://github.com/***/plantuml-server",
+build-and-push	Extract metadata	2025-08-26T14:26:41.5061016Z         "manifest:org.opencontainers.image.title=plantuml-server",
+build-and-push	Extract metadata	2025-08-26T14:26:41.5061526Z         "manifest:org.opencontainers.image.url=https://github.com/***/plantuml-server",
+build-and-push	Extract metadata	2025-08-26T14:26:41.5061965Z         "manifest:org.opencontainers.image.version=main"
+build-and-push	Extract metadata	2025-08-26T14:26:41.5062237Z       ]
+build-and-push	Extract metadata	2025-08-26T14:26:41.5062388Z     }
+build-and-push	Extract metadata	2025-08-26T14:26:41.5062541Z   }
+build-and-push	Extract metadata	2025-08-26T14:26:41.5062691Z }
+build-and-push	Extract metadata	2025-08-26T14:26:41.5062974Z ##[endgroup]
+build-and-push	Build and push Docker image	﻿2025-08-26T14:26:41.5652137Z ##[group]Run docker/build-push-action@v5
+build-and-push	Build and push Docker image	2025-08-26T14:26:41.5652434Z with:
+build-and-push	Build and push Docker image	2025-08-26T14:26:41.5652606Z   context: .
+build-and-push	Build and push Docker image	2025-08-26T14:26:41.5652781Z   file: ./Dockerfile
+build-and-push	Build and push Docker image	2025-08-26T14:26:41.5652965Z   push: true
+build-and-push	Build and push Docker image	2025-08-26T14:26:41.5653321Z   tags: ***/plantuml-server:main
+build-and-push	Build and push Docker image	***/plantuml-server:latest
+build-and-push	Build and push Docker image	2025-08-26T14:26:41.5655506Z   labels: org.opencontainers.image.created=2025-08-26T14:26:41.484Z
+build-and-push	Build and push Docker image	org.opencontainers.image.description=A high-performance PlantUML server built with Quarkus, providing RESTful APIs for diagram generation with Docker support
+build-and-push	Build and push Docker image	org.opencontainers.image.licenses=MIT
+build-and-push	Build and push Docker image	org.opencontainers.image.revision=a22d5ade329a395e671afe87d8ebb943066f6134
+build-and-push	Build and push Docker image	org.opencontainers.image.source=https://github.com/***/plantuml-server
+build-and-push	Build and push Docker image	org.opencontainers.image.title=plantuml-server
+build-and-push	Build and push Docker image	org.opencontainers.image.url=https://github.com/***/plantuml-server
+build-and-push	Build and push Docker image	org.opencontainers.image.version=main
+build-and-push	Build and push Docker image	2025-08-26T14:26:41.5657696Z   cache-from: type=gha
+build-and-push	Build and push Docker image	type=registry,ref=***/plantuml-server:buildcache
+build-and-push	Build and push Docker image	
+build-and-push	Build and push Docker image	2025-08-26T14:26:41.5658239Z   cache-to: type=gha,mode=max
+build-and-push	Build and push Docker image	type=registry,ref=***/plantuml-server:buildcache,mode=max
+build-and-push	Build and push Docker image	
+build-and-push	Build and push Docker image	2025-08-26T14:26:41.5658663Z   platforms: linux/amd64,linux/arm64
+build-and-push	Build and push Docker image	2025-08-26T14:26:41.5658903Z   load: false
+build-and-push	Build and push Docker image	2025-08-26T14:26:41.5659081Z   no-cache: false
+build-and-push	Build and push Docker image	2025-08-26T14:26:41.5659253Z   pull: false
+build-and-push	Build and push Docker image	2025-08-26T14:26:41.5659541Z   github-token: ***
+build-and-push	Build and push Docker image	2025-08-26T14:26:41.5659725Z env:
+build-and-push	Build and push Docker image	2025-08-26T14:26:41.5659900Z   IMAGE_NAME: plantuml-server
+build-and-push	Build and push Docker image	2025-08-26T14:26:41.5660523Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.16-8/x64
+build-and-push	Build and push Docker image	2025-08-26T14:26:41.5660991Z   JAVA_HOME_17_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.16-8/x64
+build-and-push	Build and push Docker image	2025-08-26T14:26:41.5661359Z   DOCKER_METADATA_OUTPUT_VERSION: main
+build-and-push	Build and push Docker image	2025-08-26T14:26:41.5661834Z   DOCKER_METADATA_OUTPUT_TAGS: ***/plantuml-server:main
+build-and-push	Build and push Docker image	***/plantuml-server:latest
+build-and-push	Build and push Docker image	2025-08-26T14:26:41.5664155Z   DOCKER_METADATA_OUTPUT_LABELS: org.opencontainers.image.created=2025-08-26T14:26:41.484Z
+build-and-push	Build and push Docker image	org.opencontainers.image.description=A high-performance PlantUML server built with Quarkus, providing RESTful APIs for diagram generation with Docker support
+build-and-push	Build and push Docker image	org.opencontainers.image.licenses=MIT
+build-and-push	Build and push Docker image	org.opencontainers.image.revision=a22d5ade329a395e671afe87d8ebb943066f6134
+build-and-push	Build and push Docker image	org.opencontainers.image.source=https://github.com/***/plantuml-server
+build-and-push	Build and push Docker image	org.opencontainers.image.title=plantuml-server
+build-and-push	Build and push Docker image	org.opencontainers.image.url=https://github.com/***/plantuml-server
+build-and-push	Build and push Docker image	org.opencontainers.image.version=main
+build-and-push	Build and push Docker image	2025-08-26T14:26:41.5668393Z   DOCKER_METADATA_OUTPUT_ANNOTATIONS: manifest:org.opencontainers.image.created=2025-08-26T14:26:41.484Z
+build-and-push	Build and push Docker image	manifest:org.opencontainers.image.description=A high-performance PlantUML server built with Quarkus, providing RESTful APIs for diagram generation with Docker support
+build-and-push	Build and push Docker image	manifest:org.opencontainers.image.licenses=MIT
+build-and-push	Build and push Docker image	manifest:org.opencontainers.image.revision=a22d5ade329a395e671afe87d8ebb943066f6134
+build-and-push	Build and push Docker image	manifest:org.opencontainers.image.source=https://github.com/***/plantuml-server
+build-and-push	Build and push Docker image	manifest:org.opencontainers.image.title=plantuml-server
+build-and-push	Build and push Docker image	manifest:org.opencontainers.image.url=https://github.com/***/plantuml-server
+build-and-push	Build and push Docker image	manifest:org.opencontainers.image.version=main
+build-and-push	Build and push Docker image	2025-08-26T14:26:41.5675292Z   DOCKER_METADATA_OUTPUT_JSON: {"tags":["***/plantuml-server:main","***/plantuml-server:latest"],"labels":{"org.opencontainers.image.created":"2025-08-26T14:26:41.484Z","org.opencontainers.image.description":"A high-performance PlantUML server built with Quarkus, providing RESTful APIs for diagram generation with Docker support","org.opencontainers.image.licenses":"MIT","org.opencontainers.image.revision":"a22d5ade329a395e671afe87d8ebb943066f6134","org.opencontainers.image.source":"https://github.com/***/plantuml-server","org.opencontainers.image.title":"plantuml-server","org.opencontainers.image.url":"https://github.com/***/plantuml-server","org.opencontainers.image.version":"main"},"annotations":["manifest:org.opencontainers.image.created=2025-08-26T14:26:41.484Z","manifest:org.opencontainers.image.description=A high-performance PlantUML server built with Quarkus, providing RESTful APIs for diagram generation with Docker support","manifest:org.opencontainers.image.licenses=MIT","manifest:org.opencontainers.image.revision=a22d5ade329a395e671afe87d8ebb943066f6134","manifest:org.opencontainers.image.source=https://github.com/***/plantuml-server","manifest:org.opencontainers.image.title=plantuml-server","manifest:org.opencontainers.image.url=https://github.com/***/plantuml-server","manifest:org.opencontainers.image.version=main"]}
+build-and-push	Build and push Docker image	2025-08-26T14:26:41.5680660Z   DOCKER_METADATA_OUTPUT_BAKE_FILE_TAGS: /home/runner/work/_temp/docker-actions-toolkit-4fZ7Ff/docker-metadata-action-bake-tags.json
+build-and-push	Build and push Docker image	2025-08-26T14:26:41.5681526Z   DOCKER_METADATA_OUTPUT_BAKE_FILE_LABELS: /home/runner/work/_temp/docker-actions-toolkit-4fZ7Ff/docker-metadata-action-bake-labels.json
+build-and-push	Build and push Docker image	2025-08-26T14:26:41.5682433Z   DOCKER_METADATA_OUTPUT_BAKE_FILE_ANNOTATIONS: /home/runner/work/_temp/docker-actions-toolkit-4fZ7Ff/docker-metadata-action-bake-annotations.json
+build-and-push	Build and push Docker image	2025-08-26T14:26:41.5683288Z   DOCKER_METADATA_OUTPUT_BAKE_FILE: /home/runner/work/_temp/docker-actions-toolkit-4fZ7Ff/docker-metadata-action-bake.json
+build-and-push	Build and push Docker image	2025-08-26T14:26:41.5683796Z ##[endgroup]
+build-and-push	Build and push Docker image	2025-08-26T14:26:41.8047825Z ##[group]GitHub Actions runtime token ACs
+build-and-push	Build and push Docker image	2025-08-26T14:26:41.8059034Z refs/heads/main: read/write
+build-and-push	Build and push Docker image	2025-08-26T14:26:41.8060695Z ##[endgroup]
+build-and-push	Build and push Docker image	2025-08-26T14:26:41.8061299Z ##[group]Docker info
+build-and-push	Build and push Docker image	2025-08-26T14:26:41.8103565Z [command]/usr/bin/docker version
+build-and-push	Build and push Docker image	2025-08-26T14:26:41.8591110Z Client: Docker Engine - Community
+build-and-push	Build and push Docker image	2025-08-26T14:26:41.8594704Z  Version:           28.0.4
+build-and-push	Build and push Docker image	2025-08-26T14:26:41.8595112Z  API version:       1.48
+build-and-push	Build and push Docker image	2025-08-26T14:26:41.8595471Z  Go version:        go1.23.7
+build-and-push	Build and push Docker image	2025-08-26T14:26:41.8595760Z  Git commit:        b8034c0
+build-and-push	Build and push Docker image	2025-08-26T14:26:41.8596002Z  Built:             Tue Mar 25 15:07:16 2025
+build-and-push	Build and push Docker image	2025-08-26T14:26:41.8596287Z  OS/Arch:           linux/amd64
+build-and-push	Build and push Docker image	2025-08-26T14:26:41.8596519Z  Context:           default
+build-and-push	Build and push Docker image	2025-08-26T14:26:41.8596670Z 
+build-and-push	Build and push Docker image	2025-08-26T14:26:41.8596768Z Server: Docker Engine - Community
+build-and-push	Build and push Docker image	2025-08-26T14:26:41.8596999Z  Engine:
+build-and-push	Build and push Docker image	2025-08-26T14:26:41.8597213Z   Version:          28.0.4
+build-and-push	Build and push Docker image	2025-08-26T14:26:41.8597451Z   API version:      1.48 (minimum version 1.24)
+build-and-push	Build and push Docker image	2025-08-26T14:26:41.8597743Z   Go version:       go1.23.7
+build-and-push	Build and push Docker image	2025-08-26T14:26:41.8597977Z   Git commit:       6430e49
+build-and-push	Build and push Docker image	2025-08-26T14:26:41.8598206Z   Built:            Tue Mar 25 15:07:16 2025
+build-and-push	Build and push Docker image	2025-08-26T14:26:41.8598463Z   OS/Arch:          linux/amd64
+build-and-push	Build and push Docker image	2025-08-26T14:26:41.8598694Z   Experimental:     false
+build-and-push	Build and push Docker image	2025-08-26T14:26:41.8598895Z  containerd:
+build-and-push	Build and push Docker image	2025-08-26T14:26:41.8599073Z   Version:          1.7.27
+build-and-push	Build and push Docker image	2025-08-26T14:26:41.8599334Z   GitCommit:        05044ec0a9a75232cad458027ca83437aae3f4da
+build-and-push	Build and push Docker image	2025-08-26T14:26:41.8599608Z  runc:
+build-and-push	Build and push Docker image	2025-08-26T14:26:41.8599773Z   Version:          1.2.5
+build-and-push	Build and push Docker image	2025-08-26T14:26:41.8600289Z   GitCommit:        v1.2.5-0-g59923ef
+build-and-push	Build and push Docker image	2025-08-26T14:26:41.8600636Z  docker-init:
+build-and-push	Build and push Docker image	2025-08-26T14:26:41.8600821Z   Version:          0.19.0
+build-and-push	Build and push Docker image	2025-08-26T14:26:41.8601034Z   GitCommit:        de40ad0
+build-and-push	Build and push Docker image	2025-08-26T14:26:41.8642750Z [command]/usr/bin/docker info
+build-and-push	Build and push Docker image	2025-08-26T14:26:41.9340184Z Client: Docker Engine - Community
+build-and-push	Build and push Docker image	2025-08-26T14:26:41.9341561Z  Version:    28.0.4
+build-and-push	Build and push Docker image	2025-08-26T14:26:41.9342232Z  Context:    default
+build-and-push	Build and push Docker image	2025-08-26T14:26:41.9342799Z  Debug Mode: false
+build-and-push	Build and push Docker image	2025-08-26T14:26:41.9343206Z  Plugins:
+build-and-push	Build and push Docker image	2025-08-26T14:26:41.9343461Z   buildx: Docker Buildx (Docker Inc.)
+build-and-push	Build and push Docker image	2025-08-26T14:26:41.9343774Z     Version:  v0.26.1
+build-and-push	Build and push Docker image	2025-08-26T14:26:41.9344112Z     Path:     /usr/libexec/docker/cli-plugins/docker-buildx
+build-and-push	Build and push Docker image	2025-08-26T14:26:41.9344517Z   compose: Docker Compose (Docker Inc.)
+build-and-push	Build and push Docker image	2025-08-26T14:26:41.9344825Z     Version:  v2.38.2
+build-and-push	Build and push Docker image	2025-08-26T14:26:41.9345146Z     Path:     /usr/libexec/docker/cli-plugins/docker-compose
+build-and-push	Build and push Docker image	2025-08-26T14:26:41.9345433Z 
+build-and-push	Build and push Docker image	2025-08-26T14:26:41.9345527Z Server:
+build-and-push	Build and push Docker image	2025-08-26T14:26:41.9345734Z  Containers: 1
+build-and-push	Build and push Docker image	2025-08-26T14:26:41.9345957Z   Running: 1
+build-and-push	Build and push Docker image	2025-08-26T14:26:41.9346172Z   Paused: 0
+build-and-push	Build and push Docker image	2025-08-26T14:26:41.9346371Z   Stopped: 0
+build-and-push	Build and push Docker image	2025-08-26T14:26:41.9346577Z  Images: 1
+build-and-push	Build and push Docker image	2025-08-26T14:26:41.9346800Z  Server Version: 28.0.4
+build-and-push	Build and push Docker image	2025-08-26T14:26:41.9347057Z  Storage Driver: overlay2
+build-and-push	Build and push Docker image	2025-08-26T14:26:41.9348252Z   Backing Filesystem: extfs
+build-and-push	Build and push Docker image	2025-08-26T14:26:41.9348536Z   Supports d_type: true
+build-and-push	Build and push Docker image	2025-08-26T14:26:41.9348786Z   Using metacopy: false
+build-and-push	Build and push Docker image	2025-08-26T14:26:41.9349044Z   Native Overlay Diff: false
+build-and-push	Build and push Docker image	2025-08-26T14:26:41.9349323Z   userxattr: false
+build-and-push	Build and push Docker image	2025-08-26T14:26:41.9349566Z  Logging Driver: json-file
+build-and-push	Build and push Docker image	2025-08-26T14:26:41.9349838Z  Cgroup Driver: systemd
+build-and-push	Build and push Docker image	2025-08-26T14:26:41.9350400Z  Cgroup Version: 2
+build-and-push	Build and push Docker image	2025-08-26T14:26:41.9350626Z  Plugins:
+build-and-push	Build and push Docker image	2025-08-26T14:26:41.9350841Z   Volume: local
+build-and-push	Build and push Docker image	2025-08-26T14:26:41.9351121Z   Network: bridge host ipvlan macvlan null overlay
+build-and-push	Build and push Docker image	2025-08-26T14:26:41.9351609Z   Log: awslogs fluentd gcplogs gelf journald json-file local splunk syslog
+build-and-push	Build and push Docker image	2025-08-26T14:26:41.9352047Z  Swarm: inactive
+build-and-push	Build and push Docker image	2025-08-26T14:26:41.9352307Z  Runtimes: io.containerd.runc.v2 runc
+build-and-push	Build and push Docker image	2025-08-26T14:26:41.9352618Z  Default Runtime: runc
+build-and-push	Build and push Docker image	2025-08-26T14:26:41.9352879Z  Init Binary: docker-init
+build-and-push	Build and push Docker image	2025-08-26T14:26:41.9353193Z  containerd version: 05044ec0a9a75232cad458027ca83437aae3f4da
+build-and-push	Build and push Docker image	2025-08-26T14:26:41.9353514Z  runc version: v1.2.5-0-g59923ef
+build-and-push	Build and push Docker image	2025-08-26T14:26:41.9353761Z  init version: de40ad0
+build-and-push	Build and push Docker image	2025-08-26T14:26:41.9353955Z  Security Options:
+build-and-push	Build and push Docker image	2025-08-26T14:26:41.9354130Z   apparmor
+build-and-push	Build and push Docker image	2025-08-26T14:26:41.9354394Z   seccomp
+build-and-push	Build and push Docker image	2025-08-26T14:26:41.9354676Z    Profile: builtin
+build-and-push	Build and push Docker image	2025-08-26T14:26:41.9354920Z   cgroupns
+build-and-push	Build and push Docker image	2025-08-26T14:26:41.9355101Z  Kernel Version: 6.11.0-1018-azure
+build-and-push	Build and push Docker image	2025-08-26T14:26:41.9355348Z  Operating System: Ubuntu 24.04.2 LTS
+build-and-push	Build and push Docker image	2025-08-26T14:26:41.9355584Z  OSType: linux
+build-and-push	Build and push Docker image	2025-08-26T14:26:41.9355773Z  Architecture: x86_64
+build-and-push	Build and push Docker image	2025-08-26T14:26:41.9355974Z  CPUs: 4
+build-and-push	Build and push Docker image	2025-08-26T14:26:41.9356136Z  Total Memory: 15.62GiB
+build-and-push	Build and push Docker image	2025-08-26T14:26:41.9356340Z  Name: pkrvmqc4gcfdwos
+build-and-push	Build and push Docker image	2025-08-26T14:26:41.9356565Z  ID: 1c1cbb44-b30d-44d5-842a-37462128d90e
+build-and-push	Build and push Docker image	2025-08-26T14:26:41.9356823Z  Docker Root Dir: /var/lib/docker
+build-and-push	Build and push Docker image	2025-08-26T14:26:41.9357048Z  Debug Mode: false
+build-and-push	Build and push Docker image	2025-08-26T14:26:41.9357322Z  Username: ***
+build-and-push	Build and push Docker image	2025-08-26T14:26:41.9357520Z  Experimental: false
+build-and-push	Build and push Docker image	2025-08-26T14:26:41.9357717Z  Insecure Registries:
+build-and-push	Build and push Docker image	2025-08-26T14:26:41.9357938Z   ::1/128
+build-and-push	Build and push Docker image	2025-08-26T14:26:41.9358099Z   127.0.0.0/8
+build-and-push	Build and push Docker image	2025-08-26T14:26:41.9358275Z  Live Restore Enabled: false
+build-and-push	Build and push Docker image	2025-08-26T14:26:41.9358427Z 
+build-and-push	Build and push Docker image	2025-08-26T14:26:41.9359636Z ##[endgroup]
+build-and-push	Build and push Docker image	2025-08-26T14:26:41.9372522Z ##[group]Proxy configuration
+build-and-push	Build and push Docker image	2025-08-26T14:26:41.9373034Z No proxy configuration found
+build-and-push	Build and push Docker image	2025-08-26T14:26:41.9373652Z ##[endgroup]
+build-and-push	Build and push Docker image	2025-08-26T14:26:41.9983963Z ##[group]Buildx version
+build-and-push	Build and push Docker image	2025-08-26T14:26:42.0012975Z [command]/usr/bin/docker buildx version
+build-and-push	Build and push Docker image	2025-08-26T14:26:42.0549536Z github.com/docker/buildx v0.26.1 1a8287f22cf5a38339a4c1bf432b803c5f8b2aae
+build-and-push	Build and push Docker image	2025-08-26T14:26:42.0585697Z ##[endgroup]
+build-and-push	Build and push Docker image	2025-08-26T14:26:42.0586134Z ##[group]Builder info
+build-and-push	Build and push Docker image	2025-08-26T14:26:42.1539408Z {
+build-and-push	Build and push Docker image	2025-08-26T14:26:42.1539846Z   "nodes": [
+build-and-push	Build and push Docker image	2025-08-26T14:26:42.1540285Z     {
+build-and-push	Build and push Docker image	2025-08-26T14:26:42.1540607Z       "name": "builder-afbf82c3-2bce-40e1-b893-6237bdef0cbf0",
+build-and-push	Build and push Docker image	2025-08-26T14:26:42.1540984Z       "endpoint": "unix:///var/run/docker.sock",
+build-and-push	Build and push Docker image	2025-08-26T14:26:42.1541267Z       "status": "running",
+build-and-push	Build and push Docker image	2025-08-26T14:26:42.1541780Z       "buildkitd-flags": "--allow-insecure-entitlement security.insecure --allow-insecure-entitlement network.host",
+build-and-push	Build and push Docker image	2025-08-26T14:26:42.1542287Z       "buildkit": "v0.23.2",
+build-and-push	Build and push Docker image	2025-08-26T14:26:42.1542624Z       "platforms": "linux/amd64,linux/amd64/v2,linux/amd64/v3,linux/386",
+build-and-push	Build and push Docker image	2025-08-26T14:26:42.1542955Z       "features": {
+build-and-push	Build and push Docker image	2025-08-26T14:26:42.1543241Z         "Automatically load images to the Docker Engine image store": true,
+build-and-push	Build and push Docker image	2025-08-26T14:26:42.1543589Z         "Cache export": true,
+build-and-push	Build and push Docker image	2025-08-26T14:26:42.1543815Z         "Direct push": true,
+build-and-push	Build and push Docker image	2025-08-26T14:26:42.1544027Z         "Docker exporter": true,
+build-and-push	Build and push Docker image	2025-08-26T14:26:42.1544266Z         "Multi-platform build": true,
+build-and-push	Build and push Docker image	2025-08-26T14:26:42.1544511Z         "OCI exporter": true
+build-and-push	Build and push Docker image	2025-08-26T14:26:42.1544700Z       },
+build-and-push	Build and push Docker image	2025-08-26T14:26:42.1544861Z       "labels": {
+build-and-push	Build and push Docker image	2025-08-26T14:26:42.1545105Z         "org.mobyproject.buildkit.worker.executor": "oci",
+build-and-push	Build and push Docker image	2025-08-26T14:26:42.1545476Z         "org.mobyproject.buildkit.worker.hostname": "0fa963426d48",
+build-and-push	Build and push Docker image	2025-08-26T14:26:42.1546216Z         "org.mobyproject.buildkit.worker.network": "host",
+build-and-push	Build and push Docker image	2025-08-26T14:26:42.1546738Z         "org.mobyproject.buildkit.worker.oci.process-mode": "sandbox",
+build-and-push	Build and push Docker image	2025-08-26T14:26:42.1547165Z         "org.mobyproject.buildkit.worker.selinux.enabled": "false",
+build-and-push	Build and push Docker image	2025-08-26T14:26:42.1547560Z         "org.mobyproject.buildkit.worker.snapshotter": "overlayfs"
+build-and-push	Build and push Docker image	2025-08-26T14:26:42.1547860Z       },
+build-and-push	Build and push Docker image	2025-08-26T14:26:42.1548020Z       "gcPolicy": [
+build-and-push	Build and push Docker image	2025-08-26T14:26:42.1548192Z         {
+build-and-push	Build and push Docker image	2025-08-26T14:26:42.1548352Z           "all": false,
+build-and-push	Build and push Docker image	2025-08-26T14:26:42.1548541Z           "filter": [
+build-and-push	Build and push Docker image	2025-08-26T14:26:42.1548731Z             "type==source.local",
+build-and-push	Build and push Docker image	2025-08-26T14:26:42.1548967Z             "type==exec.cachemount",
+build-and-push	Build and push Docker image	2025-08-26T14:26:42.1549209Z             "type==source.git.checkout"
+build-and-push	Build and push Docker image	2025-08-26T14:26:42.1549431Z           ],
+build-and-push	Build and push Docker image	2025-08-26T14:26:42.1549616Z           "keepDuration": "48h0m0s"
+build-and-push	Build and push Docker image	2025-08-26T14:26:42.1549827Z         },
+build-and-push	Build and push Docker image	2025-08-26T14:26:42.1550225Z         {
+build-and-push	Build and push Docker image	2025-08-26T14:26:42.1550498Z           "all": false,
+build-and-push	Build and push Docker image	2025-08-26T14:26:42.1550835Z           "keepDuration": "1440h0m0s"
+build-and-push	Build and push Docker image	2025-08-26T14:26:42.1551151Z         },
+build-and-push	Build and push Docker image	2025-08-26T14:26:42.1551319Z         {
+build-and-push	Build and push Docker image	2025-08-26T14:26:42.1551479Z           "all": false
+build-and-push	Build and push Docker image	2025-08-26T14:26:42.1551654Z         },
+build-and-push	Build and push Docker image	2025-08-26T14:26:42.1551811Z         {
+build-and-push	Build and push Docker image	2025-08-26T14:26:42.1551968Z           "all": true
+build-and-push	Build and push Docker image	2025-08-26T14:26:42.1552142Z         }
+build-and-push	Build and push Docker image	2025-08-26T14:26:42.1552329Z       ]
+build-and-push	Build and push Docker image	2025-08-26T14:26:42.1552479Z     }
+build-and-push	Build and push Docker image	2025-08-26T14:26:42.1552620Z   ],
+build-and-push	Build and push Docker image	2025-08-26T14:26:42.1552868Z   "name": "builder-afbf82c3-2bce-40e1-b893-6237bdef0cbf",
+build-and-push	Build and push Docker image	2025-08-26T14:26:42.1553175Z   "driver": "docker-container",
+build-and-push	Build and push Docker image	2025-08-26T14:26:42.1553411Z   "lastActivity": "2025-08-26T14:26:34.000Z"
+build-and-push	Build and push Docker image	2025-08-26T14:26:42.1553645Z }
+build-and-push	Build and push Docker image	2025-08-26T14:26:42.1554024Z ##[endgroup]
+build-and-push	Build and push Docker image	2025-08-26T14:26:42.3114894Z [command]/usr/bin/docker buildx build --cache-from type=gha --cache-from type=registry,ref=***/plantuml-server:buildcache --cache-to type=gha,mode=max --cache-to type=registry,ref=***/plantuml-server:buildcache,mode=max --file ./Dockerfile --iidfile /home/runner/work/_temp/docker-actions-toolkit-npmUUm/build-iidfile-26e9516aec.txt --label org.opencontainers.image.created=2025-08-26T14:26:41.484Z --label org.opencontainers.image.description=A high-performance PlantUML server built with Quarkus, providing RESTful APIs for diagram generation with Docker support --label org.opencontainers.image.licenses=MIT --label org.opencontainers.image.revision=a22d5ade329a395e671afe87d8ebb943066f6134 --label org.opencontainers.image.source=https://github.com/***/plantuml-server --label org.opencontainers.image.title=plantuml-server --label org.opencontainers.image.url=https://github.com/***/plantuml-server --label org.opencontainers.image.version=main --platform linux/amd64,linux/arm64 --attest type=provenance,mode=max,builder-id=https://github.com/***/plantuml-server/actions/runs/17241215813 --tag ***/plantuml-server:main --tag ***/plantuml-server:latest --metadata-file /home/runner/work/_temp/docker-actions-toolkit-npmUUm/build-metadata-a27b5ef414.json --push .
+build-and-push	Build and push Docker image	2025-08-26T14:26:42.5977392Z #0 building with "builder-afbf82c3-2bce-40e1-b893-6237bdef0cbf" instance using docker-container driver
+build-and-push	Build and push Docker image	2025-08-26T14:26:42.5978604Z 
+build-and-push	Build and push Docker image	2025-08-26T14:26:42.5979042Z #1 [internal] load build definition from Dockerfile
+build-and-push	Build and push Docker image	2025-08-26T14:26:42.5979937Z #1 transferring dockerfile: 1.29kB done
+build-and-push	Build and push Docker image	2025-08-26T14:26:42.5980909Z #1 DONE 0.0s
+build-and-push	Build and push Docker image	2025-08-26T14:26:42.5982510Z 
+build-and-push	Build and push Docker image	2025-08-26T14:26:42.5982987Z #2 [linux/amd64 internal] load metadata for docker.io/library/maven:3.8.6-openjdk-11-slim
+build-and-push	Build and push Docker image	2025-08-26T14:26:42.8388263Z #2 ...
+build-and-push	Build and push Docker image	2025-08-26T14:26:42.8388516Z 
+build-and-push	Build and push Docker image	2025-08-26T14:26:42.8388793Z #3 [auth] library/openjdk:pull token for registry-1.docker.io
+build-and-push	Build and push Docker image	2025-08-26T14:26:42.8389255Z #3 DONE 0.0s
+build-and-push	Build and push Docker image	2025-08-26T14:26:42.8389409Z 
+build-and-push	Build and push Docker image	2025-08-26T14:26:42.8389620Z #4 [auth] library/maven:pull token for registry-1.docker.io
+build-and-push	Build and push Docker image	2025-08-26T14:26:42.8390350Z #4 DONE 0.0s
+build-and-push	Build and push Docker image	2025-08-26T14:26:42.9884320Z 
+build-and-push	Build and push Docker image	2025-08-26T14:26:42.9886575Z #5 [linux/arm64 internal] load metadata for docker.io/library/maven:3.8.6-openjdk-11-slim
+build-and-push	Build and push Docker image	2025-08-26T14:26:43.6366431Z #5 DONE 1.2s
+build-and-push	Build and push Docker image	2025-08-26T14:26:43.6366751Z 
+build-and-push	Build and push Docker image	2025-08-26T14:26:43.6367178Z #6 [linux/amd64 internal] load metadata for docker.io/library/openjdk:11-jre-slim
+build-and-push	Build and push Docker image	2025-08-26T14:26:43.8827802Z #6 DONE 1.3s
+build-and-push	Build and push Docker image	2025-08-26T14:26:43.8828046Z 
+build-and-push	Build and push Docker image	2025-08-26T14:26:43.8828523Z #2 [linux/amd64 internal] load metadata for docker.io/library/maven:3.8.6-openjdk-11-slim
+build-and-push	Build and push Docker image	2025-08-26T14:26:43.8829091Z #2 DONE 1.2s
+build-and-push	Build and push Docker image	2025-08-26T14:26:43.8829223Z 
+build-and-push	Build and push Docker image	2025-08-26T14:26:43.8829336Z #7 [internal] load .dockerignore
+build-and-push	Build and push Docker image	2025-08-26T14:26:43.8829664Z #7 transferring context: 2B done
+build-and-push	Build and push Docker image	2025-08-26T14:26:43.8829943Z #7 DONE 0.0s
+build-and-push	Build and push Docker image	2025-08-26T14:26:43.8830344Z 
+build-and-push	Build and push Docker image	2025-08-26T14:26:43.8830614Z #8 [linux/arm64 internal] load metadata for docker.io/library/openjdk:11-jre-slim
+build-and-push	Build and push Docker image	2025-08-26T14:26:43.8831082Z #8 DONE 1.3s
+build-and-push	Build and push Docker image	2025-08-26T14:26:43.8831218Z 
+build-and-push	Build and push Docker image	2025-08-26T14:26:43.8831322Z #9 [internal] load build context
+build-and-push	Build and push Docker image	2025-08-26T14:26:43.8831601Z #9 DONE 0.0s
+build-and-push	Build and push Docker image	2025-08-26T14:26:43.8831722Z 
+build-and-push	Build and push Docker image	2025-08-26T14:26:43.8832260Z #10 [linux/arm64 stage-1 1/6] FROM docker.io/library/openjdk:11-jre-slim@sha256:93af7df2308c5141a751c4830e6b6c5717db102b3b31f012ea29d842dc4f2b02
+build-and-push	Build and push Docker image	2025-08-26T14:26:43.8833413Z #10 resolve docker.io/library/openjdk:11-jre-slim@sha256:93af7df2308c5141a751c4830e6b6c5717db102b3b31f012ea29d842dc4f2b02 done
+build-and-push	Build and push Docker image	2025-08-26T14:26:43.8834083Z #10 DONE 0.0s
+build-and-push	Build and push Docker image	2025-08-26T14:26:43.8834209Z 
+build-and-push	Build and push Docker image	2025-08-26T14:26:43.8834760Z #11 [linux/amd64 build 1/9] FROM docker.io/library/maven:3.8.6-openjdk-11-slim@sha256:2cb7c73ba2fd0f7ae64cfabd99180030ec85841a1197b4ae821d21836cb0aa3b
+build-and-push	Build and push Docker image	2025-08-26T14:26:43.8835913Z #11 resolve docker.io/library/maven:3.8.6-openjdk-11-slim@sha256:2cb7c73ba2fd0f7ae64cfabd99180030ec85841a1197b4ae821d21836cb0aa3b done
+build-and-push	Build and push Docker image	2025-08-26T14:26:43.8836624Z #11 DONE 0.0s
+build-and-push	Build and push Docker image	2025-08-26T14:26:43.8836757Z 
+build-and-push	Build and push Docker image	2025-08-26T14:26:43.8837312Z #12 [linux/arm64 build 1/9] FROM docker.io/library/maven:3.8.6-openjdk-11-slim@sha256:2cb7c73ba2fd0f7ae64cfabd99180030ec85841a1197b4ae821d21836cb0aa3b
+build-and-push	Build and push Docker image	2025-08-26T14:26:43.8838507Z #12 resolve docker.io/library/maven:3.8.6-openjdk-11-slim@sha256:2cb7c73ba2fd0f7ae64cfabd99180030ec85841a1197b4ae821d21836cb0aa3b 0.0s done
+build-and-push	Build and push Docker image	2025-08-26T14:26:43.8839239Z #12 DONE 0.0s
+build-and-push	Build and push Docker image	2025-08-26T14:26:43.8839369Z 
+build-and-push	Build and push Docker image	2025-08-26T14:26:43.8839896Z #13 [linux/amd64 stage-1 1/6] FROM docker.io/library/openjdk:11-jre-slim@sha256:93af7df2308c5141a751c4830e6b6c5717db102b3b31f012ea29d842dc4f2b02
+build-and-push	Build and push Docker image	2025-08-26T14:26:43.8841001Z #13 resolve docker.io/library/openjdk:11-jre-slim@sha256:93af7df2308c5141a751c4830e6b6c5717db102b3b31f012ea29d842dc4f2b02 0.0s done
+build-and-push	Build and push Docker image	2025-08-26T14:26:43.8841528Z #13 DONE 0.0s
+build-and-push	Build and push Docker image	2025-08-26T14:26:43.8841628Z 
+build-and-push	Build and push Docker image	2025-08-26T14:26:43.8841909Z #14 importing cache manifest from ***/plantuml-server:buildcache
+build-and-push	Build and push Docker image	2025-08-26T14:26:44.1735715Z #14 ...
+build-and-push	Build and push Docker image	2025-08-26T14:26:44.1735933Z 
+build-and-push	Build and push Docker image	2025-08-26T14:26:44.1736319Z #15 [auth] ***/plantuml-server:pull token for registry-1.docker.io
+build-and-push	Build and push Docker image	2025-08-26T14:26:44.1736740Z #15 DONE 0.0s
+build-and-push	Build and push Docker image	2025-08-26T14:26:44.3238052Z 
+build-and-push	Build and push Docker image	2025-08-26T14:26:44.3238629Z #16 importing cache manifest from gha:8322686047561336587
+build-and-push	Build and push Docker image	2025-08-26T14:26:44.3889315Z #16 DONE 0.7s
+build-and-push	Build and push Docker image	2025-08-26T14:26:44.3889677Z 
+build-and-push	Build and push Docker image	2025-08-26T14:26:44.3890271Z #14 importing cache manifest from ***/plantuml-server:buildcache
+build-and-push	Build and push Docker image	2025-08-26T14:26:44.5618000Z #14 inferred cache manifest type: application/vnd.oci.image.manifest.v1+json done
+build-and-push	Build and push Docker image	2025-08-26T14:26:45.1478412Z #14 DONE 1.4s
+build-and-push	Build and push Docker image	2025-08-26T14:26:45.3168742Z 
+build-and-push	Build and push Docker image	2025-08-26T14:26:45.3169349Z #9 [internal] load build context
+build-and-push	Build and push Docker image	2025-08-26T14:26:45.3169940Z #9 transferring context: 41.53kB done
+build-and-push	Build and push Docker image	2025-08-26T14:26:45.3170500Z #9 DONE 0.0s
+build-and-push	Build and push Docker image	2025-08-26T14:26:45.3170635Z 
+build-and-push	Build and push Docker image	2025-08-26T14:26:45.3170770Z #17 [linux/arm64 build 3/9] COPY pom.xml .
+build-and-push	Build and push Docker image	2025-08-26T14:26:45.3171186Z #17 CACHED
+build-and-push	Build and push Docker image	2025-08-26T14:26:45.3171312Z 
+build-and-push	Build and push Docker image	2025-08-26T14:26:45.3171424Z #18 [linux/arm64 stage-1 4/6] WORKDIR /app
+build-and-push	Build and push Docker image	2025-08-26T14:26:45.3171724Z #18 CACHED
+build-and-push	Build and push Docker image	2025-08-26T14:26:45.3171840Z 
+build-and-push	Build and push Docker image	2025-08-26T14:26:45.3171961Z #19 [linux/arm64 build 8/9] COPY src/ src/
+build-and-push	Build and push Docker image	2025-08-26T14:26:45.3172250Z #19 CACHED
+build-and-push	Build and push Docker image	2025-08-26T14:26:45.3172371Z 
+build-and-push	Build and push Docker image	2025-08-26T14:26:45.3172671Z #20 [linux/arm64 stage-1 5/6] COPY --from=build --chown=1001:root /app/target/quarkus-app/ ./
+build-and-push	Build and push Docker image	2025-08-26T14:26:45.3173722Z #20 CACHED
+build-and-push	Build and push Docker image	2025-08-26T14:26:45.3173837Z 
+build-and-push	Build and push Docker image	2025-08-26T14:26:45.3174550Z #21 [linux/arm64 stage-1 2/6] RUN apt-get update &&     apt-get install -y     fontconfig     fonts-dejavu-core     fonts-liberation     curl     && rm -rf /var/lib/apt/lists/*
+build-and-push	Build and push Docker image	2025-08-26T14:26:45.3175321Z #21 CACHED
+build-and-push	Build and push Docker image	2025-08-26T14:26:45.3175443Z 
+build-and-push	Build and push Docker image	2025-08-26T14:26:45.3175618Z #22 [linux/arm64 build 7/9] RUN mvn dependency:go-offline -B
+build-and-push	Build and push Docker image	2025-08-26T14:26:45.3176001Z #22 CACHED
+build-and-push	Build and push Docker image	2025-08-26T14:26:45.3176116Z 
+build-and-push	Build and push Docker image	2025-08-26T14:26:45.3176237Z #23 [linux/arm64 build 4/9] COPY .mvn/ .mvn/
+build-and-push	Build and push Docker image	2025-08-26T14:26:45.3176549Z #23 CACHED
+build-and-push	Build and push Docker image	2025-08-26T14:26:45.3176663Z 
+build-and-push	Build and push Docker image	2025-08-26T14:26:45.3176777Z #24 [linux/arm64 build 2/9] WORKDIR /app
+build-and-push	Build and push Docker image	2025-08-26T14:26:45.3177058Z #24 CACHED
+build-and-push	Build and push Docker image	2025-08-26T14:26:45.3177164Z 
+build-and-push	Build and push Docker image	2025-08-26T14:26:45.3177257Z #25 [linux/arm64 build 5/9] COPY mvnw .
+build-and-push	Build and push Docker image	2025-08-26T14:26:45.3177510Z #25 CACHED
+build-and-push	Build and push Docker image	2025-08-26T14:26:45.3177610Z 
+build-and-push	Build and push Docker image	2025-08-26T14:26:45.3177709Z #26 [linux/arm64 build 6/9] COPY mvnw.cmd .
+build-and-push	Build and push Docker image	2025-08-26T14:26:45.3177989Z #26 CACHED
+build-and-push	Build and push Docker image	2025-08-26T14:26:45.3178086Z 
+build-and-push	Build and push Docker image	2025-08-26T14:26:45.3178270Z #27 [linux/arm64 stage-1 3/6] RUN useradd -r -u 1001 -g root appuser
+build-and-push	Build and push Docker image	2025-08-26T14:26:45.3178601Z #27 CACHED
+build-and-push	Build and push Docker image	2025-08-26T14:26:45.3178704Z 
+build-and-push	Build and push Docker image	2025-08-26T14:26:45.3178872Z #28 [linux/arm64 build 9/9] RUN mvn clean package -DskipTests -B
+build-and-push	Build and push Docker image	2025-08-26T14:26:45.3179209Z #28 CACHED
+build-and-push	Build and push Docker image	2025-08-26T14:26:45.3179308Z 
+build-and-push	Build and push Docker image	2025-08-26T14:26:45.3179414Z #29 [linux/amd64 build 3/9] COPY pom.xml .
+build-and-push	Build and push Docker image	2025-08-26T14:26:45.3179678Z #29 CACHED
+build-and-push	Build and push Docker image	2025-08-26T14:26:45.3179785Z 
+build-and-push	Build and push Docker image	2025-08-26T14:26:45.3180267Z #30 [linux/amd64 stage-1 5/6] COPY --from=build --chown=1001:root /app/target/quarkus-app/ ./
+build-and-push	Build and push Docker image	2025-08-26T14:26:45.3180727Z #30 CACHED
+build-and-push	Build and push Docker image	2025-08-26T14:26:45.3180828Z 
+build-and-push	Build and push Docker image	2025-08-26T14:26:45.3180923Z #31 [linux/amd64 stage-1 4/6] WORKDIR /app
+build-and-push	Build and push Docker image	2025-08-26T14:26:45.3181187Z #31 CACHED
+build-and-push	Build and push Docker image	2025-08-26T14:26:45.3181284Z 
+build-and-push	Build and push Docker image	2025-08-26T14:26:45.3181386Z #32 [linux/amd64 build 2/9] WORKDIR /app
+build-and-push	Build and push Docker image	2025-08-26T14:26:45.3181637Z #32 CACHED
+build-and-push	Build and push Docker image	2025-08-26T14:26:45.3181757Z 
+build-and-push	Build and push Docker image	2025-08-26T14:26:45.3181925Z #33 [linux/amd64 stage-1 3/6] RUN useradd -r -u 1001 -g root appuser
+build-and-push	Build and push Docker image	2025-08-26T14:26:45.3182269Z #33 CACHED
+build-and-push	Build and push Docker image	2025-08-26T14:26:45.3182367Z 
+build-and-push	Build and push Docker image	2025-08-26T14:26:45.3182469Z #34 [linux/amd64 build 8/9] COPY src/ src/
+build-and-push	Build and push Docker image	2025-08-26T14:26:45.3182720Z #34 CACHED
+build-and-push	Build and push Docker image	2025-08-26T14:26:45.3182821Z 
+build-and-push	Build and push Docker image	2025-08-26T14:26:45.3182922Z #35 [linux/amd64 build 6/9] COPY mvnw.cmd .
+build-and-push	Build and push Docker image	2025-08-26T14:26:45.3183178Z #35 CACHED
+build-and-push	Build and push Docker image	2025-08-26T14:26:45.3183274Z 
+build-and-push	Build and push Docker image	2025-08-26T14:26:45.3183438Z #36 [linux/amd64 build 9/9] RUN mvn clean package -DskipTests -B
+build-and-push	Build and push Docker image	2025-08-26T14:26:45.3183769Z #36 CACHED
+build-and-push	Build and push Docker image	2025-08-26T14:26:45.3183866Z 
+build-and-push	Build and push Docker image	2025-08-26T14:26:45.3183964Z #37 [linux/amd64 build 5/9] COPY mvnw .
+build-and-push	Build and push Docker image	2025-08-26T14:26:45.3184211Z #37 CACHED
+build-and-push	Build and push Docker image	2025-08-26T14:26:45.3184311Z 
+build-and-push	Build and push Docker image	2025-08-26T14:26:45.3184413Z #38 [linux/amd64 build 4/9] COPY .mvn/ .mvn/
+build-and-push	Build and push Docker image	2025-08-26T14:26:45.3184671Z #38 CACHED
+build-and-push	Build and push Docker image	2025-08-26T14:26:45.3184768Z 
+build-and-push	Build and push Docker image	2025-08-26T14:26:45.3184920Z #39 [linux/amd64 build 7/9] RUN mvn dependency:go-offline -B
+build-and-push	Build and push Docker image	2025-08-26T14:26:45.3185233Z #39 CACHED
+build-and-push	Build and push Docker image	2025-08-26T14:26:45.3185350Z 
+build-and-push	Build and push Docker image	2025-08-26T14:26:45.3185839Z #40 [linux/amd64 stage-1 2/6] RUN apt-get update &&     apt-get install -y     fontconfig     fonts-dejavu-core     fonts-liberation     curl     && rm -rf /var/lib/apt/lists/*
+build-and-push	Build and push Docker image	2025-08-26T14:26:45.3186514Z #40 CACHED
+build-and-push	Build and push Docker image	2025-08-26T14:26:45.3186613Z 
+build-and-push	Build and push Docker image	2025-08-26T14:26:45.3186736Z #41 [linux/amd64 stage-1 6/6] RUN chmod -R g+w /app
+build-and-push	Build and push Docker image	2025-08-26T14:26:45.4096541Z #41 ...
+build-and-push	Build and push Docker image	2025-08-26T14:26:45.4097312Z 
+build-and-push	Build and push Docker image	2025-08-26T14:26:45.4097543Z #42 [linux/arm64 stage-1 6/6] RUN chmod -R g+w /app
+build-and-push	Build and push Docker image	2025-08-26T14:26:45.4097935Z #42 CACHED
+build-and-push	Build and push Docker image	2025-08-26T14:26:45.5604748Z 
+build-and-push	Build and push Docker image	2025-08-26T14:26:45.5605307Z #41 [linux/amd64 stage-1 6/6] RUN chmod -R g+w /app
+build-and-push	Build and push Docker image	2025-08-26T14:26:45.5605667Z #41 CACHED
+build-and-push	Build and push Docker image	2025-08-26T14:26:45.5605779Z 
+build-and-push	Build and push Docker image	2025-08-26T14:26:45.5606138Z #43 [auth] ***/plantuml-server:pull,push token for registry-1.docker.io
+build-and-push	Build and push Docker image	2025-08-26T14:26:45.7111326Z #43 DONE 0.0s
+build-and-push	Build and push Docker image	2025-08-26T14:26:45.7111585Z 
+build-and-push	Build and push Docker image	2025-08-26T14:26:45.7111708Z #44 exporting to image
+build-and-push	Build and push Docker image	2025-08-26T14:26:45.7112525Z #44 exporting layers done
+build-and-push	Build and push Docker image	2025-08-26T14:26:45.7113339Z #44 exporting manifest sha256:ba552dfab888360f40e76abc583f9ddfded1bf8a27edb89a10ab6b738e342315 done
+build-and-push	Build and push Docker image	2025-08-26T14:26:45.7114355Z #44 exporting config sha256:9fd308b0bd7bc45dfd96035fcf658f43bcdf5aaa37aca500278b705c1263a0a7 done
+build-and-push	Build and push Docker image	2025-08-26T14:26:45.7115238Z #44 exporting attestation manifest sha256:2c34f55d33b41db1155470b4c198a89421e6f197357389a06268826995054a02 done
+build-and-push	Build and push Docker image	2025-08-26T14:26:45.7116114Z #44 exporting manifest sha256:d5447f28b56e1ed7e0be00b309db31ffaf56373a5f98e883f09691220249d3e3 done
+build-and-push	Build and push Docker image	2025-08-26T14:26:45.7116936Z #44 exporting config sha256:03d53981df15b83e95a9236ee77b880a2ab9c6bb1eda25e148ace2eda61e7ca8 done
+build-and-push	Build and push Docker image	2025-08-26T14:26:45.7117823Z #44 exporting attestation manifest sha256:8cce0a7461e82e49a9e52631b9279cbaadb20a83da0e7c1aa019f6e5c81a5252 done
+build-and-push	Build and push Docker image	2025-08-26T14:26:45.7118726Z #44 exporting manifest list sha256:726372499ba7f336ade39578640e44dc6e5d0479d6d61ffcd4771578851da880 done
+build-and-push	Build and push Docker image	2025-08-26T14:26:45.7119298Z #44 pushing layers
+build-and-push	Build and push Docker image	2025-08-26T14:26:48.2506749Z #44 pushing layers 2.8s done
+build-and-push	Build and push Docker image	2025-08-26T14:26:48.2507977Z #44 pushing manifest for docker.io/***/plantuml-server:main@sha256:726372499ba7f336ade39578640e44dc6e5d0479d6d61ffcd4771578851da880
+build-and-push	Build and push Docker image	2025-08-26T14:26:52.2420299Z #44 pushing manifest for docker.io/***/plantuml-server:main@sha256:726372499ba7f336ade39578640e44dc6e5d0479d6d61ffcd4771578851da880 4.0s done
+build-and-push	Build and push Docker image	2025-08-26T14:26:54.1055097Z #44 pushing layers 1.9s done
+build-and-push	Build and push Docker image	2025-08-26T14:26:54.1056328Z #44 pushing manifest for docker.io/***/plantuml-server:latest@sha256:726372499ba7f336ade39578640e44dc6e5d0479d6d61ffcd4771578851da880
+build-and-push	Build and push Docker image	2025-08-26T14:26:55.2772626Z #44 pushing manifest for docker.io/***/plantuml-server:latest@sha256:726372499ba7f336ade39578640e44dc6e5d0479d6d61ffcd4771578851da880 1.2s done
+build-and-push	Build and push Docker image	2025-08-26T14:26:55.2773979Z #44 DONE 9.9s
+build-and-push	Build and push Docker image	2025-08-26T14:26:55.2774215Z 
+build-and-push	Build and push Docker image	2025-08-26T14:26:55.2774390Z #45 exporting cache to registry
+build-and-push	Build and push Docker image	2025-08-26T14:26:55.2774802Z #45 preparing build cache for export
+build-and-push	Build and push Docker image	2025-08-26T14:26:56.6094963Z #45 writing layer sha256:00f0d7b57a061557f71acd15418aec767b9dcdb3625b84f9f624697915de92dd
+build-and-push	Build and push Docker image	2025-08-26T14:26:57.0853894Z #45 writing layer sha256:00f0d7b57a061557f71acd15418aec767b9dcdb3625b84f9f624697915de92dd 0.5s done
+build-and-push	Build and push Docker image	2025-08-26T14:26:57.0855192Z #45 writing layer sha256:10420ad9b7fb473f7e28f70ef3bd953f8d0efbcd87347f68e5e5186a996479d4
+build-and-push	Build and push Docker image	2025-08-26T14:26:57.4567177Z #45 writing layer sha256:10420ad9b7fb473f7e28f70ef3bd953f8d0efbcd87347f68e5e5186a996479d4 0.4s done
+build-and-push	Build and push Docker image	2025-08-26T14:26:57.4568405Z #45 writing layer sha256:12cca292b13cb58fadde25af113ddc4ac3b0c5e39ab3f1290a6ba62ec8237afd
+build-and-push	Build and push Docker image	2025-08-26T14:26:57.6952325Z #45 writing layer sha256:12cca292b13cb58fadde25af113ddc4ac3b0c5e39ab3f1290a6ba62ec8237afd 0.2s done
+build-and-push	Build and push Docker image	2025-08-26T14:26:57.6953323Z #45 writing layer sha256:1310610103ed4f55401647d4332308f05925d6f7f88da2a70d0da8dcbb0b6ccb
+build-and-push	Build and push Docker image	2025-08-26T14:26:58.1534999Z #45 writing layer sha256:1310610103ed4f55401647d4332308f05925d6f7f88da2a70d0da8dcbb0b6ccb 0.5s done
+build-and-push	Build and push Docker image	2025-08-26T14:26:58.1536187Z #45 writing layer sha256:1551655757a503c694a9b9e61a5e978e5b0fd06bcd7693c97ec6525c0f350dd7
+build-and-push	Build and push Docker image	2025-08-26T14:26:58.7506906Z #45 writing layer sha256:1551655757a503c694a9b9e61a5e978e5b0fd06bcd7693c97ec6525c0f350dd7 0.6s done
+build-and-push	Build and push Docker image	2025-08-26T14:26:58.7508112Z #45 writing layer sha256:164a7d2c14a8dca8fe4465ec762ec2a0b3b99f7abf426c42f10f7316e56ae760
+build-and-push	Build and push Docker image	2025-08-26T14:26:58.9639929Z #45 writing layer sha256:164a7d2c14a8dca8fe4465ec762ec2a0b3b99f7abf426c42f10f7316e56ae760 0.2s done
+build-and-push	Build and push Docker image	2025-08-26T14:26:58.9641024Z #45 writing layer sha256:173acebb253a6c00035f13f464a4ce2f7bc46fd308d9f33d6eab78a203f8e765
+build-and-push	Build and push Docker image	2025-08-26T14:26:59.4206644Z #45 writing layer sha256:173acebb253a6c00035f13f464a4ce2f7bc46fd308d9f33d6eab78a203f8e765 0.5s done
+build-and-push	Build and push Docker image	2025-08-26T14:26:59.4207758Z #45 writing layer sha256:19ba18028d207db445a99a5055cf79c9b776a6cb83d2c6de64e1c9991db1a8c7
+build-and-push	Build and push Docker image	2025-08-26T14:26:59.6646938Z #45 writing layer sha256:19ba18028d207db445a99a5055cf79c9b776a6cb83d2c6de64e1c9991db1a8c7 0.2s done
+build-and-push	Build and push Docker image	2025-08-26T14:26:59.6648713Z #45 writing layer sha256:1e0d2c8e5d478207cfaaba9b3f57f7514e3a265e39ba1eb0e7aab16936365e9c
+build-and-push	Build and push Docker image	2025-08-26T14:26:59.9183496Z #45 writing layer sha256:1e0d2c8e5d478207cfaaba9b3f57f7514e3a265e39ba1eb0e7aab16936365e9c 0.3s done
+build-and-push	Build and push Docker image	2025-08-26T14:26:59.9184700Z #45 writing layer sha256:1efc276f4ff952c055dea726cfc96ec6a4fdb8b62d9eed816bd2b788f2860ad7
+build-and-push	Build and push Docker image	2025-08-26T14:27:00.1913173Z #45 writing layer sha256:1efc276f4ff952c055dea726cfc96ec6a4fdb8b62d9eed816bd2b788f2860ad7 0.3s done
+build-and-push	Build and push Docker image	2025-08-26T14:27:00.1914173Z #45 writing layer sha256:200aad2b1897c246627d9f75d1fc6764981be20eb6546f79fac329e6282ae197
+build-and-push	Build and push Docker image	2025-08-26T14:27:00.5635749Z #45 writing layer sha256:200aad2b1897c246627d9f75d1fc6764981be20eb6546f79fac329e6282ae197 0.4s done
+build-and-push	Build and push Docker image	2025-08-26T14:27:00.5636948Z #45 writing layer sha256:23c309dd72872140aba8f5ea504b9dfa506684f904c77405ceba5d1760920524
+build-and-push	Build and push Docker image	2025-08-26T14:27:00.8319602Z #45 writing layer sha256:23c309dd72872140aba8f5ea504b9dfa506684f904c77405ceba5d1760920524 0.3s done
+build-and-push	Build and push Docker image	2025-08-26T14:27:00.8320918Z #45 writing layer sha256:24f5ecdc036c6a046496856b88100c2777aaaeff6ea8b8a1de9cb6180b01567e
+build-and-push	Build and push Docker image	2025-08-26T14:27:01.1470594Z #45 writing layer sha256:24f5ecdc036c6a046496856b88100c2777aaaeff6ea8b8a1de9cb6180b01567e 0.3s done
+build-and-push	Build and push Docker image	2025-08-26T14:27:01.1471616Z #45 writing layer sha256:2e5cdf10799f6a80595351a5407c2f3d886b5339035c643a36b8261eb749f269
+build-and-push	Build and push Docker image	2025-08-26T14:27:01.3663369Z #45 writing layer sha256:2e5cdf10799f6a80595351a5407c2f3d886b5339035c643a36b8261eb749f269 0.2s done
+build-and-push	Build and push Docker image	2025-08-26T14:27:01.3664301Z #45 writing layer sha256:317b5cb1f94c3962ed7c4e1d39c364c99d92facc49bd07d4d07c856f22c895e3
+build-and-push	Build and push Docker image	2025-08-26T14:27:01.7508369Z #45 writing layer sha256:317b5cb1f94c3962ed7c4e1d39c364c99d92facc49bd07d4d07c856f22c895e3 0.4s done
+build-and-push	Build and push Docker image	2025-08-26T14:27:01.7509247Z #45 writing layer sha256:3290ca025a376fff9294bbaf49e359dc6447da90e14a41d33cc094a093942a58
+build-and-push	Build and push Docker image	2025-08-26T14:27:01.9150943Z #45 ...
+build-and-push	Build and push Docker image	2025-08-26T14:27:01.9151241Z 
+build-and-push	Build and push Docker image	2025-08-26T14:27:01.9151441Z #46 exporting to GitHub Actions Cache
+build-and-push	Build and push Docker image	2025-08-26T14:27:01.9151987Z #46 preparing build cache for export 6.6s done
+build-and-push	Build and push Docker image	2025-08-26T14:27:01.9152333Z #46 DONE 6.6s
+build-and-push	Build and push Docker image	2025-08-26T14:27:02.0184067Z 
+build-and-push	Build and push Docker image	2025-08-26T14:27:02.0185192Z #45 exporting cache to registry
+build-and-push	Build and push Docker image	2025-08-26T14:27:02.0186033Z #45 writing layer sha256:3290ca025a376fff9294bbaf49e359dc6447da90e14a41d33cc094a093942a58 0.3s done
+build-and-push	Build and push Docker image	2025-08-26T14:27:02.0186825Z #45 writing layer sha256:4015b6e8cc8db11af172df5c0369552bc2a74cd69094b0756d21fc6b0b2a5393
+build-and-push	Build and push Docker image	2025-08-26T14:27:02.2895026Z #45 writing layer sha256:4015b6e8cc8db11af172df5c0369552bc2a74cd69094b0756d21fc6b0b2a5393 0.3s done
+build-and-push	Build and push Docker image	2025-08-26T14:27:02.2895947Z #45 writing layer sha256:422510157c319016412d9d6e44c8c4f44c8be6d308894f999fb3362f3866c525
+build-and-push	Build and push Docker image	2025-08-26T14:27:02.8418328Z #45 writing layer sha256:422510157c319016412d9d6e44c8c4f44c8be6d308894f999fb3362f3866c525 0.6s done
+build-and-push	Build and push Docker image	2025-08-26T14:27:02.8419382Z #45 writing layer sha256:4ea345e90dc33448725856890f2f43f903bfd156fe2b75f8df2f35376e28e3a0
+build-and-push	Build and push Docker image	2025-08-26T14:27:03.1449327Z #45 writing layer sha256:4ea345e90dc33448725856890f2f43f903bfd156fe2b75f8df2f35376e28e3a0 0.3s done
+build-and-push	Build and push Docker image	2025-08-26T14:27:03.1450738Z #45 writing layer sha256:569e4a9126249e1206bc894df2faa48df44655bc822121e2e6beef8331d2c304
+build-and-push	Build and push Docker image	2025-08-26T14:27:03.3563868Z #45 writing layer sha256:569e4a9126249e1206bc894df2faa48df44655bc822121e2e6beef8331d2c304 0.2s done
+build-and-push	Build and push Docker image	2025-08-26T14:27:03.3565064Z #45 writing layer sha256:578079fbf7e898fa411cf4a42cefaae0619ad9ab9de4835933f6dd416a4f66b5
+build-and-push	Build and push Docker image	2025-08-26T14:27:03.5834179Z #45 writing layer sha256:578079fbf7e898fa411cf4a42cefaae0619ad9ab9de4835933f6dd416a4f66b5 0.2s done
+build-and-push	Build and push Docker image	2025-08-26T14:27:03.5835090Z #45 writing layer sha256:5e8df94248cfc56b40d896855ef271976224c34fbfbe8a456006be727a3635c0
+build-and-push	Build and push Docker image	2025-08-26T14:27:03.8347363Z #45 writing layer sha256:5e8df94248cfc56b40d896855ef271976224c34fbfbe8a456006be727a3635c0 0.3s done
+build-and-push	Build and push Docker image	2025-08-26T14:27:03.8348614Z #45 writing layer sha256:605b2bfb5ae9e78e2eab41e0246efb1bee52ac9f64f8331e22654553cc1f5dec
+build-and-push	Build and push Docker image	2025-08-26T14:27:04.0592463Z #45 writing layer sha256:605b2bfb5ae9e78e2eab41e0246efb1bee52ac9f64f8331e22654553cc1f5dec 0.2s done
+build-and-push	Build and push Docker image	2025-08-26T14:27:04.0593535Z #45 writing layer sha256:67bb199ccd21aae27e65fc6aeacbe042f980c258baeaba96ae01a35d677be3f6
+build-and-push	Build and push Docker image	2025-08-26T14:27:04.3031457Z #45 writing layer sha256:67bb199ccd21aae27e65fc6aeacbe042f980c258baeaba96ae01a35d677be3f6 0.2s done
+build-and-push	Build and push Docker image	2025-08-26T14:27:04.3032831Z #45 writing layer sha256:69e15dccd787ba2cfe67f6abf5970ed88a5e019efbb499e499da3ab20b85fcc7
+build-and-push	Build and push Docker image	2025-08-26T14:27:04.5532007Z #45 writing layer sha256:69e15dccd787ba2cfe67f6abf5970ed88a5e019efbb499e499da3ab20b85fcc7 0.3s done
+build-and-push	Build and push Docker image	2025-08-26T14:27:04.5532988Z #45 writing layer sha256:7511d1fd910b64bf9d6f6e1a47b02b259cb6dbc0b601c5cdd797b3017d054e2b
+build-and-push	Build and push Docker image	2025-08-26T14:27:04.8415038Z #45 writing layer sha256:7511d1fd910b64bf9d6f6e1a47b02b259cb6dbc0b601c5cdd797b3017d054e2b 0.3s done
+build-and-push	Build and push Docker image	2025-08-26T14:27:04.8416503Z #45 writing layer sha256:8794653c8b3384fdabc2147f6dea9eda9667798b32384cbe9fda7be4492a9956
+build-and-push	Build and push Docker image	2025-08-26T14:27:05.3585498Z #45 writing layer sha256:8794653c8b3384fdabc2147f6dea9eda9667798b32384cbe9fda7be4492a9956 0.5s done
+build-and-push	Build and push Docker image	2025-08-26T14:27:05.3586731Z #45 writing layer sha256:934879491e12569612b9966868e6a460dc317af175b9ca072cf00bf28e6f6b70
+build-and-push	Build and push Docker image	2025-08-26T14:27:05.8590809Z #45 writing layer sha256:934879491e12569612b9966868e6a460dc317af175b9ca072cf00bf28e6f6b70 0.5s done
+build-and-push	Build and push Docker image	2025-08-26T14:27:05.8591737Z #45 writing layer sha256:9b1756852623a9eb9cd0062c32010d863317b16dad1d840ab041824bea98b336
+build-and-push	Build and push Docker image	2025-08-26T14:27:06.0986551Z #45 writing layer sha256:9b1756852623a9eb9cd0062c32010d863317b16dad1d840ab041824bea98b336 0.2s done
+build-and-push	Build and push Docker image	2025-08-26T14:27:06.0987573Z #45 writing layer sha256:9cc49a3cb4e50fc134da6a18f0750783a2bfe0efd917e179e463a195754c11ce
+build-and-push	Build and push Docker image	2025-08-26T14:27:06.3962155Z #45 writing layer sha256:9cc49a3cb4e50fc134da6a18f0750783a2bfe0efd917e179e463a195754c11ce 0.3s done
+build-and-push	Build and push Docker image	2025-08-26T14:27:06.3963028Z #45 writing layer sha256:9d40e7f113d50c4e90b346945076526b0ab7c74c71d5eb62cf2900e4be4b8253
+build-and-push	Build and push Docker image	2025-08-26T14:27:06.8910272Z #45 writing layer sha256:9d40e7f113d50c4e90b346945076526b0ab7c74c71d5eb62cf2900e4be4b8253 0.5s done
+build-and-push	Build and push Docker image	2025-08-26T14:27:06.8911204Z #45 writing layer sha256:a2f2f93da48276873890ac821b3c991d53a7e864791aaf82c39b7863c908b93b
+build-and-push	Build and push Docker image	2025-08-26T14:27:07.1252880Z #45 writing layer sha256:a2f2f93da48276873890ac821b3c991d53a7e864791aaf82c39b7863c908b93b 0.2s done
+build-and-push	Build and push Docker image	2025-08-26T14:27:07.1253941Z #45 writing layer sha256:a506ad72a1371ffaa7f5b04ebee073cf58f777f016e3fb067e9a05a4b851229d
+build-and-push	Build and push Docker image	2025-08-26T14:27:07.6564086Z #45 writing layer sha256:a506ad72a1371ffaa7f5b04ebee073cf58f777f016e3fb067e9a05a4b851229d 0.5s done
+build-and-push	Build and push Docker image	2025-08-26T14:27:07.6565142Z #45 writing layer sha256:a74ef7ba120b549a1fa6ed992103cb2f79d1a5a2724a4871c163cca6dc8f6dc2
+build-and-push	Build and push Docker image	2025-08-26T14:27:07.9031552Z #45 writing layer sha256:a74ef7ba120b549a1fa6ed992103cb2f79d1a5a2724a4871c163cca6dc8f6dc2 0.2s done
+build-and-push	Build and push Docker image	2025-08-26T14:27:07.9032642Z #45 writing layer sha256:a77eebc22683fb1294a8a5def4cb1d6955ca5ce9a8ddaf57d8eb988b859555b4
+build-and-push	Build and push Docker image	2025-08-26T14:27:08.4327757Z #45 writing layer sha256:a77eebc22683fb1294a8a5def4cb1d6955ca5ce9a8ddaf57d8eb988b859555b4 0.5s done
+build-and-push	Build and push Docker image	2025-08-26T14:27:08.4328764Z #45 writing layer sha256:a9fe95647e78b5516c7e2327355b6996e2ea295cd76ae242cbfe87f016b4e760
+build-and-push	Build and push Docker image	2025-08-26T14:27:08.7110404Z #45 writing layer sha256:a9fe95647e78b5516c7e2327355b6996e2ea295cd76ae242cbfe87f016b4e760 0.3s done
+build-and-push	Build and push Docker image	2025-08-26T14:27:08.7111458Z #45 writing layer sha256:ab9058b1458a5c7fbdf7c8eb4bcdfd72dd45390c38c7202d1b7c4a614979ebf5
+build-and-push	Build and push Docker image	2025-08-26T14:27:09.2271843Z #45 writing layer sha256:ab9058b1458a5c7fbdf7c8eb4bcdfd72dd45390c38c7202d1b7c4a614979ebf5 0.5s done
+build-and-push	Build and push Docker image	2025-08-26T14:27:09.2272790Z #45 writing layer sha256:b0d7f601ed347b0973a73476491b4a59956272a478e6d7ade323b3187a2718f3
+build-and-push	Build and push Docker image	2025-08-26T14:27:09.5008207Z #45 writing layer sha256:b0d7f601ed347b0973a73476491b4a59956272a478e6d7ade323b3187a2718f3 0.3s done
+build-and-push	Build and push Docker image	2025-08-26T14:27:09.5009083Z #45 writing layer sha256:c2b5cec712a7bb60c59374437aa45acec9bcf99ecf4cf88058dac6d628b35fd1
+build-and-push	Build and push Docker image	2025-08-26T14:27:10.0063141Z #45 writing layer sha256:c2b5cec712a7bb60c59374437aa45acec9bcf99ecf4cf88058dac6d628b35fd1 0.5s done
+build-and-push	Build and push Docker image	2025-08-26T14:27:10.0064313Z #45 writing layer sha256:cb2ba35bf9bdadc9ccbc1462d8510cdcac1c9ff48fdecd86c2488a07ba043fb1
+build-and-push	Build and push Docker image	2025-08-26T14:27:10.2603497Z #45 writing layer sha256:cb2ba35bf9bdadc9ccbc1462d8510cdcac1c9ff48fdecd86c2488a07ba043fb1 0.3s done
+build-and-push	Build and push Docker image	2025-08-26T14:27:10.2604930Z #45 writing layer sha256:cd6bbc08db9a1c540f54f781cc10d2d659c24c31a450599cf4e87b0d62e585a1
+build-and-push	Build and push Docker image	2025-08-26T14:27:10.5138979Z #45 writing layer sha256:cd6bbc08db9a1c540f54f781cc10d2d659c24c31a450599cf4e87b0d62e585a1 0.3s done
+build-and-push	Build and push Docker image	2025-08-26T14:27:10.5139934Z #45 writing layer sha256:d418f83c9a1d0e70e7c1eacbdc01f58fc7fc83805e090aa41205e60b59bed169
+build-and-push	Build and push Docker image	2025-08-26T14:27:10.7609825Z #45 writing layer sha256:d418f83c9a1d0e70e7c1eacbdc01f58fc7fc83805e090aa41205e60b59bed169 done
+build-and-push	Build and push Docker image	2025-08-26T14:27:10.7611036Z #45 writing layer sha256:d73cf48caaac2e45ad76a2a9eb3b311d0e4eb1d804e3d2b9cf075a1fa31e6f92
+build-and-push	Build and push Docker image	2025-08-26T14:27:11.0184709Z #45 writing layer sha256:d73cf48caaac2e45ad76a2a9eb3b311d0e4eb1d804e3d2b9cf075a1fa31e6f92 0.3s done
+build-and-push	Build and push Docker image	2025-08-26T14:27:11.0185818Z #45 writing layer sha256:e4cf347c205eed5ffddbccf35448caf1e6a1a264dc196c020d47f5008197384c
+build-and-push	Build and push Docker image	2025-08-26T14:27:11.5048678Z #45 writing layer sha256:e4cf347c205eed5ffddbccf35448caf1e6a1a264dc196c020d47f5008197384c 0.5s done
+build-and-push	Build and push Docker image	2025-08-26T14:27:11.5049687Z #45 writing layer sha256:f361af981f2482db354e3422960a81bab6618d0ef4d7a21c39718a53668e1d5b
+build-and-push	Build and push Docker image	2025-08-26T14:27:11.7679420Z #45 writing layer sha256:f361af981f2482db354e3422960a81bab6618d0ef4d7a21c39718a53668e1d5b 0.3s done
+build-and-push	Build and push Docker image	2025-08-26T14:27:11.7680630Z #45 writing layer sha256:fa9a9fa03f848975da4f46c5098ef064a0e56099c8469e024c33c92f9808d471
+build-and-push	Build and push Docker image	2025-08-26T14:27:12.2736623Z #45 writing layer sha256:fa9a9fa03f848975da4f46c5098ef064a0e56099c8469e024c33c92f9808d471 0.5s done
+build-and-push	Build and push Docker image	2025-08-26T14:27:12.2737950Z #45 writing layer sha256:fd343789f78f94e3d0fa4df3267fdadbc18138ad5785aa9a8afec60ec0407136
+build-and-push	Build and push Docker image	2025-08-26T14:27:12.5373652Z #45 writing layer sha256:fd343789f78f94e3d0fa4df3267fdadbc18138ad5785aa9a8afec60ec0407136 0.3s done
+build-and-push	Build and push Docker image	2025-08-26T14:27:12.6881887Z #45 writing config sha256:4bf39c2661e3a38ec858edb69a791ce1d0e02c7e951abc11eae36dfa88230b6d
+build-and-push	Build and push Docker image	2025-08-26T14:27:13.5496008Z #45 writing config sha256:4bf39c2661e3a38ec858edb69a791ce1d0e02c7e951abc11eae36dfa88230b6d 1.0s done
+build-and-push	Build and push Docker image	2025-08-26T14:27:13.7002767Z #45 writing cache image manifest sha256:42ed9eeb46e73a8a6f288994001572248b9e768869c0eb3ff3a7360c44e8a9f1
+build-and-push	Build and push Docker image	2025-08-26T14:27:14.9853046Z #45 preparing build cache for export 19.7s done
+build-and-push	Build and push Docker image	2025-08-26T14:27:14.9854275Z #45 writing cache image manifest sha256:42ed9eeb46e73a8a6f288994001572248b9e768869c0eb3ff3a7360c44e8a9f1 1.4s done
+build-and-push	Build and push Docker image	2025-08-26T14:27:14.9855350Z #45 DONE 19.7s
+build-and-push	Build and push Docker image	2025-08-26T14:27:15.0182022Z 
+build-and-push	Build and push Docker image	2025-08-26T14:27:15.0182564Z #47 resolving provenance for metadata file
+build-and-push	Build and push Docker image	2025-08-26T14:27:15.0183026Z #47 DONE 0.0s
+build-and-push	Build and push Docker image	2025-08-26T14:27:15.0250640Z ##[group]ImageID
+build-and-push	Build and push Docker image	2025-08-26T14:27:15.0251253Z sha256:726372499ba7f336ade39578640e44dc6e5d0479d6d61ffcd4771578851da880
+build-and-push	Build and push Docker image	2025-08-26T14:27:15.0252952Z ##[endgroup]
+build-and-push	Build and push Docker image	2025-08-26T14:27:15.0253550Z ##[group]Digest
+build-and-push	Build and push Docker image	2025-08-26T14:27:15.0254121Z sha256:726372499ba7f336ade39578640e44dc6e5d0479d6d61ffcd4771578851da880
+build-and-push	Build and push Docker image	2025-08-26T14:27:15.0255042Z ##[endgroup]
+build-and-push	Build and push Docker image	2025-08-26T14:27:15.0255613Z ##[group]Metadata
+build-and-push	Build and push Docker image	2025-08-26T14:27:15.0255965Z {
+build-and-push	Build and push Docker image	2025-08-26T14:27:15.0256896Z   "buildx.build.ref": "builder-afbf82c3-2bce-40e1-b893-6237bdef0cbf/builder-afbf82c3-2bce-40e1-b893-6237bdef0cbf0/ui9yyx5u6q9w6t07d9yme9uaj",
+build-and-push	Build and push Docker image	2025-08-26T14:27:15.0258676Z   "cache.manifest": "{\"mediaType\":\"application/vnd.oci.image.manifest.v1+json\",\"digest\":\"sha256:42ed9eeb46e73a8a6f288994001572248b9e768869c0eb3ff3a7360c44e8a9f1\",\"size\":18567}",
+build-and-push	Build and push Docker image	2025-08-26T14:27:15.0259824Z   "containerimage.descriptor": {
+build-and-push	Build and push Docker image	2025-08-26T14:27:15.0260523Z     "mediaType": "application/vnd.oci.image.index.v1+json",
+build-and-push	Build and push Docker image	2025-08-26T14:27:15.0261254Z     "digest": "sha256:726372499ba7f336ade39578640e44dc6e5d0479d6d61ffcd4771578851da880",
+build-and-push	Build and push Docker image	2025-08-26T14:27:15.0261837Z     "size": 1609
+build-and-push	Build and push Docker image	2025-08-26T14:27:15.0262122Z   },
+build-and-push	Build and push Docker image	2025-08-26T14:27:15.0262707Z   "containerimage.digest": "sha256:726372499ba7f336ade39578640e44dc6e5d0479d6d61ffcd4771578851da880",
+build-and-push	Build and push Docker image	2025-08-26T14:27:15.0263862Z   "image.name": "***/plantuml-server:main,***/plantuml-server:latest"
+build-and-push	Build and push Docker image	2025-08-26T14:27:15.0264410Z }
+build-and-push	Build and push Docker image	2025-08-26T14:27:15.0264920Z ##[endgroup]
+build-and-push	Update Docker Hub description	﻿2025-08-26T14:27:15.0382861Z ##[group]Run peter-evans/dockerhub-description@v4
+build-and-push	Update Docker Hub description	2025-08-26T14:27:15.0383618Z with:
+build-and-push	Update Docker Hub description	2025-08-26T14:27:15.0383972Z   username: ***
+build-and-push	Update Docker Hub description	2025-08-26T14:27:15.0384378Z   password: ***
+build-and-push	Update Docker Hub description	2025-08-26T14:27:15.0384765Z   repository: ***/plantuml-server
+build-and-push	Update Docker Hub description	2025-08-26T14:27:15.0385184Z   readme-filepath: ./README.md
+build-and-push	Update Docker Hub description	2025-08-26T14:27:15.0385542Z env:
+build-and-push	Update Docker Hub description	2025-08-26T14:27:15.0385843Z   IMAGE_NAME: plantuml-server
+build-and-push	Update Docker Hub description	2025-08-26T14:27:15.0386417Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.16-8/x64
+build-and-push	Update Docker Hub description	2025-08-26T14:27:15.0387204Z   JAVA_HOME_17_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.16-8/x64
+build-and-push	Update Docker Hub description	2025-08-26T14:27:15.0387921Z   DOCKER_METADATA_OUTPUT_VERSION: main
+build-and-push	Update Docker Hub description	2025-08-26T14:27:15.0388825Z   DOCKER_METADATA_OUTPUT_TAGS: ***/plantuml-server:main
+build-and-push	Update Docker Hub description	***/plantuml-server:latest
+build-and-push	Update Docker Hub description	2025-08-26T14:27:15.0393360Z   DOCKER_METADATA_OUTPUT_LABELS: org.opencontainers.image.created=2025-08-26T14:26:41.484Z
+build-and-push	Update Docker Hub description	org.opencontainers.image.description=A high-performance PlantUML server built with Quarkus, providing RESTful APIs for diagram generation with Docker support
+build-and-push	Update Docker Hub description	org.opencontainers.image.licenses=MIT
+build-and-push	Update Docker Hub description	org.opencontainers.image.revision=a22d5ade329a395e671afe87d8ebb943066f6134
+build-and-push	Update Docker Hub description	org.opencontainers.image.source=https://github.com/***/plantuml-server
+build-and-push	Update Docker Hub description	org.opencontainers.image.title=plantuml-server
+build-and-push	Update Docker Hub description	org.opencontainers.image.url=https://github.com/***/plantuml-server
+build-and-push	Update Docker Hub description	org.opencontainers.image.version=main
+build-and-push	Update Docker Hub description	2025-08-26T14:27:15.0401749Z   DOCKER_METADATA_OUTPUT_ANNOTATIONS: manifest:org.opencontainers.image.created=2025-08-26T14:26:41.484Z
+build-and-push	Update Docker Hub description	manifest:org.opencontainers.image.description=A high-performance PlantUML server built with Quarkus, providing RESTful APIs for diagram generation with Docker support
+build-and-push	Update Docker Hub description	manifest:org.opencontainers.image.licenses=MIT
+build-and-push	Update Docker Hub description	manifest:org.opencontainers.image.revision=a22d5ade329a395e671afe87d8ebb943066f6134
+build-and-push	Update Docker Hub description	manifest:org.opencontainers.image.source=https://github.com/***/plantuml-server
+build-and-push	Update Docker Hub description	manifest:org.opencontainers.image.title=plantuml-server
+build-and-push	Update Docker Hub description	manifest:org.opencontainers.image.url=https://github.com/***/plantuml-server
+build-and-push	Update Docker Hub description	manifest:org.opencontainers.image.version=main
+build-and-push	Update Docker Hub description	2025-08-26T14:27:15.0415342Z   DOCKER_METADATA_OUTPUT_JSON: {"tags":["***/plantuml-server:main","***/plantuml-server:latest"],"labels":{"org.opencontainers.image.created":"2025-08-26T14:26:41.484Z","org.opencontainers.image.description":"A high-performance PlantUML server built with Quarkus, providing RESTful APIs for diagram generation with Docker support","org.opencontainers.image.licenses":"MIT","org.opencontainers.image.revision":"a22d5ade329a395e671afe87d8ebb943066f6134","org.opencontainers.image.source":"https://github.com/***/plantuml-server","org.opencontainers.image.title":"plantuml-server","org.opencontainers.image.url":"https://github.com/***/plantuml-server","org.opencontainers.image.version":"main"},"annotations":["manifest:org.opencontainers.image.created=2025-08-26T14:26:41.484Z","manifest:org.opencontainers.image.description=A high-performance PlantUML server built with Quarkus, providing RESTful APIs for diagram generation with Docker support","manifest:org.opencontainers.image.licenses=MIT","manifest:org.opencontainers.image.revision=a22d5ade329a395e671afe87d8ebb943066f6134","manifest:org.opencontainers.image.source=https://github.com/***/plantuml-server","manifest:org.opencontainers.image.title=plantuml-server","manifest:org.opencontainers.image.url=https://github.com/***/plantuml-server","manifest:org.opencontainers.image.version=main"]}
+build-and-push	Update Docker Hub description	2025-08-26T14:27:15.0424926Z   DOCKER_METADATA_OUTPUT_BAKE_FILE_TAGS: /home/runner/work/_temp/docker-actions-toolkit-4fZ7Ff/docker-metadata-action-bake-tags.json
+build-and-push	Update Docker Hub description	2025-08-26T14:27:15.0426591Z   DOCKER_METADATA_OUTPUT_BAKE_FILE_LABELS: /home/runner/work/_temp/docker-actions-toolkit-4fZ7Ff/docker-metadata-action-bake-labels.json
+build-and-push	Update Docker Hub description	2025-08-26T14:27:15.0428335Z   DOCKER_METADATA_OUTPUT_BAKE_FILE_ANNOTATIONS: /home/runner/work/_temp/docker-actions-toolkit-4fZ7Ff/docker-metadata-action-bake-annotations.json
+build-and-push	Update Docker Hub description	2025-08-26T14:27:15.0429958Z   DOCKER_METADATA_OUTPUT_BAKE_FILE: /home/runner/work/_temp/docker-actions-toolkit-4fZ7Ff/docker-metadata-action-bake.json
+build-and-push	Update Docker Hub description	2025-08-26T14:27:15.0431482Z ##[endgroup]
+build-and-push	Update Docker Hub description	2025-08-26T14:27:15.0941436Z Reading description source file
+build-and-push	Update Docker Hub description	2025-08-26T14:27:15.0962095Z Acquiring token
+build-and-push	Update Docker Hub description	2025-08-26T14:27:15.4941324Z Sending PATCH request
+build-and-push	Update Docker Hub description	2025-08-26T14:27:15.6168404Z ##[error]Forbidden
+build-and-push	Post Build and push Docker image	﻿2025-08-26T14:27:15.6261552Z Post job cleanup.
+build-and-push	Post Build and push Docker image	2025-08-26T14:27:15.8543111Z ##[group]Removing temp folder /home/runner/work/_temp/docker-actions-toolkit-npmUUm
+build-and-push	Post Build and push Docker image	2025-08-26T14:27:15.8560285Z ##[endgroup]
+build-and-push	Post Build and push Docker image	2025-08-26T14:27:15.8560931Z ##[group]Post cache
+build-and-push	Post Build and push Docker image	2025-08-26T14:27:15.8562905Z State not set
+build-and-push	Post Build and push Docker image	2025-08-26T14:27:15.8563511Z ##[endgroup]
+build-and-push	Post Log in to Docker Hub	﻿2025-08-26T14:27:15.8736070Z Post job cleanup.
+build-and-push	Post Log in to Docker Hub	2025-08-26T14:27:16.2268733Z [command]/usr/bin/docker logout 
+build-and-push	Post Log in to Docker Hub	2025-08-26T14:27:16.2412142Z Removing login credentials for https://index.docker.io/v1/
+build-and-push	Post Log in to Docker Hub	2025-08-26T14:27:16.2448006Z ##[group]Post cache
+build-and-push	Post Log in to Docker Hub	2025-08-26T14:27:16.2449345Z State not set
+build-and-push	Post Log in to Docker Hub	2025-08-26T14:27:16.2450956Z ##[endgroup]
+build-and-push	Post Set up Docker Buildx	﻿2025-08-26T14:27:16.2587849Z Post job cleanup.
+build-and-push	Post Set up Docker Buildx	2025-08-26T14:27:16.5503053Z ##[group]Removing builder
+build-and-push	Post Set up Docker Buildx	2025-08-26T14:27:16.6719364Z [command]/usr/bin/docker buildx rm builder-afbf82c3-2bce-40e1-b893-6237bdef0cbf
+build-and-push	Post Set up Docker Buildx	2025-08-26T14:27:16.8079036Z builder-afbf82c3-2bce-40e1-b893-6237bdef0cbf removed
+build-and-push	Post Set up Docker Buildx	2025-08-26T14:27:16.8115747Z ##[endgroup]
+build-and-push	Post Set up Docker Buildx	2025-08-26T14:27:16.8117095Z ##[group]Cleaning up certificates
+build-and-push	Post Set up Docker Buildx	2025-08-26T14:27:16.8125310Z ##[endgroup]
+build-and-push	Post Set up Docker Buildx	2025-08-26T14:27:16.8125979Z ##[group]Post cache
+build-and-push	Post Set up Docker Buildx	2025-08-26T14:27:16.8128332Z State not set
+build-and-push	Post Set up Docker Buildx	2025-08-26T14:27:16.8129078Z ##[endgroup]
+build-and-push	Post Cache Maven dependencies	﻿2025-08-26T14:27:16.9020466Z Post job cleanup.
+build-and-push	Post Cache Maven dependencies	2025-08-26T14:27:17.0466493Z [warning]Path Validation Error: Path(s) specified in the action for caching do(es) not exist, hence no cache is being saved.
+build-and-push	Post Set up JDK 17	﻿2025-08-26T14:27:17.0568847Z Post job cleanup.
+build-and-push	Post Checkout code	﻿2025-08-26T14:27:17.2393630Z Post job cleanup.
+build-and-push	Post Checkout code	2025-08-26T14:27:17.3393584Z [command]/usr/bin/git version
+build-and-push	Post Checkout code	2025-08-26T14:27:17.3433147Z git version 2.51.0
+build-and-push	Post Checkout code	2025-08-26T14:27:17.3478686Z Temporarily overriding HOME='/home/runner/work/_temp/b4634992-ca32-4f62-8b2e-d9d229f37953' before making global git config changes
+build-and-push	Post Checkout code	2025-08-26T14:27:17.3480439Z Adding repository directory to the temporary git global config as a safe directory
+build-and-push	Post Checkout code	2025-08-26T14:27:17.3493851Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/plantuml-server/plantuml-server
+build-and-push	Post Checkout code	2025-08-26T14:27:17.3532899Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+build-and-push	Post Checkout code	2025-08-26T14:27:17.3568486Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+build-and-push	Post Checkout code	2025-08-26T14:27:17.3811123Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+build-and-push	Post Checkout code	2025-08-26T14:27:17.3836934Z http.https://github.com/.extraheader
+build-and-push	Post Checkout code	2025-08-26T14:27:17.3851736Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+build-and-push	Post Checkout code	2025-08-26T14:27:17.3887085Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+build-and-push	Complete job	﻿2025-08-26T14:27:17.4239475Z Cleaning up orphan processes

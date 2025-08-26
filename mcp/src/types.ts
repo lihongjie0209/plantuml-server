@@ -22,18 +22,55 @@ export type PlantUMLResponse = z.infer<typeof PlantUMLResponseSchema>;
 export const SUPPORTED_FORMATS = ['png', 'svg', 'pdf', 'eps'] as const;
 export type SupportedFormat = typeof SUPPORTED_FORMATS[number];
 
-// 工具参数模式
-export const GenerateDiagramArgsSchema = z.object({
-  code: z.string().describe('PlantUML diagram code'),
-  format: z.enum(['png', 'svg', 'pdf', 'eps']).default('png').describe('Output format for the diagram'),
+// JSON Schema for MCP tools (AJV compatible)
+export const GenerateDiagramArgsSchema = {
+  type: "object",
+  properties: {
+    code: {
+      type: "string",
+      minLength: 1,
+      description: "PlantUML diagram code. Required. Example: '@startuml\\nAlice -> Bob: Hello\\n@enduml'"
+    },
+    format: {
+      type: "string",
+      enum: ["png", "svg", "pdf", "eps"],
+      default: "png",
+      description: "Output format for the diagram. Optional, defaults to 'png'. Use 'svg' for scalable graphics, 'pdf' for documents."
+    }
+  },
+  required: ["code"],
+  additionalProperties: false
+} as const;
+
+export const ValidateCodeArgsSchema = {
+  type: "object",
+  properties: {
+    code: {
+      type: "string",
+      minLength: 1,
+      description: "PlantUML code to validate. Required. Should include @startuml/@enduml tags."
+    }
+  },
+  required: ["code"],
+  additionalProperties: false
+} as const;
+
+export const GetFormatsArgsSchema = {
+  type: "object",
+  properties: {},
+  additionalProperties: false
+} as const;
+
+// Zod schemas for runtime validation
+export const GenerateDiagramZodSchema = z.object({
+  code: z.string().min(1, 'PlantUML code cannot be empty'),
+  format: z.enum(['png', 'svg', 'pdf', 'eps']).default('png'),
 });
 
-export const ValidateCodeArgsSchema = z.object({
-  code: z.string().describe('PlantUML code to validate'),
+export const ValidateCodeZodSchema = z.object({
+  code: z.string().min(1, 'PlantUML code cannot be empty'),
 });
 
-export const GetFormatsArgsSchema = z.object({});
-
-export type GenerateDiagramArgs = z.infer<typeof GenerateDiagramArgsSchema>;
-export type ValidateCodeArgs = z.infer<typeof ValidateCodeArgsSchema>;
-export type GetFormatsArgs = z.infer<typeof GetFormatsArgsSchema>;
+export type GenerateDiagramArgs = z.infer<typeof GenerateDiagramZodSchema>;
+export type ValidateCodeArgs = z.infer<typeof ValidateCodeZodSchema>;
+export type GetFormatsArgs = Record<string, never>;

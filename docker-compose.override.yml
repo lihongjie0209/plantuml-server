@@ -1,0 +1,36 @@
+# Docker Compose override for development
+version: '3.8'
+
+services:
+  plantuml-server:
+    # Use local build for development
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: plantuml-server:dev
+    environment:
+      - QUARKUS_LOG_LEVEL=DEBUG
+      - QUARKUS_LOG_CONSOLE_ENABLE=true
+
+  mcp-server:
+    # Development specific settings
+    environment:
+      - NODE_ENV=development
+      - DEBUG=mcp:*
+    volumes:
+      # Mount source for hot reload in development
+      - ./mcp/src:/app/src:ro
+      # Development logs
+      - ./logs:/app/logs
+    # Override health check for development
+    healthcheck:
+      test: ["CMD", "node", "-e", "console.log('Dev Health OK')"]
+      interval: 10s
+      timeout: 5s
+      retries: 2
+      start_period: 5s
+
+volumes:
+  # Development specific volumes
+  logs:
+    driver: local

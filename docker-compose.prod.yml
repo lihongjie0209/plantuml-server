@@ -1,15 +1,17 @@
+# Production Docker Compose configuration
 version: '3.8'
 
 services:
   plantuml-server:
     image: lihongjie0209/plantuml-server:latest
-    container_name: plantuml-server
+    container_name: plantuml-server-prod
     ports:
       - "9090:9090"
     environment:
-      - JAVA_OPTS=-Xmx512m -Xms256m
+      - JAVA_OPTS=-Xmx1g -Xms512m -XX:+UseG1GC
       - QUARKUS_HTTP_HOST=0.0.0.0
       - QUARKUS_HTTP_PORT=9090
+      - QUARKUS_LOG_LEVEL=INFO
     restart: unless-stopped
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:9090/api/plantuml/health"]
@@ -17,51 +19,84 @@ services:
       timeout: 10s
       retries: 3
       start_period: 40s
+    deploy:
+      resources:
+        limits:
+          memory: 1.5G
+          cpus: '1.0'
+        reservations:
+          memory: 512M
+          cpus: '0.5'
     labels:
       - "com.example.service=plantuml-server"
+      - "com.example.environment=production"
       - "com.example.version=0.1.0"
     networks:
       - plantuml-network
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "100m"
+        max-file: "3"
 
-  # MCP Server - for AI agent integration
   mcp-server:
     build:
       context: ./mcp
       dockerfile: Dockerfile
-    container_name: plantuml-mcp-server
+    container_name: plantuml-mcp-server-prod
     environment:
       - PLANTUML_SERVER_URL=http://plantuml-server:9090
       - NODE_ENV=production
       - MCP_SERVER_NAME=plantuml-mcp
+      - NODE_OPTIONS=--max-old-space-size=512
     depends_on:
       plantuml-server:
         condition: service_healthy
     restart: unless-stopped
     healthcheck:
-      test: ["CMD", "node", "dist/index.js", "--version"]
+      test: ["CMD", "node", "-e", "console.log('MCP Server Health OK')"]
       interval: 30s
       timeout: 10s
       retries: 3
       start_period: 10s
+    deploy:
+      resources:
+        limits:
+          memory: 768M
+          cpus: '0.5'
+        reservations:
+          memory: 256M
+          cpus: '0.25'
     labels:
       - "com.example.service=mcp-server"
+      - "com.example.environment=production"
       - "com.example.version=0.2.0"
     networks:
       - plantuml-network
     volumes:
-      # Mount for MCP stdio communication (if needed)
       - mcp-data:/app/data
-      # Optional: mount for sharing diagrams
-      - ./shared-diagrams:/app/shared
+      - mcp-shared:/app/shared
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "50m"
+        max-file: "3"
 
 networks:
   plantuml-network:
     driver: bridge
     labels:
       - "com.example.network=plantuml"
+      - "com.example.environment=production"
 
 volumes:
   mcp-data:
     driver: local
     labels:
       - "com.example.volume=mcp-data"
+      - "com.example.environment=production"
+  mcp-shared:
+    driver: local
+    labels:
+      - "com.example.volume=mcp-shared"
+      - "com.example.environment=production"

@@ -271,7 +271,41 @@ async function generateDiagram() {
 
 ## 🐳 Docker 部署
 
-### 使用 Docker Compose
+### 🚀 一键启动 (推荐)
+
+#### Linux/macOS
+```bash
+# 开发环境
+./deploy.sh start dev
+
+# 生产环境
+./deploy.sh start prod
+
+# 查看日志
+./deploy.sh logs
+
+# 停止服务
+./deploy.sh stop
+```
+
+#### Windows
+```powershell
+# 开发环境
+.\deploy.ps1 start dev
+
+# 生产环境
+.\deploy.ps1 start prod
+
+# 查看日志
+.\deploy.ps1 logs
+
+# 停止服务
+.\deploy.ps1 stop
+```
+
+### 📋 完整 Docker Compose 配置
+
+#### 开发环境
 ```yaml
 version: '3.8'
 services:
@@ -282,19 +316,61 @@ services:
     environment:
       - JAVA_OPTS=-Xmx512m -Xms256m
     restart: unless-stopped
+    networks:
+      - plantuml-network
+
+  mcp-server:
+    build:
+      context: ./mcp
+      dockerfile: Dockerfile
+    environment:
+      - PLANTUML_SERVER_URL=http://plantuml-server:9090
+      - NODE_ENV=development
+    depends_on:
+      plantuml-server:
+        condition: service_healthy
+    networks:
+      - plantuml-network
+
+networks:
+  plantuml-network:
+    driver: bridge
 ```
 
-### 构建自定义镜像
+#### 生产环境
+使用 `docker-compose.prod.yml` 配置，包含：
+- 资源限制 (CPU/内存)
+- 增强的健康检查
+- 日志轮转配置
+- 安全性加固
+
+### 📦 单独部署 PlantUML 服务器
+
+```bash
+# 拉取并运行
+docker run -d \
+  --name plantuml-server \
+  -p 9090:9090 \
+  -e JAVA_OPTS="-Xmx512m -Xms256m" \
+  --restart unless-stopped \
+  lihongjie0209/plantuml-server:latest
+```
+
+### 🔧 构建自定义镜像
 ```bash
 # 克隆仓库
 git clone https://github.com/lihongjie0209/plantuml-server.git
 cd plantuml-server
 
-# 构建镜像
+# 构建 PlantUML 服务器
 docker build -t my-plantuml-server .
 
-# 运行容器
-docker run -p 9090:9090 my-plantuml-server
+# 构建 MCP 服务器
+cd mcp && npm install && npm run build && cd ..
+docker build -t my-mcp-server ./mcp
+
+# 使用自定义镜像启动
+docker-compose up -d
 ```
 
 ## 🛠️ 本地开发

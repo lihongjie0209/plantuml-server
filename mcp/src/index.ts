@@ -13,6 +13,8 @@ import {
   GenerateDiagramArgsSchema,
   ValidateCodeArgsSchema,
   GetFormatsArgsSchema,
+  GenerateDiagramZodSchema,
+  ValidateCodeZodSchema,
   SUPPORTED_FORMATS,
 } from './types.js';
 import Ajv2020 from 'ajv/dist/2020.js';
@@ -31,28 +33,32 @@ function ok(data: any) {
 function parseArgs<T>(args: unknown, schema: any): T {
   const validate = ajv.compile(schema);
   if (!validate(args)) {
-    throw new McpError(ErrorCode.InvalidParams, ajv.errorsText(validate.errors));
+    throw new McpError(ErrorCode.InvalidParams, 
+      `Invalid parameters: ${ajv.errorsText(validate.errors)}. ` +
+      `Please check the required fields and data types in your request.`
+    );
   }
   return args as T;
 }
 
 // 工具定义对象 - 集中管理所有工具的描述和 schema
+// 工具定义对象 - 集中管理所有工具的描述和 schema
 const tools = {
   "plantuml-generate": {
-    description: "Generate PlantUML diagrams and return Base64 encoded images. WORKFLOW: 1) Use plantuml-health first to verify server connectivity, 2) Optionally call plantuml-validate to check syntax, 3) Generate diagram with preferred format.",
+    description: "Generate PlantUML diagrams and return Base64 encoded images. REQUIRED PARAMETER: 'code' (string) - PlantUML code with @startuml/@enduml tags. OPTIONAL: 'format' (png|svg|pdf|eps, default: png). WORKFLOW: 1) Use plantuml-health first, 2) Optionally validate with plantuml-validate, 3) Generate diagram.",
     inputSchema: GenerateDiagramArgsSchema
   },
   "plantuml-validate": {
-    description: "Validate PlantUML code syntax before generating diagrams. RECOMMENDED: Always validate complex diagrams before generation to catch syntax errors early.",
+    description: "Validate PlantUML code syntax before generating diagrams. REQUIRED PARAMETER: 'code' (string) - PlantUML code to validate. RECOMMENDED: Always validate complex diagrams before generation to catch syntax errors early.",
     inputSchema: ValidateCodeArgsSchema
   },
   "plantuml-formats": {
-    description: "Get list of supported output formats from the PlantUML server. Use this to check available formats before generating diagrams.",
+    description: "Get list of supported output formats from the PlantUML server. NO PARAMETERS REQUIRED. Use this to check available formats before generating diagrams.",
     inputSchema: GetFormatsArgsSchema
   },
   "plantuml-health": {
-    description: "Check PlantUML server health and connectivity. IMPORTANT: Call this first to ensure the server is accessible before using other tools.",
-    inputSchema: { type: "object", properties: {} }
+    description: "Check PlantUML server health and connectivity. NO PARAMETERS REQUIRED. IMPORTANT: Call this first to ensure the server is accessible before using other tools.",
+    inputSchema: { type: "object", properties: {}, additionalProperties: false }
   }
 } as const;
 
