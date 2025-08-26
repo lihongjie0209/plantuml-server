@@ -60,12 +60,30 @@ jobs:
       with:
         images: lihongjie0209/${{ env.IMAGE_NAME }}
         tags: |
-          type=ref,event=branch
-          type=ref,event=pr
+          # Version tags (highest priority)
           type=semver,pattern={{version}}
           type=semver,pattern={{major}}.{{minor}}
           type=semver,pattern={{major}}
+          # Branch-based tags
+          type=ref,event=branch
+          # PR tags
+          type=ref,event=pr
+          # Latest tag only for main branch and version tags
           type=raw,value=latest,enable={{is_default_branch}}
+          type=raw,value=latest,enable=${{ startsWith(github.ref, 'refs/tags/v') }}
+          # SHA-based tags for traceability
+          type=sha,prefix={{branch}}-,enable={{is_default_branch}}
+        flavor: |
+          # Disable automatic latest tag generation
+          latest=false
+          
+    - name: Show Docker tags that will be generated
+      run: |
+        echo "Docker tags that will be generated:"
+        echo "${{ steps.meta.outputs.tags }}"
+        echo ""
+        echo "Docker labels:"
+        echo "${{ steps.meta.outputs.labels }}"
           
     - name: Build and push Docker image
       uses: docker/build-push-action@v5
