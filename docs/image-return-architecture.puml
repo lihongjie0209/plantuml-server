@@ -1,0 +1,90 @@
+@startuml
+!theme plain
+skinparam backgroundColor #FEFEFE
+skinparam handwritten false
+
+title PlantUML 图片返回流程架构图
+
+actor "AI代理/客户端" as Client
+participant "MCP服务器" as MCP
+participant "PlantUML HTTP API" as API
+participant "PlantUML服务层" as Service
+participant "PlantUML引擎" as Engine
+database "图片输出" as Output
+
+== 方式一：Base64 JSON API ==
+
+Client -> MCP: MCP工具调用\n{"name": "plantuml-generate",\n "arguments": {"code": "...", "format": "png"}}
+activate MCP
+
+MCP -> MCP: 参数验证\n(AJV Schema)
+
+MCP -> API: POST /api/plantuml/generate\n{"code": "...", "format": "png"}
+activate API
+
+API -> Service: generateBase64Image(code, format)
+activate Service
+
+Service -> Engine: SourceStringReader.outputImage()
+activate Engine
+
+Engine -> Output: 生成二进制图片数据
+Output --> Engine: byte[] imageBytes
+deactivate Engine
+
+Engine --> Service: byte[] imageBytes
+Service -> Service: Base64.encode(imageBytes)
+
+Service --> API: String base64Data
+deactivate Service
+
+API --> MCP: JSON Response\n{"success": true,\n "format": "png",\n "base64Data": "iVBORw0..."}
+deactivate API
+
+MCP -> MCP: 格式化MCP响应
+
+MCP --> Client: MCP Response\n{"content": [{"type": "text",\n "text": "JSON结果"}]}
+deactivate MCP
+
+== 方式二：直接二进制下载 API ==
+
+Client -> API: POST /api/plantuml/image/png\n{"code": "..."}
+activate API
+
+API -> Service: generateImage(code, format)
+activate Service
+
+Service -> Engine: SourceStringReader.outputImage()
+activate Engine
+
+Engine -> Output: 生成二进制图片数据
+Output --> Engine: byte[] imageBytes
+deactivate Engine
+
+Engine --> Service: byte[] imageBytes
+deactivate Service
+
+Service --> API: byte[] imageBytes
+
+API -> API: 设置Content-Type: image/png\nContent-Disposition: attachment
+
+API --> Client: 直接二进制响应\n[PNG二进制数据]
+deactivate API
+
+note right of Client
+  **两种方式对比**:
+  
+  **Base64 JSON**:
+  • 适合AI代理集成
+  • 结构化响应数据
+  • 传输开销大(~33%)
+  • 需要客户端解码
+  
+  **直接二进制**:
+  • 适合文件下载
+  • 传输效率高
+  • 浏览器直接处理
+  • 无需额外处理
+end note
+
+@enduml
