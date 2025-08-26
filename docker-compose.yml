@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  plantuml-server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: plantuml-server
+    ports:
+      - "9090:9090"
+    environment:
+      - JAVA_OPTS=-Xmx512m -Xms256m
+      - QUARKUS_HTTP_HOST=0.0.0.0
+      - QUARKUS_HTTP_PORT=9090
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9090/api/plantuml/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    labels:
+      - "com.example.service=plantuml-server"
+      - "com.example.version=1.0.0"

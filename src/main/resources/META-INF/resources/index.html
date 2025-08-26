@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PlantUML Server</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #555;
+        }
+        textarea {
+            width: 100%;
+            height: 200px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            resize: vertical;
+        }
+        select, button {
+            padding: 10px 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .result {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-radius: 4px;
+            border: 1px solid #e9ecef;
+        }
+        .error {
+            background-color: #f8d7da;
+            border-color: #f5c6cb;
+            color: #721c24;
+        }
+        .success {
+            background-color: #d4edda;
+            border-color: #c3e6cb;
+            color: #155724;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-top: 10px;
+        }
+        .buttons {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        pre {
+            background-color: #f8f9fa;
+            padding: 10px;
+            border-radius: 4px;
+            border: 1px solid #e9ecef;
+            white-space: pre-wrap;
+            word-break: break-all;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>PlantUML Server</h1>
+        
+        <div class="form-group">
+            <label for="plantUMLCode">PlantUML 代码:</label>
+            <textarea id="plantUMLCode" placeholder="输入您的 PlantUML 代码...">@startuml
+Alice -> Bob: Hello
+Bob -> Alice: Hi there
+@enduml</textarea>
+        </div>
+        
+        <div class="form-group">
+            <label for="format">输出格式:</label>
+            <select id="format">
+                <option value="png">PNG</option>
+                <option value="svg">SVG</option>
+                <option value="pdf">PDF</option>
+                <option value="eps">EPS</option>
+            </select>
+        </div>
+        
+        <div class="buttons">
+            <button onclick="generateImage()">生成图片 (Base64)</button>
+            <button onclick="generateImageDirect()">生成图片 (直接下载)</button>
+            <button onclick="checkHealth()">健康检查</button>
+            <button onclick="getSupportedFormats()">支持的格式</button>
+        </div>
+        
+        <div id="result" class="result" style="display: none;"></div>
+    </div>
+
+    <script>
+        const API_BASE_URL = '/api/plantuml';
+
+        async function generateImage() {
+            const code = document.getElementById('plantUMLCode').value;
+            const format = document.getElementById('format').value;
+            const resultDiv = document.getElementById('result');
+            
+            if (!code.trim()) {
+                showResult('请输入 PlantUML 代码', false);
+                return;
+            }
+            
+            try {
+                showResult('正在生成图片...', true, false);
+                
+                const response = await fetch(`${API_BASE_URL}/generate`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        code: code,
+                        format: format
+                    })
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    const imageData = result.base64Data;
+                    const mimeType = format === 'svg' ? 'image/svg+xml' : 
+                                    format === 'pdf' ? 'application/pdf' : 'image/png';
+                    
+                    let content = `<p class="success">图片生成成功！</p>`;
+                    
+                    if (format !== 'pdf') {
+                        content += `<img src="data:${mimeType};base64,${imageData}" alt="Generated PlantUML diagram">`;
+                    }
+                    
+                    content += `<p><strong>Base64 数据:</strong></p><pre>${imageData}</pre>`;
+                    
+                    showResult(content, true, true);
+                } else {
+                    showResult(`错误: ${result.message}`, false);
+                }
+            } catch (error) {
+                showResult(`请求失败: ${error.message}`, false);
+            }
+        }
+        
+        async function generateImageDirect() {
+            const code = document.getElementById('plantUMLCode').value;
+            const format = document.getElementById('format').value;
+            
+            if (!code.trim()) {
+                showResult('请输入 PlantUML 代码', false);
+                return;
+            }
+            
+            try {
+                showResult('正在生成图片...', true, false);
+                
+                const response = await fetch(`${API_BASE_URL}/image/${format}`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        code: code
+                    })
+                });
+                
+                if (response.ok) {
+                    const blob = await response.blob();
+                    const url = window.URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.style.display = 'none';
+                    a.href = url;
+                    a.download = `diagram.${format}`;
+                    document.body.appendChild(a);
+                    a.click();
+                    window.URL.revokeObjectURL(url);
+                    showResult('图片已开始下载', true);
+                } else {
+                    const errorText = await response.text();
+                    showResult(`错误: ${errorText}`, false);
+                }
+            } catch (error) {
+                showResult(`请求失败: ${error.message}`, false);
+            }
+        }
+        
+        async function checkHealth() {
+            try {
+                const response = await fetch(`${API_BASE_URL}/health`);
+                const result = await response.json();
+                
+                if (result.success) {
+                    showResult(`✅ ${result.message}`, true);
+                } else {
+                    showResult(`❌ 服务不可用`, false);
+                }
+            } catch (error) {
+                showResult(`❌ 无法连接到服务器: ${error.message}`, false);
+            }
+        }
+        
+        async function getSupportedFormats() {
+            try {
+                const response = await fetch(`${API_BASE_URL}/formats`);
+                const formats = await response.json();
+                
+                showResult(`支持的格式: ${formats.join(', ')}`, true);
+            } catch (error) {
+                showResult(`获取格式列表失败: ${error.message}`, false);
+            }
+        }
+        
+        function showResult(content, isSuccess, isHtml = false) {
+            const resultDiv = document.getElementById('result');
+            resultDiv.style.display = 'block';
+            resultDiv.className = `result ${isSuccess ? 'success' : 'error'}`;
+            
+            if (isHtml) {
+                resultDiv.innerHTML = content;
+            } else {
+                resultDiv.textContent = content;
+            }
+        }
+
+        // 页面加载时检查服务器状态
+        window.addEventListener('load', checkHealth);
+    </script>
+</body>
+</html>
